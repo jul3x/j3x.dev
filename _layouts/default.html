@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>j3x.dev - coding & stuff</title>
+  <meta name="description" content="j3x.dev - coding & stuff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="j3x.dev - coding & stuff">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://j3x.dev">
+  <meta property="og:image" content="https://j3x.dev/img/logo.png">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="stylesheet" href="/assets/css/normalize.css">
+  <link rel="stylesheet" href="/assets/css/basic.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#ebeae3">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    {% include menu.html %}
+  
+    <div id="header">
+      <div class='light x1'></div>
+      <div class='light x2'></div>
+      <div class='light x3'></div>
+      <div class='light x4'></div>
+      <div class='light x5'></div>
+      <div class='light x6'></div>
+      <div class='light x7'></div>
+      <div class='light x8'></div>
+      <div class='light x9'></div>
+      <h2 class="fw tshadow">
+        <div class="typewrite" data-period="15000"
+            data-type="{{ page.header }}">
+          <span class="wrap"></span>
+          <div class="caret"></div>
+        </div>  
+      </h2>
+    </div>
+
+    {% include divider.html %}
+    {% include divider-content.html %}
+    {{ content }}
+
+  </div>
+  <script src="/assets/js/modernizr-3.11.8.min.js"></script>
+  <script src="/assets/js/typewrite.js"></script>
+
+</body>
+
+</html>
