@@ -77,7 +77,7 @@ menu li {
 }
 
 /** Main page header */
-#main-header {
+.main-header {
     position: absolute;
     top: 50%;
     left: 0;
@@ -165,7 +165,8 @@ menu li {
 
 /** Content */
 
-#content {
+.content {
+    color: var(--dark);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -174,10 +175,39 @@ menu li {
     padding: 0 50px 50px 50px;
 }
 
-#content p {
+.content p {
     text-align: center;
 }
 
-#content .section {
+.content .section {
     margin: 25px 0;
+}
+
+section {
+    opacity: 0;
+    transition: 0.5s;
+}
+
+@keyframes sectionShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#main:target,
+#portfolio:target,
+#offer:target,
+#contact:target {
+    opacity: 1;
+    animation-name: sectionShow;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: 1;
 }

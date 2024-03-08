@@ -1,20 +1,23 @@
-<div id="main-header">
+<div class="main-header">
   <div class="main-position main-position-left">
     <h3 class="fw italic tshadow line-up delayed-7">
-      {{ page.left_divider_header }}
+      {{ include.left_header }}
     </h3>
     <p class="line-up delayed-8">
-      {{ page.left_divider_txt }}
+      {{ include.left_txt }}
     </p>
   </div>
+  {% if include.show_photo %}
   <div class="photo">
 
   </div>
+  {% endif %}
   <div class="main-position main-position-right">
     <h3 class="fd line-up delayed-7">
-      {{ page.right_divider_header }}</h3>
+      {{ include.right_header }}
+    </h3>
     <p class="fw tshadow line-up delayed-8">
-      {{ page.right_divider_txt }}
+      {{ include.right_txt }}
     </p>
   </div>
 </div>

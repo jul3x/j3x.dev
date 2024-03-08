@@ -26,14 +26,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
 
   <div id="wrapper">
     {% include menu.html %}
-  
+
     <div id="header">
       <div class='light x1'></div>
       <div class='light x2'></div>
@@ -45,19 +46,65 @@
       <div class='light x8'></div>
       <div class='light x9'></div>
       <h2 class="fw tshadow">
-        <div class="typewrite" data-period="15000"
-            data-type="{{ page.header }}">
+        <div class="typewrite" data-period="15000">
           <span class="wrap"></span>
           <div class="caret"></div>
-        </div>  
+        </div>
       </h2>
     </div>
 
     {% include divider.html %}
-    {% include divider-content.html %}
-    {{ content }}
+
+      <section id="main" data-type="{{ page.header }}" class="page-section">
+        {% include divider-content.html
+          left_header=page.left_divider_header
+          left_txt=page.left_divider_txt
+          right_header=page.right_divider_header
+          right_txt=page.right_divider_txt
+          show_photo=1
+          %}
+        <div class="content">
+        {{ content }}
+        </div>
+      </section>
+      <section id="portfolio" data-type="Check my projects." class="page-section">
+        {% include divider-content.html
+          left_header="Portfolio"
+          left_txt="Test"
+          right_header=""
+          right_txt=""
+          %}
+        <div class="content">
+        </div>
+      </section>
+      <section id="offer" data-type="What can I offer?" class="page-section">
+        {% include divider-content.html
+          left_header="Offer"
+          left_txt="Test"
+          right_header=""
+          right_txt=""
+          %}
+        <div class="content">
+        </div>
+      </section>
+      <section id="contact" data-type="Let's talk." class="page-section">
+        {% include divider-content.html
+          left_header="Contact"
+          left_txt="Test"
+          right_header=""
+          right_txt=""
+          show_photo=1
+          %}
+        <div class="content">
+        </div>
+      </section>
 
   </div>
+  <script type="text/javascript">
+    if (document.location.hash == "" || document.location.hash == "#") {
+      document.location.hash = "#main";
+    }
+  </script>  
   <script src="/assets/js/modernizr-3.11.8.min.js"></script>
   <script src="/assets/js/typewrite.js"></script>
 

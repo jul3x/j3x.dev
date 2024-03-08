@@ -1,18 +1,22 @@
-var TxtType = function(el, toRotate, period) {
-    this.toRotate = toRotate;
+var TxtType = function(el, sections, period) {
     this.el = el;
+    this.sections = sections;
+    this.currentTxt = '';
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
     this.txt = '';
     var that = this;
-    setTimeout(function() {
+    var currentJob = setTimeout(function() {
         that.tick();
     }, 2000);
     this.isDeleting = false;
 };
 
 TxtType.prototype.tick = function() {
-    var fullTxt = this.toRotate;
+    if (!this.currentTxt || !this.txt) {
+        this.currentTxt = this.sections[document.location.hash];
+    }
+    var fullTxt = this.currentTxt;
     if (this.isDeleting) {
         var newChars = 1;
         if (fullTxt[this.txt.length - 1] == '>') {
@@ -61,23 +65,24 @@ TxtType.prototype.tick = function() {
 
     this.el.getElementsByClassName('wrap')[0].innerHTML = this.txt;
 
-    setTimeout(function() {
+    this.currentJob = setTimeout(function() {
         that.tick();
     }, delta);
 };
 
 window.addEventListener('load', function() {
     var elements = document.getElementsByClassName('typewrite');
-    for (var i = 0; i < elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-
-        if (toRotate) {
-          new TxtType(elements[i], toRotate, period);
-        }
-
-        elements[i].removeAttribute('data-type');
+    var sectionElements = document.getElementsByClassName('page-section');
+    
+    var sections = {};
+    for (var section of sectionElements) {
+        sections['#' + section.getAttribute('id')] = section.getAttribute('data-type');
     }
+
+    var txtType = null;
+    var period = elements[0].getAttribute('data-period');
+    txtType = new TxtType(elements[0], sections, period);
+    elements[0].removeAttribute('data-type');
 
     // INJECT CSS
     var css = document.createElement("style");
@@ -99,5 +104,13 @@ window.addEventListener('load', function() {
       }
     `;
     document.body.appendChild(css);
+    window.addEventListener(
+        "hashchange",
+        () => {
+            clearTimeout(txtType.currentJob);
+            txtType.isDeleting = true;
+            txtType.tick();
+        },
+        false,
+    );
 });
-
