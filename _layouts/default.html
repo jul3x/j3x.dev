@@ -67,8 +67,8 @@
         {{ content }}
         </div>
       </section>
-      <section id="portfolio" data-type="Check my projects." class="page-section">
-        {% include divider-content.html
+      <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
+        {% include portfolio-divider.html
           left_header="Portfolio"
           left_txt="Test"
           right_header=""
@@ -77,7 +77,7 @@
         <div class="content">
         </div>
       </section>
-      <section id="offer" data-type="What can I offer?" class="page-section">
+      <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
         {% include divider-content.html
           left_header="Offer"
           left_txt="Test"
@@ -87,15 +87,16 @@
         <div class="content">
         </div>
       </section>
-      <section id="contact" data-type="Let's talk." class="page-section">
+      <section id="contact" data-type="Porozmawiajmy." class="page-section">
         {% include divider-content.html
           left_header="Contact"
-          left_txt="Test"
+          left_txt=page.left_contact_txt
           right_header=""
           right_txt=""
           show_photo=1
           %}
         <div class="content">
+          {% include contact.html %}
         </div>
       </section>
 
@@ -104,7 +105,7 @@
     if (document.location.hash == "" || document.location.hash == "#") {
       document.location.hash = "#main";
     }
-  </script>  
+  </script>
   <script src="/assets/js/modernizr-3.11.8.min.js"></script>
   <script src="/assets/js/typewrite.js"></script>
 

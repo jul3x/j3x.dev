@@ -77,6 +77,10 @@
     animation-delay: 5s;
 }
 
+.delayed-6 {
+    animation-delay: 6s;
+}
+
 .delayed-7 {
     animation-delay: 7s;
 }
@@ -174,6 +178,13 @@ h3 {
     text-align: center;
     font-weight: 700;
     font-size: 40px;
+}
+
+
+h4 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
 }
 
 
