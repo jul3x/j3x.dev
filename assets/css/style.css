@@ -178,6 +178,9 @@ menu li {
 .page-content {
     top: calc(50vh + 100px - 205px) !important;
     bottom: auto !important;
+    left: 5% !important;
+    width: 90% !important;
+    padding: 0 !important;
 }
 
 .content {
@@ -241,9 +244,9 @@ section {
 
 .portfolio-menu ul {
     display: flex;
+    justify-content: space-between;
     width: auto;
     margin: 0 auto;
-    text-align: left;
     overflow: hidden;
     font-weight: 700;
 }
@@ -251,9 +254,84 @@ section {
 .portfolio-menu ul li {
     flex-grow: 1;
     text-align: center;
-    border-right: 2px var(--dark) solid;
+    transition: 0.3s;
+    border-bottom: 4px var(--dark) solid;
 }
 
-.portfolio-menu ul li:last-of-type {
-    border-right: 0;
+.portfolio-menu ul li a {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 10px;
+    color: var(--dark);
 }
+
+.portfolio-menu ul li:hover {
+    border-bottom: 4px var(--feature) solid;
+}
+
+.portfolio-menu ul a:hover {
+    color: var(--feature);
+}
+
+.portfolio-menu ul li.active {
+    border-bottom: 4px var(--feature) solid;
+}
+
+.portfolio-menu ul li.active a {
+    color: var(--feature);
+}
+
+.portfolio-sections {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.portfolio-sections div {
+    transition: opacity 1s ease-in-out;
+    overflow: hidden;
+}
+
+#skills {
+    width: 75%;
+    margin: 0 auto;
+}
+
+#skills .skills-preamble {
+    margin-top: 40px;
+}
+
+#skills ul {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#skills .skill {
+    width: 100%;
+    display: flex;
+    margin-top: 25px;
+}
+
+#skills .skill .header {
+    width: 20%;
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 18px;
+}
+
+#skills .skill .description {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#skills .skill .icon {
+    font-size: 36pt;
+    width: 90px;
+    text-align: left;
+}
+
+
+

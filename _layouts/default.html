@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f6c2313038.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -74,7 +75,10 @@
           right_txt=""
           %}
             <div class="content page-content" id="portfolio-content">
-                {% include portfolio.html %}
+                {% include portfolio.html
+                skills=page.skills
+                dev_stack=page.dev_stack
+                %}
             </div>
         </section>
         <section id="offer" data-type="Co mogę zaoferować?" class="page-section">

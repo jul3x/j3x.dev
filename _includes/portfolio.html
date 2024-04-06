@@ -1,120 +1,68 @@
 <div class="portfolio-menu line-up delayed-7">
     <ul>
-        <li>
-            <a href="/?q=skills#portfolio">Umiejętności</a>
+        <li id="portfolio-menu-skills">
+            <a href="#portfolio" onclick="portfolioMenu('skills');return false;">Umiejętności</a>
         </li>
-        <li>
-            <a href="/?q=experience#portfolio">Doświadczenie</a>
+        <li id="portfolio-menu-experience">
+            <a href="#portfolio" onclick="portfolioMenu('experience');return false;">Doświadczenie</a>
         </li>
-        <li>
-            <a href="/?q=projects#portfolio">Realizacje</a>
+        <li id="portfolio-menu-realizations">
+            <a href="#portfolio" onclick="portfolioMenu('realizations');return false;">Realizacje</a>
         </li>
-        <li>
-            <a href="/?q=self#portfolio">Projekty własne</a>
+        <li id="portfolio-menu-projects">
+            <a href="#portfolio" onclick="portfolioMenu('projects');return false;">Projekty własne</a>
         </li>
     </ul>
 </div>
 
-<div class="line-up delayed-7">
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
-    dupa<br>
+<div class="portfolio-sections line-up delayed-7">
+    <div id="skills">
+        <p>
+            Przez lata programowania komercyjnego i hobbystycznego poznałem wiele technologii i rozwiązywałem szeroki wachlarz problemów w różnorodnych branżach<br/>(<strong>Robotyka</strong>, <strong>E-commerce</strong>, <strong>Telco</strong>, <strong>Cybersecurity</strong>).
+        </p>
+        <p class="skills-preamble">
+            Ale moja największa <strong>ekspertyza</strong> obejmuje:
+        </p>
+        <ul>
+            {% for skill in include.skills %}
+            <li class="skill">
+                <i class="fa-solid fa-{{ skill.icon }} icon"></i>
+                <strong class="header">{{ skill.header }}</strong>
+                <p class="description">{{ skill.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h4 class="m0 p0">
+            Dev stack:
+        </h4>
+        <p class="m0 p0">
+            <strong>
+                {{ include.dev_stack }}
+            </strong>
+        </p>
+    </div>
+    <div id="experience">
+    </div>
+    <div id="realizations">
+    </div>
+    <div id="projects">
+    </div>
 </div>
+
+<script type="text/javascript">
+ function portfolioMenu(section) {
+     /* Change style of link */
+     Array.from(document.querySelectorAll('.portfolio-menu ul li')).forEach((el) => {
+         el.classList.remove('active');
+     });
+     document.getElementById('portfolio-menu-' + section).classList.add('active');
+
+     /* Show appropriate section */
+     Array.from(document.querySelectorAll('.portfolio-sections div')).forEach((el) => {
+         el.style = 'opacity: 0; height: 0;';
+     })
+     document.getElementById(section).style = 'opacity: 1; height: auto;';
+    }
+    portfolioMenu('skills');
+</script>
