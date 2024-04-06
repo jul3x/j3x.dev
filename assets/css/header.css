@@ -10,6 +10,7 @@
     animation: 2s headerPopIn;
     animation-fill-mode: both;
     animation-delay: 4.5s;
+    overflow: hidden;
 }
 
 @keyframes headerPopIn {
@@ -306,6 +307,7 @@
     animation: 2s dividerPopIn;
     animation-fill-mode: both;
     animation-delay: 4.5s;
+    display: flex;
 }
 
 @keyframes dividerPopIn {
@@ -324,18 +326,15 @@
     width: 34vw;
     height: 100%;
     background: var(--light);
-    display: inline-block;
     margin: 0;
     padding: 0;
 }
 
 .diagonal-divider {
-    width: 33vw;
+    width: 66vw;
     height: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg) translateX(1px);
-    display: inline-block;
     margin: 0;
     padding: 0;
 }
@@ -358,6 +357,7 @@
     animation: 2s shadowDividerPopIn;
     animation-fill-mode: both;
     animation-delay: 4.5s;
+    display: flex;
 }
 
 @keyframes shadowDividerPopIn {
@@ -372,10 +372,6 @@
     }
 }
 
-.shadow-divider .diagonal-divider {
-    width: 40%;
-}
-
 .shadow-divider .diagonal-divider .shape-fill {
     fill: var(--feature);
 }
@@ -384,14 +380,7 @@
     background-color: var(--feature);
 }
 
-.shadow-divider .rest-divider {
-    position: absolute;
-    width: 50%;
-    height: 30px;
-    bottom: -5px;
-    right: 0;
-    background: var(--feature);
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+.main-header-normal {
+    height: auto !important;
+    top: 27% !important;
 }

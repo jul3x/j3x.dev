@@ -2,112 +2,147 @@
 <html class="no-js" lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>j3x.dev - coding & stuff</title>
-  <meta name="description" content="j3x.dev - coding & stuff">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>j3x.dev - coding & stuff</title>
+    <meta name="description" content="j3x.dev - coding & stuff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="j3x.dev - coding & stuff">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://j3x.dev">
-  <meta property="og:image" content="https://j3x.dev/img/logo.png">
+    <meta property="og:title" content="j3x.dev - coding & stuff">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://j3x.dev">
+    <meta property="og:image" content="https://j3x.dev/img/logo.png">
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
 
-  <link rel="stylesheet" href="/assets/css/normalize.css">
-  <link rel="stylesheet" href="/assets/css/basic.css">
-  <link rel="stylesheet" href="/assets/css/header.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/basic.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#ebeae3">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ebeae3">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <div id="wrapper">
-    {% include menu.html %}
+    <div id="wrapper">
+        {% include menu.html %}
 
-    <div id="header">
-      <div class='light x1'></div>
-      <div class='light x2'></div>
-      <div class='light x3'></div>
-      <div class='light x4'></div>
-      <div class='light x5'></div>
-      <div class='light x6'></div>
-      <div class='light x7'></div>
-      <div class='light x8'></div>
-      <div class='light x9'></div>
-      <h2 class="fw tshadow">
-        <div class="typewrite" data-period="15000">
-          <span class="wrap"></span>
-          <div class="caret"></div>
+        <div id="header">
+            <div class='light x1'></div>
+            <div class='light x2'></div>
+            <div class='light x3'></div>
+            <div class='light x4'></div>
+            <div class='light x5'></div>
+            <div class='light x6'></div>
+            <div class='light x7'></div>
+            <div class='light x8'></div>
+            <div class='light x9'></div>
+            <h2 class="fw tshadow">
+                <div class="typewrite" data-period="15000">
+                    <span class="wrap"></span>
+                    <div class="caret"></div>
+                </div>
+            </h2>
         </div>
-      </h2>
-    </div>
 
-    {% include divider.html %}
+        {% include divider.html %}
 
-      <section id="main" data-type="{{ page.header }}" class="page-section">
-        {% include divider-content.html
+        <section id="main" data-type="{{ page.header }}" class="page-section">
+            {% include divider-content.html
           left_header=page.left_divider_header
           left_txt=page.left_divider_txt
           right_header=page.right_divider_header
           right_txt=page.right_divider_txt
           show_photo=1
           %}
-        <div class="content">
-        {{ content }}
-        </div>
-      </section>
-      <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
-        {% include portfolio-divider.html
+            <div class="content" id="main-content">
+                {{ content }}
+            </div>
+        </section>
+        <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
+            {% include normal-divider-content.html
           left_header="Portfolio"
+          left_txt=""
+          right_header=""
+          right_txt=""
+          %}
+            <div class="content page-content" id="portfolio-content">
+                {% include portfolio.html %}
+            </div>
+        </section>
+        <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
+            {% include normal-divider-content.html
+          left_header="Oferta"
           left_txt="Test"
           right_header=""
           right_txt=""
           %}
-        <div class="content">
-        </div>
-      </section>
-      <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
-        {% include divider-content.html
-          left_header="Offer"
-          left_txt="Test"
-          right_header=""
-          right_txt=""
-          %}
-        <div class="content">
-        </div>
-      </section>
-      <section id="contact" data-type="Porozmawiajmy." class="page-section">
-        {% include divider-content.html
-          left_header="Contact"
+            <div class="content page-content" id="offer-content">
+            </div>
+        </section>
+        <section id="contact" data-type="Porozmawiajmy." class="page-section">
+            {% include divider-content.html
+          left_header="Kontakt"
           left_txt=page.left_contact_txt
           right_header=""
           right_txt=""
           show_photo=1
           %}
-        <div class="content">
-          {% include contact.html %}
-        </div>
-      </section>
+            <div class="content" id="contact-content">
+                {% include contact.html %}
+            </div>
+        </section>
 
-  </div>
-  <script type="text/javascript">
-    if (document.location.hash == "" || document.location.hash == "#") {
-      document.location.hash = "#main";
-    }
-  </script>
-  <script src="/assets/js/modernizr-3.11.8.min.js"></script>
-  <script src="/assets/js/typewrite.js"></script>
+    </div>
+    <script type="text/javascript">
+        /* SPA behavior */
+        if (document.location.hash == "" || document.location.hash == "#") {
+            document.location.hash = "#main";
+        }
+
+        Array.from(document.getElementsByClassName("menu-link")).forEach((el) => {
+            el.onclick = () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+        });
+
+        function hashChange() {
+            /* Change the header svg variation from triangular to rectangular */
+            Array.from(document.getElementsByClassName("shape-fill")).forEach((el) => {
+                if (document.location.hash == "#main" || document.location.hash == "#contact") {
+                    el.setAttribute("d", "M0 120 L0 0 L1200 120 L2400 120 L2400 130 L0 130 L0 120z");
+                } else {
+                    el.setAttribute("d", "M0 120 L0 0 L1200 0 L2400 0 L2400 130 L0 130 L0 120z");
+                }
+            });
+
+            /* Display content to affect site height change */
+            Array.from(document.getElementsByClassName("content")).forEach((el) => {
+                el.style = "height: 0";
+            });
+
+            /* Hur-dur, no user data validation, insecure, nvm. */
+            let el = document.querySelector(document.location.hash + '-content');
+            if (el) el.style = "height: auto";
+        }
+
+        addEventListener("hashchange", (event) => {
+            hashChange();
+        });
+        hashChange();
+    </script>
+    <script src="/assets/js/modernizr-3.11.8.min.js"></script>
+    <script src="/assets/js/typewrite.js"></script>
 
 </body>
 

@@ -126,6 +126,10 @@
     padding: 0;
 }
 
+path {
+    transition: all 1s ease-in-out;
+}
+
 /** Main style */
 
 html,

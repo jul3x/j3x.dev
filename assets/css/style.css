@@ -9,10 +9,11 @@
     top: 0;
     left: 0;
     animation: 2s fadeIn;
-    animation-delay: 8s;
+    animation-delay: 6s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px 10px;
+    z-index: 100;
 }
 
 #top div {
@@ -66,14 +67,22 @@ menu {
 
 menu li {
     flex-grow: 1;
+    transition: 0.4s;
+    border-bottom: 4px rgba(0, 0, 0, 0) solid;
 }
 
 #top * a {
     color: var(--light);
+    display: inline-block;
+    height: 100%;
 }
 
 #top * a:hover {
     color: var(--feature);
+}
+
+#top * li:hover {
+    border-bottom: 4px var(--feature) solid
 }
 
 /** Main page header */
@@ -100,7 +109,8 @@ menu li {
     position: absolute;
 }
 
-.main-position-left p, .main-position-left div {
+.main-position-left p,
+.main-position-left div {
     top: 30%;
     left: 0;
     position: absolute;
@@ -109,12 +119,12 @@ menu li {
 .main-position-right h3 {
     text-align: right;
     left: 0;
-    bottom: 10%;
+    bottom: 12%;
     position: absolute;
 }
 
 .main-position-right p {
-    bottom: 38%;
+    bottom: 35%;
     left: 0;
     position: absolute;
 }
@@ -165,6 +175,11 @@ menu li {
 
 /** Content */
 
+.page-content {
+    top: calc(50vh + 100px - 205px) !important;
+    bottom: auto !important;
+}
+
 .content {
     color: var(--dark);
     position: absolute;
@@ -174,6 +189,7 @@ menu li {
     overflow: hidden;
     padding: 0 50px 50px 50px;
     z-index: 5;
+    transition: 0.5s;
 }
 
 .content p {
@@ -190,15 +206,17 @@ section {
 }
 
 @keyframes sectionShow {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 #main:target,
@@ -218,7 +236,6 @@ section {
 .portfolio-menu {
     width: 100%;
     height: 70px;
-    background-color: var(--dark);
     margin-top: 30px;
 }
 
@@ -226,10 +243,17 @@ section {
     display: flex;
     width: auto;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
+    font-weight: 700;
 }
 
 .portfolio-menu ul li {
     flex-grow: 1;
+    text-align: center;
+    border-right: 2px var(--dark) solid;
+}
+
+.portfolio-menu ul li:last-of-type {
+    border-right: 0;
 }
