@@ -286,12 +286,9 @@ section {
     padding-bottom: 30px;
 }
 
-.portfolio-sections div {
+.portfolio-sections .portfolio-section {
     transition: opacity 1s ease-in-out;
     overflow: hidden;
-}
-
-#skills {
     width: 75%;
     margin: 0 auto;
 }
@@ -300,15 +297,23 @@ section {
     margin-top: 40px;
 }
 
-#skills ul {
+#skills ul, #experience ul {
     width: 80%;
     margin: 0 auto;
 }
 
-#skills .skill {
+#skills .skill, #experience .experience-unit {
     width: 100%;
     display: flex;
     margin-top: 25px;
+    transition: 0.4s;
+    border-left: 4px rgba(0, 0, 0, 0) solid;
+    padding-left: 8px;
+}
+
+#skills .skill:hover, #experience .experience-unit:hover {
+    color: var(--feature);
+    border-left: 4px var(--feature) solid;
 }
 
 #skills .skill .header {
@@ -316,15 +321,31 @@ section {
     text-align: left;
     word-wrap: break-word;
     font-size: 18px;
+    position: relative;
+}
+
+#skills .skill .header div {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #skills .skill .description {
     flex-grow: 1;
+    width: 50%;
+    position: relative;
+}
+
+#skills .skill .description p {
+    text-align: left;
     margin: 0;
     padding: 0;
-    width: 50%;
-    text-align: left;
     padding-left: 10px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #skills .skill .icon {
@@ -333,5 +354,58 @@ section {
     text-align: left;
 }
 
+.devstack {
+    margin: 20px 0;
+}
 
+.experience-unit .header {
+    text-align: left;
+    padding-left: 10px;
+}
 
+.experience-unit {
+    display: block !important;
+    margin-top: 50px !important;
+}
+
+.experience-unit .top {
+    display: flex;
+}
+
+.experience-unit .top .img {
+    width: 20%;
+    padding-right: 25px;
+    position: relative;
+}
+
+.experience-unit .img img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - 30px);
+    max-height: 100%;
+    transition: 0.4s;
+    opacity: 1;
+}
+
+#experience .experience-unit img.shadowed {
+    filter: invert(30%) sepia(72%) saturate(4157%) hue-rotate(336deg) brightness(96%) contrast(105%);
+    opacity: 0;
+}
+
+#experience .experience-unit:hover img.static {
+    opacity: 0;
+}
+
+#experience .experience-unit:hover img.shadowed {
+    opacity: 1;
+}
+
+.experience-unit p {
+    text-align: justify;
+}
+
+.experience-unit .skills {
+    margin-top: 15px;
+}

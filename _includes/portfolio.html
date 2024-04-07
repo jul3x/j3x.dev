@@ -1,24 +1,27 @@
 <div class="portfolio-menu line-up delayed-7">
     <ul>
-        <li id="portfolio-menu-skills">
+        <li id="portfolio-menu-skills" class="portfolio-menu-item">
             <a href="#portfolio" onclick="portfolioMenu('skills');return false;">Umiejętności</a>
         </li>
-        <li id="portfolio-menu-experience">
+        <li id="portfolio-menu-experience" class="portfolio-menu-item">
             <a href="#portfolio" onclick="portfolioMenu('experience');return false;">Doświadczenie</a>
         </li>
-        <li id="portfolio-menu-realizations">
+        <li id="portfolio-menu-realizations" class="portfolio-menu-item">
             <a href="#portfolio" onclick="portfolioMenu('realizations');return false;">Realizacje</a>
         </li>
-        <li id="portfolio-menu-projects">
+        <li id="portfolio-menu-projects" class="portfolio-menu-item">
             <a href="#portfolio" onclick="portfolioMenu('projects');return false;">Projekty własne</a>
         </li>
     </ul>
 </div>
 
 <div class="portfolio-sections line-up delayed-7">
-    <div id="skills">
+    <div id="skills" class="portfolio-section">
+        <h4 class="m0 p0">
+            Umiejętności
+        </h4>
         <p>
-            Przez lata programowania komercyjnego i hobbystycznego poznałem wiele technologii i rozwiązywałem szeroki wachlarz problemów w różnorodnych branżach<br/>(<strong>Robotyka</strong>, <strong>E-commerce</strong>, <strong>Telco</strong>, <strong>Cybersecurity</strong>).
+            Przez lata programowania komercyjnego i hobbystycznego poznałem wiele technologii i rozwiązywałem szeroki wachlarz problemów w różnorodnych branżach<br />(<strong>Robotyka</strong>, <strong>E-commerce</strong>, <strong>Telco</strong>, <strong>Cybersecurity</strong>).
         </p>
         <p class="skills-preamble">
             Ale moja największa <strong>ekspertyza</strong> obejmuje:
@@ -27,42 +30,69 @@
             {% for skill in include.skills %}
             <li class="skill">
                 <i class="fa-solid fa-{{ skill.icon }} icon"></i>
-                <strong class="header">{{ skill.header }}</strong>
-                <p class="description">{{ skill.description }}</p>
+                <div class="header bold">
+                   <div>{{ skill.header }}</div>
+                </div>
+                <div class="description">
+                    <p>{{ skill.description }}</p>
+                </div>
             </li>
             {% endfor %}
         </ul>
 
-        <h4 class="m0 p0">
+        <h4 class="devstack">
             Dev stack:
         </h4>
-        <p class="m0 p0">
-            <strong>
-                {{ include.dev_stack }}
-            </strong>
+        <p class="m0 p0 bold">
+            {{ include.dev_stack }}
         </p>
     </div>
-    <div id="experience">
+    <div id="experience" class="portfolio-section">
+        <h4 class="m0 p0">
+            Doświadczenie zawodowe
+        </h4>
+        <ul>
+            {% for exp in include.experience %}
+            <li class="experience-unit">
+                <div class="top">
+                    <div class="img">
+                        <img src="/assets/img/{{ exp.logo }}" alt="{{ exp.company }} - {{ exp.position }}" title="{{ exp.company }} - {{ exp.position }}" class="shadowed" />
+                        <img src="/assets/img/{{ exp.logo }}" alt="{{ exp.company }} - {{ exp.position }}" title="{{ exp.company }} - {{ exp.position }}" class="static" />
+                    </div>
+                    <div class="header">
+                        <div class="italic">{{ exp.period }}</div>
+                        <span class="bold">{{ exp.company }}</span> - {{ exp.position }}
+                    </div>
+                </div>
+                <p class="description">
+                    {{ exp.description }}
+                </p>
+                <div class="skills italic">
+                    Umiejętności: {{ exp.skills }}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
-    <div id="realizations">
+    <div id="realizations" class="portfolio-section">
     </div>
-    <div id="projects">
+    <div id="projects" class="portfolio-section">
     </div>
 </div>
 
 <script type="text/javascript">
- function portfolioMenu(section) {
-     /* Change style of link */
-     Array.from(document.querySelectorAll('.portfolio-menu ul li')).forEach((el) => {
-         el.classList.remove('active');
-     });
-     document.getElementById('portfolio-menu-' + section).classList.add('active');
+    function portfolioMenu(section) {
+        /* Change style of link */
+        Array.from(document.querySelectorAll('.portfolio-menu .portfolio-menu-item')).forEach((el) => {
+            el.classList.remove('active');
+        });
+        document.getElementById('portfolio-menu-' + section).classList.add('active');
 
-     /* Show appropriate section */
-     Array.from(document.querySelectorAll('.portfolio-sections div')).forEach((el) => {
-         el.style = 'opacity: 0; height: 0;';
-     })
-     document.getElementById(section).style = 'opacity: 1; height: auto;';
+        /* Show appropriate section */
+        Array.from(document.querySelectorAll('.portfolio-sections .portfolio-section')).forEach((el) => {
+            el.style = 'opacity: 0; height: 0;';
+        })
+        document.getElementById(section).style = 'opacity: 1; height: auto;';
     }
     portfolioMenu('skills');
 </script>

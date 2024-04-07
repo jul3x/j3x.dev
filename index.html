@@ -35,7 +35,7 @@ skills:
     header: Docker, Kubernetes,<br/>Ansible
     description: Konteneryzacja, orkiestracja i systemy wdrożeniowe.
   - icon: cube
-    header: ElasticSearch,<br/>PostgreSQL, Redis
+    header: ELK, PostgreSQL,<br/>Redis
     description: Systemy bazodanowe, CRUD, Mechanizmy cacheowania i kolejkowania.
   - icon: terminal
     header: Linux, NGINX
@@ -45,6 +45,112 @@ skills:
     description: Protokoły sieciowe, topologia i konfiguracja.
 
 dev_stack: "spacemacs, git, zsh, tmux,<br/>Sporadycznie generatywne AI."
+
+experience:
+  - logo: exatel.png
+    period: sierpień 2021 - teraz
+    company: EXATEL
+    position: Senior / Lead Software Engineer
+    description: |
+      Firma telekomunikacyjna działająca również w branży cybersecurity oraz R&D.
+      Dołączyłem jako Senior Software Engineer do projektu TAMA - skalowalnego
+      i wysokowydajnego rozproszonego systemu AntyDDoS.
+      Po pół roku przejąłem rolę głównego programisty w projekcie
+      i brałem udział w wytyczaniu dalszego kierunku rozwoju.<br/><br/>
+
+      Specjalizowałem się w implementacji niskopoziomowych części systemu (tych będących na styku sieci)
+      wymagających wydajnego zarządzania pamięcią oraz nierzadko kreatywnego podejścia
+      do rozwiązywanych problemów. Konieczne było utrzymanie wysokiej wydajności
+      i cech low-latency przy jednoczesnej implementacji nowego,
+      bezpiecznego kodu obsługującego nowe protokoły sieciowe i funkcjonalności.
+      Praca wymagała dużej uwagi i częstej pracy z niskopoziomowymi narzędziami
+      (assembler, profiler, fuzzer).<br/><br/>
+
+      Rozwijałem również serce systemu, czyli horyzontalnie skalowalny klaster
+      przetwarzający dane spływające z jednostek stykowych.
+      Tworzyłem skomplikowane interfejsy użytkownika przedstawiające stan sieci
+      w czasie rzeczywistym i przeprowadzałem integracje z innymi wewnętrznymi systemami.<br/><br/>
+
+      Kierowałem procesem wydań oraz wdrożeń na środowiska produkcyjne.
+      Wiązało się to z czynnym nadzorowaniem stanu jakości kodu
+      (code review, automatyczne testy jednostkowego, integracyjne i e2e, CI/CD),
+      procesu manualnych testów oraz synchronizacji prac pomiędzy zespołami.
+      Przygotowywałem nowe wersje systemu i bezprzerwowe kroki wdrożeniowe (częściowo automatyczne).
+      Byłem odpowiedzialny również za rekrutację nowych członków zespołu.<br/><br/>
+
+      Mój zespół podczas pracy w TAMA zrealizował od początku do końca
+      kompletny projekt nowego systemu chroniącego przed atakami na warstwy aplikacyjne (L7).
+
+    skills: C++, Python, Vue, ELK, Docker, Kubernetes, TCP/IP, Linux, low-latency
+  - logo: usos.png
+    period: lipiec 2020 - lipiec 2021
+    company: Zespół roboczy ds. USOS
+    position: Software Developer
+    description: |
+      Zespół zajmujący się rozwijaniem Uniwersyteckiego Systemu Obsługi Studentów (USOS)
+      stanowiącego system informatyczny obsługujący większość uczelni w Polsce
+      oraz innych krajach europejskich.
+      Zajmowałem się rozwojem aplikacji webowych wchodzących w skład systemu: Archiwum Prac Dyplomowych (APD)
+      oraz Internetowa Rejestracja Kandydatów (IRK). Moje kompetencje obejmowały development backendowy,
+      frontendowy oraz procesy wydawania nowych wersji oprogramowania.<br/><br/>
+
+      Czas mojego udziału w projekcie przypadał na najbardziej intensywny okres pandemii COVID-19,
+      co wiązało się z dynamiczną cyfryzacją procesów, aby umożliwić zdalne funkcjonowanie uczelni.
+      Brałem udział w tworzeniu zdalnej procedury egzaminu dyplomowego w APD.
+      Utworzyłem moduł systemu pozwalający studentom na przeglądanie tematów prac dyplomowych,
+      komunikację z potencjalnymi promotorami oraz wypełnianie wieloetapowych wniosków elektronicznych
+      o zdalne zatwierdzenie tematu. Całość opisałem w swojej pracy magisterskiej - <a href="mgr">tutaj</a>.
+      Procesy podczas mojego egzaminu dyplomowego ironicznie wykorzystywały kod,
+      który napisałem podczas realizacji pracy dyplomowej.<br/><br/>
+
+      W IRK rozwijałem mechanizmy oficjalnego doręczania elektronicznych dokumentów oraz stworzyłem
+      osobny system dla zagranicznych osób odwiedzających uczelnie - Internetową Rejestrację Gości.
+      System był modyfikacją bazowego IRK i pozwalał na zapewnianie tymczasowym osobom dostępu do systemów
+      i usług na Uniwersytecie Warszawskim.
+
+    skills: Python, Django, JavaScript, Oracle Database
+  - logo: vb.png
+    period: lipiec 2018 - wrzesień 2019
+    company: VersaBox
+    position: Software Engineer
+    description: |
+      Polski startup (aktualnie już przedsiębiorstwo) wprowadzający na rynek w pełni autonomiczne
+      przemysłowe roboty mobilne. W zwinnym interdyscyplinarnym zespole (ówcześnie firma liczyła
+      poniżej 10 programistów) zajmowałem się przede wszystkim projektowaniem algorytmów nawigacyjnych.
+      Byłem współautorem algorytmu przesuwania ścieżki - wydajnego rozwiązania pozwalającego
+      na stabilną i przewidywalną autonomiczną jazdę dużych jednostek (do 1.5 tony)
+      w chaotycznych przemysłowych warunkach. Zrealizowałem projekt algorytmu precyzyjnego dokowania
+      do stacji pośrednich dla robotów o dużej bezwładności.
+      Zajmowałem się też usprawnianiem systemów kontrolujących tor jazdy.<br/><br/>
+      Poza algorytmami nawigacyjnymi moje obowiązki sięgały również systemów komunikacyjnych.
+      Zaprojektowałem na komputerach pokładowych robotów platformę VBarWeb pozwalającą
+      na zdalną konfigurację najniższych modułów elektronicznych za pomocą elastycznego interfejsu webowego.
+      Całość odbywała się przy wykorzystaniu protokołu komunikacyjnego zaimplementowanego na magistrali CAN i bezprzewodowego interfejsu WiFi.
+      Projekt został opisany szerzej <a href="vbarweb" class="bold">tutaj</a>.
+      <br/><br/>
+      Razem z zespołem projektowałem też system wielorobotowy (MRS) - flotę w pełni autonomicznych jednostek
+      komunikujących się i współpracujących ze sobą w celu optymalizacji realizowanych zadań.
+    skills: C++, Python, JavaScript, ROS, Linux, low-level
+  - logo: v8.png
+    period: listopad 2017 - czerwiec 2018
+    company: V8 Automatyka
+    position: Projektant
+    description: |
+      Firma z branży automatyki przemysłowej.
+      Zajmowałem się doborem sterowników i osprzętu elektrycznego do realizacji zbiorników i mieszadeł.
+      Projektowałem schematy elektryczne i połączenia przewodowe.
+      Przygotowywałem też oprogramowanie do sterowników PLC.
+    skills: ePLAN, Siemens PLC
+  - logo: steico.png
+    period: lipiec 2016 - wrzesień 2016
+    company: STEICO
+    position: Pomocnik Automatyka Elektryka
+    description: |
+      Pierwsza styczność z prawdziwym przemysłem - praktyki w dużym zakładzie produkcyjnym z branży drewnianej.
+      Zajmowałem się wyszywaniem szaf sterowniczych, prowadzeniem przewodów i programowaniem sterowników PLC.
+      Brałem też udział w uruchamianiu linii produkcyjnych.
+    skills: śrubokręt, Siemens PLC
+
 ---
 
 <div class="section line-up delayed-8">
