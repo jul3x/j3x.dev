@@ -70,24 +70,16 @@
         <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
             {% include normal-divider-content.html
           left_header="Portfolio"
-          left_txt=""
-          right_header=""
-          right_txt=""
           %}
             <div class="content page-content" id="portfolio-content">
                 {% include portfolio.html
-                skills=page.skills
                 dev_stack=page.dev_stack
-                experience=page.experience
                 %}
             </div>
         </section>
         <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
             {% include normal-divider-content.html
           left_header="Oferta"
-          left_txt="Test"
-          right_header=""
-          right_txt=""
           %}
             <div class="content page-content" id="offer-content">
             </div>
@@ -96,16 +88,28 @@
             {% include divider-content.html
           left_header="Kontakt"
           left_txt=page.left_contact_txt
-          right_header=""
-          right_txt=""
           show_photo=1
           %}
             <div class="content" id="contact-content">
                 {% include contact.html %}
             </div>
         </section>
-
     </div>
+
+    <div id="modal">
+        <div class="modal-content">
+            <span class="close" id="modal-close">&times;</span>
+            <div class="img">
+            </div>
+            <span class="date">
+            </span>
+            <h4 class="name">
+            </h4>
+            <p class="description">
+            </p>
+        </div>
+    </div>
+
     <script type="text/javascript">
         /* SPA behavior */
         if (document.location.hash == "" || document.location.hash == "#") {
@@ -145,6 +149,38 @@
             hashChange();
         });
         hashChange();
+
+        /** Modal (a bit of abstraction leak) */
+        const modal = document.getElementById('modal');
+        const close = document.getElementById('modal-close');
+
+        function openModal(ident, index) {
+            const project = document.getElementById('project-' + ident + '-' + index);
+            modal.getElementsByClassName('img')[0].style.backgroundImage = project.getElementsByClassName('project-img')[0].style.backgroundImage;
+            modal.getElementsByClassName('date')[0].textContent = project.getElementsByClassName('date')[0].textContent;
+            modal.getElementsByClassName('name')[0].textContent = project.getElementsByClassName('name')[0].textContent;
+            modal.getElementsByClassName('description')[0].textContent = project.getElementsByClassName('description')[0].textContent;
+            modal.style.display = 'block';
+
+            /** Without that delay css does not want to make animation */
+            setTimeout(() => {
+                modal.style.opacity = 1.0;
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        close.onclick = closeModal;
+        document.addEventListener("click", (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
     </script>
     <script src="/assets/js/modernizr-3.11.8.min.js"></script>
     <script src="/assets/js/typewrite.js"></script>

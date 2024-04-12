@@ -27,14 +27,14 @@
             Ale moja największa <strong>ekspertyza</strong> obejmuje:
         </p>
         <ul>
-            {% for skill in include.skills %}
+            {% for skill in site.skills %}
             <li class="skill">
                 <i class="fa-solid fa-{{ skill.icon }} icon"></i>
                 <div class="header bold">
                    <div>{{ skill.header }}</div>
                 </div>
                 <div class="description">
-                    <p>{{ skill.description }}</p>
+                    <p>{{ skill.content }}</p>
                 </div>
             </li>
             {% endfor %}
@@ -52,7 +52,7 @@
             Doświadczenie zawodowe
         </h4>
         <ul>
-            {% for exp in include.experience %}
+            {% for exp in site.experience %}
             <li class="experience-unit">
                 <div class="top">
                     <div class="img">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <p class="description">
-                    {{ exp.description }}
+                    {{ exp.content }}
                 </p>
                 <div class="skills italic">
                     Umiejętności: {{ exp.skills }}
@@ -74,9 +74,17 @@
             {% endfor %}
         </ul>
     </div>
-    <div id="realizations" class="portfolio-section">
+    <div id="realizations" class="projects-section portfolio-section">
+        {% include portfolio-projects.html
+           projects=site.realizations
+           id="realizations"
+         %}
     </div>
-    <div id="projects" class="portfolio-section">
+    <div id="projects" class="projects-section portfolio-section">
+        {% include portfolio-projects.html
+           projects=site.projects
+           id="projects"
+        %}
     </div>
 </div>
 
@@ -90,9 +98,15 @@
 
         /* Show appropriate section */
         Array.from(document.querySelectorAll('.portfolio-sections .portfolio-section')).forEach((el) => {
-            el.style = 'opacity: 0; height: 0;';
+            if (el.id == section) {
+                return;
+            }
+
+            el.style = 'opacity: 0; display: none';
         })
-        document.getElementById(section).style = 'opacity: 1; height: auto;';
+
+        const activeSection = document.getElementById(section);
+        activeSection.style = 'display: block; opacity: 1';
     }
     portfolioMenu('skills');
 </script>

@@ -1,0 +1,14 @@
+collections_dir: _collections
+collections:
+  skills:
+    output: False
+    sort_by: order
+  experience:
+    output: False
+    sort_by: order
+  realizations:
+    output: False
+    sort_by: date
+  projects:
+    output: False
+    sort_by: date

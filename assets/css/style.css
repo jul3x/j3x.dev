@@ -236,10 +236,16 @@ section {
 
 /** Portfolio */
 
+#portfolio-content {
+    width: 100% !important;
+    left: 0 !important;
+}
+
 .portfolio-menu {
-    width: 100%;
+    width: 90%;
     height: 70px;
-    margin-top: 30px;
+    margin: 30px auto;
+    margin-bottom: 0;
 }
 
 .portfolio-menu ul {
@@ -287,8 +293,8 @@ section {
 }
 
 .portfolio-sections .portfolio-section {
-    transition: opacity 1s ease-in-out;
-    overflow: hidden;
+    display: none;
+    transition: opacity 0.6s ease-in-out;
     width: 75%;
     margin: 0 auto;
 }
@@ -408,4 +414,131 @@ section {
 
 .experience-unit .skills {
     margin-top: 15px;
+}
+
+/** Projects */
+.projects-section {
+    width: 100% !important;
+}
+
+.projects-wrapper {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.project {
+    background-color: var(--light);
+    background: url('/assets/img/bg.jpg');
+    /* border-top: 4px solid var(--dark); */
+    /* border-bottom: 4px solid var(--dark); */
+    padding: 0;
+    width: 30%;
+    height: 250px;
+    text-align: left;
+    display: flex;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.project-img {
+    width: 45%;
+    height: 100%;
+    background-size: auto 110%;
+    background-repeat: no-repeat;
+    box-shadow: inset rgba(0, 0, 0, 1) 0px 0px 60px -12px; 
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.project:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+}
+
+.project:hover .project-img {
+    opacity: 1;
+}
+
+.project:hover .project-short {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.project .project-short {
+    width: 55%;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--light);
+    position: relative;
+    transition: 0.3s;
+}
+
+.project .project-short span {
+    top: 15px;
+    position: absolute;
+    right: 20px;
+}
+
+.project .project-short h4 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+}
+
+.project .project-short p {
+    bottom: 50px;
+    right: 20px;
+    padding-left: 20px;
+    position: absolute;
+    text-align: right;
+}
+
+/* Modal */
+#modal {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    z-index: 100000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: var(--light);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0.8);
+    cursor: default;
+    position: relative;
+}
+
+/* The Close Button */
+.close {
+    color: var(--dark);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--feature);
+    text-decoration: none;
+    cursor: pointer;
 }
