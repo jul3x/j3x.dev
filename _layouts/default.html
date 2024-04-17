@@ -99,12 +99,13 @@
     <div id="modal">
         <div class="modal-content">
             <span class="close" id="modal-close">&times;</span>
-            <div class="img">
-            </div>
             <span class="date">
             </span>
+            <div class="img">
+            </div>
             <h4 class="name">
             </h4>
+            <div class="url bold"></div>
             <p class="description">
             </p>
         </div>
@@ -159,7 +160,8 @@
             modal.getElementsByClassName('img')[0].style.backgroundImage = project.getElementsByClassName('project-img')[0].style.backgroundImage;
             modal.getElementsByClassName('date')[0].textContent = project.getElementsByClassName('date')[0].textContent;
             modal.getElementsByClassName('name')[0].textContent = project.getElementsByClassName('name')[0].textContent;
-            modal.getElementsByClassName('description')[0].textContent = project.getElementsByClassName('description')[0].textContent;
+            modal.getElementsByClassName('description')[0].innerHTML = project.getElementsByClassName('description')[0].innerHTML;
+            modal.getElementsByClassName('url')[0].innerHTML = project.getElementsByClassName('url')[0].innerHTML;
             modal.style.display = 'block';
 
             /** Without that delay css does not want to make animation */
@@ -168,12 +170,12 @@
             }, 10);
         }
 
-        function closeModal() {
-            modal.style.opacity = 0;
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
-        }
+     function closeModal() {
+         modal.style.opacity = 0;
+         setTimeout(() => {
+             modal.style.display = 'none';
+         }, 300);
+     }
 
         close.onclick = closeModal;
         document.addEventListener("click", (event) => {

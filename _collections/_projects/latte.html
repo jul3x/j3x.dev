@@ -1,0 +1,47 @@
+---
+date: 2020-01-23
+name: Latte Compiler
+img: latte.png
+short: |
+   Kompilator języka obiektowego Latte do x86 ASM
+project_url: https://github.com/jul3x/LatteCompiler
+---
+
+Prosty kompilator języka programowania Latte (statycznie typowanego języka z elementami programowania obiektowego) do asemblera x86 GAS. Język przypomina składniowo i semantycznie język Java. Opis jego gramatyki bezkontekstowej można znaleźć w repozytorium na GitHubie.<br/><br/>
+
+Razem ze składnią języka kompilator jest w pełni funkcjonalnym narzędziem programistycznym pozwalającym na pisanie skomplikowanych programów. Repozytorium zawiera kilkadziesiąt testowych programów i automatyczne testy funkcjonalne (wraz z porównaniem odpowiedniego wyjścia).<br/><br/>
+
+<div>
+    <div style="float: left; width: 50%;">
+Zaimplementowane funkcje języka:<br/>
+* operacje arytmetyczne<br/>
+* operacje na łańcuchach znaków<br/>
+* operacje warunkowe i logika Boolowska<br/>
+* leniwa ewaluacja<br/>
+* pętle<br/>
+* tablice<br/>
+* obiekty puste (null)<br/>
+* rzutowanie typów<br/>
+* struktury<br/>
+* klasy i metody<br/>
+* wielokrotne dziedziczenie<br/>
+<br/>
+</div>
+<div style="float: left; width: 50%;">
+Kompilator wspiera:<br/>
+* analizę syntaktyczną<br/>
+* analizę semantyczną<br/>
+* sprawdzanie typów<br/>
+* garbage collector<br/>
+* kontrolę przepływu i rozwiązywanie nieskończonych pętli<br/>
+* obliczanie trywialnych wyrażeń arytmetycznych w czasie kompilacji<br/>
+* obliczanie trywialnych wyrażeń logicznych w czasie kompilacji<br/>
+* usuwanie nadmiarowego kodu (sekwencje push/pop i pop/push)<br/>
+* usuwanie nieosiągalnego kodu<br/>
+</div>
+</div>
+<div style="clear: both"></div>
+
+Projekt wykonany podczas moich studiów magisterskich.<br/><br/>
+
+Jako wprowadzenie do świata kompilatorów zaimplementowałem też prosty kompilator wyrażeń arytmetycznych do bajtkodu JVM i bitkodu LLVM, Kod można zobaczyć <a href="https://github.com/jul3x/InstantCompiler" class="bold">tutaj</a>.

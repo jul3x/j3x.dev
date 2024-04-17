@@ -1,5 +1,6 @@
 <div class="projects-wrapper">
-    {% for project in include.projects %}
+    {% assign sorted = include.projects | sort: 'date' | reverse %}
+    {% for project in sorted %}
     <div class="project" id="project-{{ include.id }}-{{ forloop.index }}" onclick="openModal('{{ include.id }}', {{ forloop.index }})">
         <div class="project-img {{ include.id }}-img" style="background-image: url('/assets/img/{{ project.img }}');"></div>
         <div class="project-short">
@@ -7,7 +8,8 @@
             <h4 class="name">{{ project.name }}</h4>
             <p>{{ project.short }}</p>
 
-            <div style="display:none" class="description">{{project.content}}</div>
+            <div style="display: none" class="url"><a href="{{ project.project_url }}">{{ project.project_url }}</a></div>
+            <div style="display: none" class="description">{{ project.content }}</div>
         </div>
     </div>
     {% endfor %}
