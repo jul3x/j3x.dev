@@ -3,12 +3,19 @@
     {% for project in sorted %}
     <div class="project" id="project-{{ include.id }}-{{ forloop.index }}" onclick="openModal('{{ include.id }}', {{ forloop.index }})">
         <div class="project-img {{ include.id }}-img" style="background-image: url('/assets/img/{{ project.img }}');"></div>
+        {% if project.video %}
+        <div class="project-video" style="display: none">
+            <iframe src="{{ project.video }}" title="{{ project.name }} - {{ project.short }}"
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+        {% endif %}
         <div class="project-short">
             <span class="date italic">{{ project.date | date: "%Y-%m-%d" }}</span>
             <h4 class="name">{{ project.name }}</h4>
             <p>{{ project.short }}</p>
 
-            <div style="display: none" class="url"><a href="{{ project.project_url }}">{{ project.project_url }}</a></div>
+            <div style="display: none" class="url"><a href="{{ project.project_url }}" target="_blank">{{ project.project_url }}</a></div>
             <div style="display: none" class="description">{{ project.content }}</div>
         </div>
     </div>

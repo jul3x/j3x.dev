@@ -154,10 +154,19 @@
         /** Modal (a bit of abstraction leak) */
         const modal = document.getElementById('modal');
         const close = document.getElementById('modal-close');
+        const modalImg = modal.getElementsByClassName('img')[0];
 
         function openModal(ident, index) {
             const project = document.getElementById('project-' + ident + '-' + index);
-            modal.getElementsByClassName('img')[0].style.backgroundImage = project.getElementsByClassName('project-img')[0].style.backgroundImage;
+            const video = project.getElementsByClassName('project-video');
+            if (video.length > 0) {
+                modalImg.innerHTML = video[0].innerHTML;
+                modalImg.style.backgroundImage = '';
+            } else {
+                modalImg.innerHTML = '';
+                modalImg.style.backgroundImage = project.getElementsByClassName('project-img')[0].style.backgroundImage;
+            }
+
             modal.getElementsByClassName('date')[0].textContent = project.getElementsByClassName('date')[0].textContent;
             modal.getElementsByClassName('name')[0].textContent = project.getElementsByClassName('name')[0].textContent;
             modal.getElementsByClassName('description')[0].innerHTML = project.getElementsByClassName('description')[0].innerHTML;
@@ -170,12 +179,13 @@
             }, 10);
         }
 
-     function closeModal() {
-         modal.style.opacity = 0;
-         setTimeout(() => {
-             modal.style.display = 'none';
-         }, 300);
-     }
+        function closeModal() {
+            modalImg.innerHTML = '';
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
 
         close.onclick = closeModal;
         document.addEventListener("click", (event) => {

@@ -1,8 +1,24 @@
 ---
 date: 2021-01-20
-name: x86_life
-img: controller.png
+name: x64_life
+img: game_of_life.png
 short: |
    Gra w życie Conwaya napisana w asemblerze x86
 project_url: https://github.com/jul3x/ASMGameOfLife
 ---
+
+<p>
+Implementacja popularnego automatu komórkowego <strong>"Gra w życie Conwaya"</strong> napisana w <strong>Asemblerze x86_64</strong> (składnia NASM).
+</p>
+
+<p>
+    Zasada działania? Plansza komórek żywych lub martwych o wielkości n x m.
+    Gra toczy się iteracyjnie. W kolejnej iteracji każda z komórek zmienia swój stan lub pozostaje przy aktualnym.<br/><br/>
+    - Jeżeli komórka była martwa i miała dokładnie trzech żywych sąsiadów - ożywa.<br/>
+    - Jeżeli komórka była żywa i miała albo dwóch lub trzech żywych sąsiadów to pozostaje żywa.<br/>
+    - W przeciwnym wypadku umiera.<br/>
+</p>
+
+<p>
+    Te trzy proste zasady pozwalają na konstruowanie bardzo zaawansowanych i ciekawych układów, które przez lata były przedmiotem wielu badań na całym świecie. <strong>"Gra w życie"</strong> jest kompletna w sensie Turinga (w uproszczeniu: jest w stanie rozwiązać ten sam zbiór problemów co komputer). Pozwala to na przykład na <a href="https://www.youtube.com/watch?v=WfuhbI8HE7s" target="_blank"><strong>stworzenie komputera z monitorem</strong></a> lub <a href="https://www.youtube.com/watch?v=xP5-iIeKXE8" target="_blank"><strong>gry w życie w grze w życie</strong></a>.
+    </p>
