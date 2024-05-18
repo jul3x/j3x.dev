@@ -1,0 +1,13 @@
+Bajtocka elektrownia zamierza rozpocz¹æ dostawê pr¹du do pobliskich miast. 
+Przez spadki napiêcia spowodowane oporem przewodów, architekt Bitek musi rozplanowaæ optymalne u³o¿enie transformatorów na trasie o d³ugoœci x pomiêdzy elektrowni¹ a miastem.
+Bitek wie, ¿e dla danego przewodu istnieje odleg³oœæ l, któr¹ pr¹d mo¿e pokonaæ bez transformatora. 
+Linia wysokiego napiêcia bêdzie przecina³a n miast granicz¹cych ze sob¹ (w szczególnoœci 1-sze miasto graniczy z elektrowni¹, a n-te z miastem, do którego pr¹d ma docieraæ).
+Cena wybudowania transformatora na terytorium i-tego miasta jest równa ci. Ca³kowity koszt z wybudowania linii jest równy sumie kosztów zwi¹zanych z budow¹ transformatorów. Pomó¿ Bitkowi znaleŸæ takie najtañsze ustawienie transformatorów, aby pr¹d móg³ dop³yn¹æ z elektrowni do miasta.
+
+Wejœcie 
+W pierszym wierszu wejœcia mamy podane trzy liczby ca³kowite x, l i n (1 <= l < x <= 1000000, 1 <= n <= 1000000) - oznaczaj¹ce kolejno odleg³oœæ miêdzy elektrowni¹ i miastem, maksymalny zasiêg pr¹du oraz liczbê miast na trasie.
+W kolejnych n wierszach mamy dane o poszczególnych miastach, dla i-tego miasta ich terytorium wyra¿one przedzia³em <ai, bi> (0 <= ai < bi <= x) oraz cena wybudowania na nim transformatora ci (1 <= ci <= 10^9).
+Miasta nie zachodz¹ na siebie i wype³niaj¹ ca³y przedzia³ <0, x>.
+
+Wyjœcie 
+Na wyjœciu program powinien wypisaæ jedn¹ liczbê ca³kowit¹ z - najmniejszy ca³kowity koszt budowy linii.

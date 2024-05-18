@@ -1,0 +1,36 @@
+\documentclass[zad]{soigstyl}
+
+% opcjonalne (obowiazkowe) parametry
+\pagestyle{fancy}
+\konkurs{Konkurs}
+\etap{etap 1}
+\day{1}
+\date{01.01.1970}
+%\setlogo{oiglogo}%brak ustawienia wstawia domyslnie logo talentu
+%\setstopka{stopka_bw}
+\title{\mbox{Armia Napoleona}}
+\id{armianapoleona}
+\RAM{64}
+
+\begin{document}
+
+\begin{tasktext}%
+    \noindent
+    Napoleon Bonaparte ma duży problem z ustawieniem swojej armii w rzędzie.
+    Piechota jest podzielona na dwa typy żołnierzy - karabinierów i grenadierów.
+    Efektywne ustawienie armii jest związane z dobrym wymieszaniem żołnierzy różnego typu z powodów taktycznych.
+    Formacja jest poprawna tylko wtedy, gdy żaden grenadier nie sąsiaduje z drugim.
+    Napoleon zastanawia się, ile jest możliwych poprawnych kombinacji ustawień dla danych liczb żołnierzy obu typów.
+    Jako jego zaprzyjaźniony informatyk Twoim zadaniem jest podanie tej liczby.
+	
+    \section{Wejście}
+	W pierwszym wejściu standardowego wejścia znajduje się liczba przypadków testowych $t$ ($1 \leqslant t \leqslant 10^{5}$).
+	W każdym z kolejnych $t$ wierszy mamy daną liczbę $n$ ($1 \leqslant n \leqslant 10^6$) oznaczającą liczbę grenadierów oraz liczbę $k$ ($1 \leqslant k \leqslant 10^6$) będącą liczbą karabinierów.
+
+	\section{Wyjście}
+	W każdym z $t$ wierszy standardowego wyjścia należy wypisać liczbę poprawnych ustawień dla danego $n$ i $k$.
+	Wynik powinien być podany modulo $10^9+7$.
+	
+	\oigprzyklady
+\end{tasktext}
+\end{document}
