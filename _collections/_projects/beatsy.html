@@ -1,8 +1,25 @@
 ---
 date: 2021-01-14
 name: Beatsy
-img: controller.png
+img: beatsy.png
 short: |
    Konfigurowalny trójwymiarowy wizualizer muzyczny
 project_url: https://github.com/jul3x/Beatsy
+video: https://www.youtube.com/embed/90sIETb5_vU
 ---
+<p>
+Prosty, konfigurowalny trójwymiarowy wizualizer muzyczny napisany w czystym <strong>C++</strong> i <strong>OpenGL</strong> z wykorzystaniem biblioteki do analizy dźwięku.
+</p>
+
+<p>
+Animacja wyświetla specjalną siatkę punktów (renderowanych w wybrany przez użytkownika sposób) w trójwymiarowej przestrzeni na podstawie aktualnego spektrum dźwięku.
+Do analizy dźwięku w głównej mierze program wykorzystuje <strong>szybką transformatą Fouriera (FFT)</strong> i analizą energii w oknach jednosekundowych. Następnie przedstawia wykres logarytmiczny natężenia każdego z zakresów częstotliwości za pomocą wysokości punktów na siatce. W drugiej osi wysokość punktów jest ekstrapolowana rozkładem normalnym, aby ładnie wygładzić i stworzyć efekt "pagórka".
+</p>
+
+<p>
+Dodatkowo praca kamery jest zależna od aktualnej energii dźwięku. Im wyższa wartość, tym szybsze obroty. Im wyższe basowe częstotliwości, tym mocniejsze zbliżenia do siatki punktów.
+</p>
+
+<p>
+Wszystkie te cechy składają się na całkiem sympatyczny efekt, najlepiej sprawdzający się w energicznych kawałkach. <strong>Wizualizer</strong> z drobnym postprocessingiem można zobaczyć na załączonym wideo.
+</p>

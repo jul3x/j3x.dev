@@ -32,8 +32,7 @@
             const x = (window.innerWidth - event.clientX * position) / 500;
             const y = (window.innerHeight - event.clientY * position) / 500;
 
-            img.style.backgroundPositionX = x + 'px';
-            img.style.backgroundPositionY = y + 'px';
+            img.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
         });
     }
 </script>
