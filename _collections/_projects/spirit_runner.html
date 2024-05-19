@@ -1,27 +1,25 @@
 ---
-date: 2019-09-19
-name: Gravity
-img: gravity.png
+date: 2018-06-18
+name: Spirit Runner
+img: spirit.jpeg
 short: |
-   Interaktywny symulator międzyplanetarnych sił grawitacji
-project_url: https://github.com/jul3x/Gravity
+    Dynamiczna, zręcznościowa gra platformowa
+project_url: https://github.com/SpiritStudio/Spirit-Runner/
 ---
 
 <p>
-<strong>Gravity</strong> to interaktywny symulator międzyplanetarnych sił grawitacji.
-Pozwala na proste tworzenie scenariuszy kosmicznego ruchu, aktywne dodawanie nowych obiektów i zapisywanie przykładów na później.
-Składa się z bardzo prostego interfejsu graficznego i sterowania myszka + klawiatura.
-Wystawiony dla użytkownika jest również plik konfiguracyjny pozwalający zmieniać wygląd oraz podstawowe stałe fizyczne uwzględniane w obliczeniach.
-</o>
-
-<p>
-Zasada działania opiera się na rozwiązywaniu układów równań ruchu (różniczkowych) w czasie rzeczywistym za pomocą <strong>algorytmu Rungego-Kutty 4-rzędu</strong>. Mając zadane masy oraz położenia obiektów względem siebie, algorytm w symulatorze jest w stanie wyliczyć z wystarczająco dobrym przybliżeniem układ sił działąjący na każdy z obiektów z osobna. Z pomocą <strong>zasad dynamiki Newtona</strong>, tak skonstruowane układy można przekształcić w układy równań ruchu, które następnie mogą zostać rozwiązane numerycznie dla zadanych warunków początkowych.
+    <strong>Spirit Runner</strong> to dynamiczna zręcznościówka polegająca na zręcznym przechodzeniu poziomów uchodząc z życiem i zbierając jak największą ilość punktów.
+    Gra odbywa się w formacie dwuwymiarowej platformówki z widokiem od boku. Gracz ma do wyboru dwa tryby gry - standardowy, polegający na przechodzeniu z poziomu na poziom (wraz ze zwiększającym się poziomem trudności) oraz nieskończony, który odbywa się na proceduralnie generowanej mapie. Gra powstała przy współpracy z <a href="https://github.com/danielm1405" target="_blank" class="bold">@danielm1405</a>.
 </p>
 
 <p>
-Dodatkową funkcjonalnością jest obsługa zderzeń obiektów. <strong>Gravity</strong> obsługuje takie zdarzenia metodą "większy zwycięża" i wykorzystuje <strong>zasadę zachowania pędu</strong> w celu wyliczenia dalszej trajektorii lotu pozostałego obiektu.
+    Sterowanie gracza jest ograniczone, ponieważ jedyną możliwością ingerencji w grę jest wybranie momentu skoku. Gracz nie ma wpływu na prędkość rozgrywki. Sterowany przez niego bohater biegnie przez cały czas trwania gry, a zadaniem gracza jest kontrolowanie tego, aby nie spadał w przepaście, przeskakiwał z budynku na budynek, łapał się stalowych rurek i unikał pożarów (oraz innych przeszkód). Prosta zasada niesie za sobą wiele konsekwencji, ponieważ mapy zostały stworzone tak, by umożliwiać graczowi wybór jednej z wielu ścieżek przejścia. Jednak nie każda ze ścieżek jest tą właściwą - niektóre z nich mogą być trudniejsze od pozostałych.
 </p>
 
 <p>
-Projekt zaimplementowany w C++, SFML i TGUI jako wstęp do stworzenia własnego frameworka/silnika do tworzenia gier 2D. Rozpocząłem w nim pracę nad modułem graficznym, fizycznym oraz prostą obsługą plików konfiguracyjnych o własnym formacie <strong>(*.j3x)</strong>.
+    W grze zaimplementowaliśmy również mechanizm powtórek. Gracz po udanym przejściu poziomu może powtórzyć swoje przeżycie za pomocą odtworzonego nagrania ze specjalnej "kamery".
+</p>
+
+<p>
+    Jest to jeden z niewielu moich projektów napisanych w Javie. Z perspektywy czasu wiem, że na pewno ostatni w tym języku ;).
 </p>

@@ -1,27 +1,30 @@
 ---
-date: 2019-09-19
-name: Gravity
-img: gravity.png
+date: 2019-06-09
+name: Vehicles Evolution
+img: evolution.jpeg
 short: |
-   Interaktywny symulator międzyplanetarnych sił grawitacji
-project_url: https://github.com/jul3x/Gravity
+    Algorytm ewolucyjny z UI na przykładzie pojazdów
+project_url: https://github.com/SpiritStudio/VehiclesEvolution
 ---
 
 <p>
-<strong>Gravity</strong> to interaktywny symulator międzyplanetarnych sił grawitacji.
-Pozwala na proste tworzenie scenariuszy kosmicznego ruchu, aktywne dodawanie nowych obiektów i zapisywanie przykładów na później.
-Składa się z bardzo prostego interfejsu graficznego i sterowania myszka + klawiatura.
-Wystawiony dla użytkownika jest również plik konfiguracyjny pozwalający zmieniać wygląd oraz podstawowe stałe fizyczne uwzględniane w obliczeniach.
-</o>
-
-<p>
-Zasada działania opiera się na rozwiązywaniu układów równań ruchu (różniczkowych) w czasie rzeczywistym za pomocą <strong>algorytmu Rungego-Kutty 4-rzędu</strong>. Mając zadane masy oraz położenia obiektów względem siebie, algorytm w symulatorze jest w stanie wyliczyć z wystarczająco dobrym przybliżeniem układ sił działąjący na każdy z obiektów z osobna. Z pomocą <strong>zasad dynamiki Newtona</strong>, tak skonstruowane układy można przekształcić w układy równań ruchu, które następnie mogą zostać rozwiązane numerycznie dla zadanych warunków początkowych.
+    Wiele algorytmów zaprojektowanych na potrzeby rozwiązywania problemów przez komputery czerpie inspiracje z natury.
+    Przykładem pewnej grupy z nich są algorytmy ewolucyjne polegające na znajdywaniu optymalnego rozwiązania poprzez ewolucje i kolejne iterowanie propozycji, aż znaleziona zostanie ta, która najlepiej się przystosowuje do zadanych warunków. Podczas studiów zaimplementowaliśmy wraz z <a href="https://github.com/danielm1405" target="_blank" class="bold">@danielm1405</a> pewien specyficzny przypadek algorytmu ewolucyjnego - algorytm genetyczny. I przedstawiliśmy przykład jego zastosowania dla... znalezienia optymalnego projektu samochodu terenowego.
 </p>
 
 <p>
-Dodatkową funkcjonalnością jest obsługa zderzeń obiektów. <strong>Gravity</strong> obsługuje takie zdarzenia metodą "większy zwycięża" i wykorzystuje <strong>zasadę zachowania pędu</strong> w celu wyliczenia dalszej trajektorii lotu pozostałego obiektu.
+    <strong>Algorytm</strong> genetyczny to pewna odmiana algorytmu ewolucyjnego polegająca w uproszczeniu na:
+    - Utworzeniu populacji (w naszym przypadku pojazdów) losowych jednostek.
+    - Ocenie, która z nich najlepiej poradziła sobie z zadaniem. W naszym przypadku było to przejechanie jak największej odległości na zadanej mapie 2D, składającej się z pagórków, dziur i wysokich podjazdów.
+    - Wybraniu pewnego procenta wygranych jednostek. Wybieraliśmy 5-10% najlepszych projektów.
+    - Utworzeniu kolejnej populacji na podstawie dwóch mechanizmów - krzyżowania oraz mutacji. Pierwszy z procesów polegał na utworzeniu nowej jednostki na podstawie losowo wybranych dwóch "rodziców". "Dziecko" posiadało uśrednione (lecz częściowo zbliżone bardziej do jednego lub drugiego rodzica) parametry rodziców. Mutacje polegały na wprowadzeniu całkowicie nowej wartości (mutacji) dla losowych parametrów małej części nowej populacjieci, Oba procesy były równie ważne aby znaleźć optymalne rozwiązanie problemu.
+    - Powtórzenia procesu kilkaset-kilkatysięcy razy, aż otrzymane rozwiązanie zda się być tym optymalnym.
 </p>
 
 <p>
-Projekt zaimplementowany w C++, SFML i TGUI jako wstęp do stworzenia własnego frameworka/silnika do tworzenia gier 2D. Rozpocząłem w nim pracę nad modułem graficznym, fizycznym oraz prostą obsługą plików konfiguracyjnych o własnym formacie <strong>(*.j3x)</strong>.
-</p>
+    Ze względu na losowy charakter algorytmów ewolucyjnych proponowane przez niego rozwiązania mogą wydawać się bardzo często zaskakujące. Różne uruchomienia programu mogą dawać całkowicie różne wyniki. W pewnym momencie każdego uruchomienia natomiast, po kilkuset pokoleniach (iteracjach populacji) zauważalny jest trend stabilizacyjny. Sam proces dojścia do końcowego rozwiązania również wygląda bardzo ciekawie.
+    </p>
+
+    <p>
+        Nasza implementacja pozwala na tworzenie własnych map oraz sterowanie parametrami algorytmu genetycznego. Wyświetlana jest również wizualizacja przebiegu każdej z populacji i tego jak każda z jednostek z osobna radzi sobie z wykonywaniem zadania.
+   </p>
