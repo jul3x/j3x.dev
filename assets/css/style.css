@@ -487,6 +487,7 @@ section {
     bottom: 20px;
     right: 20px;
     margin: 0;
+    text-align: right;
 }
 
 .project .project-short p {
