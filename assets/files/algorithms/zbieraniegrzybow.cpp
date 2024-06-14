@@ -3,7 +3,7 @@
 
 using namespace std;
 
-long long tab[1000000], sum[1000000], n, t, a;
+long long tab[1000000], sum[1000000], n, t, a, b;
 
 int main () {
 	scanf ("%lld", &n);
@@ -18,9 +18,9 @@ int main () {
 	scanf ("%lld", &t);
 	
 	for (int i = 0; i < t; i++) {
-		scanf ("%lld", &a);
+		scanf ("%lld %lld", &a, &b);
 		
-		printf ("%lld\n", tab[a-1]);
+		printf ("%lld\n", tab[a - 1] - tab[b - 1]);
 	}
 	return 0;
 }

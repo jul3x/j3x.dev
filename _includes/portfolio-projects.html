@@ -5,9 +5,7 @@
         <div class="project-img {{ include.id }}-img" style="background-image: url('/assets/img/{{ project.img }}');"></div>
         {% if project.video %}
         <div class="project-video" style="display: none">
-            <iframe src="{{ project.video }}" title="{{ project.name }} - {{ project.short }}"
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
+            <iframe src="{{ project.video }}" title="{{ project.name }} - {{ project.short }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {% endif %}
         <div class="project-short">
@@ -24,15 +22,15 @@
 
 <script type="text/javascript">
     /** Parallax effect on imgs */
-    document.addEventListener("mousemove", parallax);
+    /* document.addEventListener("mousemove", parallax);
 
-    function parallax(event) {
-        this.querySelectorAll(".{{ include.id }}-img").forEach((img) => {
-            const position = 10;
-            const x = (window.innerWidth - event.clientX * position) / 500;
-            const y = (window.innerHeight - event.clientY * position) / 500;
+     * function parallax(event) {
+     *     this.querySelectorAll(".{{ include.id }}-img").forEach((img) => {
+     *         const position = 10;
+     *         const x = (window.innerWidth - event.clientX * position) / 500;
+     *         const y = (window.innerHeight - event.clientY * position) / 500;
 
-            img.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
-        });
-    }
+     *         img.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+     *     });
+     * } */
 </script>
