@@ -12,3 +12,4 @@ collections:
   projects:
     output: False
     sort_by: date
+exclude: ['algorithm-tmpl.odt']

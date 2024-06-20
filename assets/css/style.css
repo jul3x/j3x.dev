@@ -423,11 +423,11 @@ section {
 
 .projects-wrapper {
     width: 90%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 250px;
     justify-content: space-between;
-    align-content: flex-start;
-    gap: 30px;
     margin: 0 auto;
 }
 
@@ -437,8 +437,6 @@ section {
     /* border-top: 4px solid var(--dark); */
     /* border-bottom: 4px solid var(--dark); */
     padding: 0;
-    width: 30%;
-    height: 250px;
     text-align: left;
     display: flex;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);

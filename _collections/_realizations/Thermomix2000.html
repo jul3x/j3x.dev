@@ -3,8 +3,22 @@ date: 2023-12-09
 name: ThermoState2000
 img: thermostate.png
 short: |
-   Krótki opis czegoś co tu by mogło być.
+   System do zarządzania inteligentną instalacją grzewczą
+project_url: https://github.com/jul3x/Thermomix2000
 ---
-Pierwsza styczność z prawdziwym przemysłem - praktyki w dużym zakładzie produkcyjnym z branży drewnianej.
-Zajmowałem się wyszywaniem szaf sterowniczych, prowadzeniem przewodów i programowaniem sterowników PLC.
-Brałem też udział w uruchamianiu linii produkcyjnych.
+
+<p>
+    Projekt serwera i kontrolera dla zastosowań <strong>SmartHome</strong> ukierunkowanych na zarządzanie instalacją grzewczą. Założenie systemu jest systemu jest proste - pozwalaj na monitoring instalacji w czasie rzeczywistym, udostępniaj historyczne dane pomiarowe i (w niedalekiej przyszłości) zezwalaj na zmianę nastawów.
+</p>
+
+<p>
+    System powstaje ze względu na rodzinne zapotrzebowanie. Konieczna była obsługa "chińskich" niestandardowych czujników i inżynieria wsteczna ich rejestrów. Na potrzeby tego projektu napisałem komunikację z czujnikami temperatury typu <strong>CH341 MODBUS RTU</strong>. Powstał interfejs użytkownika pozwalający na ciągły monitoring instalacji składającej się z kilkunastu czujników. Wszystko przedstawiane jest na czytelnym schemacie instalacji w stylu programów <strong>SCADA</strong>.
+</p>
+
+<p>
+    Implementację staram się przeprowadzać jak najbardziej konfigurowalnie. Kod źródłowy składa się z pliku konfiguracyjnego opisującego mapę czujników, schemat instalacji i inne dodatkowe parametry. Projekt dystrybuuję na zasadach <strong>open-source</strong> - chcę pozwolić osobom o podobnych zapotrzebowaniach na wykorzystanie mojej pracy na własny użytek.
+</p>
+
+<p>
+    Na daną chwilę system jest jeszcze we wczesnej fazie rozwoju, choć jest już używany z sukcesem.
+    </p>

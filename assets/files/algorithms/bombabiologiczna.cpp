@@ -1,116 +1,77 @@
 #include <cstdio>
+#include <vector>
 #include <algorithm>
 
-using namespace std;
+struct Occurrence {
+  int preceeding{0};
+  long long index{0};
+};
 
-int y[1000000];
+struct Bomb {
+  long long x;
+  long long r;
+};
 
-int bin_search_left(int l, int p, int x, int r) 
-{
- 	int sr;
- 	int szukana = x - r;
- 	
-	while(l<=p)
- 	{
-	    sr = (l + p)/2;
-	 
-	    if(y[sr] == szukana)
-	      	return sr;
-	 
-	    if(y[sr] > szukana)
-	      	p = sr - 1;
-	    else
-	      	l = sr + 1;
-	}
-	
-	if (y[l] < szukana) return l+1;
-	else return l;
+int right_count_bin_search(const std::vector<Occurrence> &occurrences, long long index) {
+  /* O(log n) */
+  auto it = std::lower_bound(
+      occurrences.rbegin(), occurrences.rend(), index,
+      [](const auto &occ, long long index) { return occ.index > index; });
+
+  if (it != occurrences.rend()) {
+    return it->preceeding + 1;
+  }
+  return 0;
 }
 
-int bin_search_first_left(int l, int p, int x) 
-{
- 	int sr;
- 	
-	while(l<=p)
- 	{
-	    sr = (l + p)/2;
-	 
-	    if(y[sr] == x)
-	      	return sr;
-	 
-	    if(y[sr] > x)
-	      	p = sr - 1;
-	    else
-	      	l = sr + 1;
-	}
-	
-	if (y[l] < x) return l+1;
-	else return l;
-}
+int left_count_bin_search(const std::vector<Occurrence> &occurrences,
+                          long long index) {
+  /* O(log n) */
+  auto it = std::lower_bound(
+      occurrences.begin(), occurrences.end(), index,
+      [](const auto &occ, long long index) { return occ.index < index; });
 
-int bin_search_right(int l, int p, int x, int r) 
-{
- 	int sr;
- 	int szukana = x + r;
- 	
-	while(l<=p)
- 	{
-	    sr = (l + p)/2;
-	 
-	    if(y[sr] == szukana)
-	      	return sr;
-	 
-	    if(y[sr] > szukana)
-	      	p = sr - 1;
-	    else
-	      	l = sr + 1;
-	}
-	
-	if (y[l] > szukana) return l-1;
-	else return l;
-}
-
-int bin_search_first_right(int l, int p, int x) 
-{
- 	int sr;
- 	
-	while(l<=p)
- 	{
-	    sr = (l + p)/2;
-	 
-	    if(y[sr] == x)
-	      	return sr;
-	 
-	    if(y[sr] > x)
-	      	p = sr - 1;
-	    else
-	      	l = sr + 1;
-	}
-	
-	if (y[l] > x) return l-1;
-	else return l;
+  if (it != occurrences.end()) {
+    return it->preceeding;
+  }
+  return 0;
 }
 
 int main () {
+  std::vector<Occurrence> occurrences;
+  occurrences.reserve(1e5);
+
 	int n, m;
 	scanf("%d %d", &n, &m);
-	
-	int x[n], r[n];
-	
-	for (int i = 0; i < n; i++) 
-		scanf("%d %d", &x[i], &r[i]);
-		
-	for (int i = 0; i < m; i++) 
-		scanf ("%d", &y[i]);
-		
-	sort(y, y+m);
-	int wyn = 0;
-	for (int i = 0; i < n; i++) {
-		if (y[bin_search_first_left(0, m, x[i])] >= x[i]-r[i]) wyn += bin_search_first_left(0, m, x[i]) - bin_search_left(0, m, x[i], r[i]);
-		if (y[bin_search_first_right(0, m, x[i])] <= x[i]+r[i]) wyn += bin_search_right(9, m, x[i], r[i] - bin_search_first_right(0, m, x[i]));
 
-		printf ("%d\n", wyn);
-	}
-	
+  Bomb bombs[n];
+  long long cities[m];
+  long long min_city, max_city;
+
+	for (int i = 0; i < n; i++)
+		scanf("%lld %lld", &bombs[i].x, &bombs[i].r);
+
+	for (int i = 0; i < m; i++)
+		scanf("%lld", &cities[i]);
+
+  std::sort(cities, cities + m);
+  min_city = cities[0];
+  max_city = cities[m - 1];
+  for (int i = 0; i < m; i++) {
+    int sum = i + 1;
+    occurrences.emplace_back(Occurrence{sum, cities[i]});
+  }
+  occurrences.emplace_back(Occurrence{m, 1000000001});
+
+  for (const auto &bomb : bombs) {
+    if (bomb.x + bomb.r < min_city || bomb.x - bomb.r > max_city)
+      printf("0\n");
+    else {
+      int right = right_count_bin_search(occurrences, bomb.x + bomb.r);
+      int left = left_count_bin_search(occurrences, bomb.x - bomb.r);
+      printf("%d\n", std::max(0, right - left));
+    }
+  }
+
 	return 0;
 }
