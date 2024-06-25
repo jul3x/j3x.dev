@@ -68,7 +68,7 @@
             </div>
         </section>
         <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
-            {% include normal-divider-content.html
+            {% include divider-content.html
           left_header="Portfolio"
           %}
             <div class="content page-content" id="portfolio-content">
@@ -78,7 +78,7 @@
             </div>
         </section>
         <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
-            {% include normal-divider-content.html
+            {% include divider-content.html
           left_header="Oferta"
           %}
             <div class="content page-content" id="offer-content">
@@ -201,6 +201,12 @@
                 closeModal();
             }
         });
+
+        /** Block scrollbar for animation period */
+        document.body.style.overflowY = 'hidden';
+        setTimeout(() => {
+            document.body.style.overflowY = 'initial';
+        }, 7000);
     </script>
     <script src="/assets/js/modernizr-3.11.8.min.js"></script>
     <script src="/assets/js/typewrite.js"></script>

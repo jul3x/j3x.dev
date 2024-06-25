@@ -60,6 +60,7 @@
 menu {
     display: flex;
     width: auto;
+    height: 100%;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
@@ -69,6 +70,7 @@ menu li {
     flex-grow: 1;
     transition: 0.4s;
     border-bottom: 4px rgba(0, 0, 0, 0) solid;
+    line-height: 4.6;
 }
 
 #top * a {
@@ -83,58 +85,6 @@ menu li {
 
 #top * li:hover {
     border-bottom: 4px var(--feature) solid
-}
-
-/** Main page header */
-.main-header {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 500px;
-    z-index: 3;
-}
-
-.main-position {
-    width: 25%;
-    height: 100%;
-    position: absolute;
-}
-
-.main-position-left h3 {
-    text-align: left;
-    top: 8%;
-    left: 0;
-    position: absolute;
-}
-
-.main-position-left p,
-.main-position-left div {
-    top: 30%;
-    left: 0;
-    position: absolute;
-}
-
-.main-position-right h3 {
-    text-align: right;
-    left: 0;
-    bottom: 12%;
-    position: absolute;
-}
-
-.main-position-right p {
-    bottom: 35%;
-    left: 0;
-    position: absolute;
-}
-
-.main-position-left {
-    left: 5%;
-}
-
-.main-position-right {
-    right: 5%;
 }
 
 .photo {
