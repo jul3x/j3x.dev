@@ -79,6 +79,15 @@ menu li {
     height: 100%;
 }
 
+
+#top * li.active a {
+    /* color: var(--feature); */
+}
+
+#top * li.active {
+    border-bottom: 4px var(--light) solid
+}
+
 #top * a:hover {
     color: var(--feature);
 }
@@ -180,7 +189,7 @@ section {
     animation-name: sectionShow;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
-    animation-delay: 0;
+    animation-delay: 0s;
     animation-iteration-count: 1;
 }
 
@@ -253,12 +262,14 @@ section {
     margin-top: 40px;
 }
 
-#skills ul, #experience ul {
+#skills ul,
+#experience ul {
     width: 80%;
     margin: 0 auto;
 }
 
-#skills .skill, #experience .experience-unit {
+#skills .skill,
+#experience .experience-unit {
     width: 100%;
     display: flex;
     margin-top: 25px;
@@ -267,7 +278,8 @@ section {
     padding-left: 8px;
 }
 
-#skills .skill:hover, #experience .experience-unit:hover {
+#skills .skill:hover,
+#experience .experience-unit:hover {
     color: var(--feature);
     border-left: 4px var(--feature) solid;
 }
@@ -399,7 +411,7 @@ section {
     height: 100%;
     background-size: auto 110%;
     background-repeat: no-repeat;
-    box-shadow: inset rgba(0, 0, 0, 1) 0px 0px 60px -12px; 
+    box-shadow: inset rgba(0, 0, 0, 1) 0px 0px 60px -12px;
     opacity: 0.5;
     transition: 0.3s;
 }
@@ -516,4 +528,135 @@ section {
     color: var(--feature);
     text-decoration: none;
     cursor: pointer;
+}
+
+#offer-steps {
+    width: 100%;
+    margin-inline: auto;
+    justify-content: center;
+    gap: 1rem;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#offer-steps li {
+    max-width: 12rem;
+    justify-self: center;
+    display: grid;
+    grid-template:
+        "icon"
+        "line"
+        "dot"
+        "title"
+        "descr" 1fr;
+    justify-items: center;
+    align-items: flex-center;
+    text-align: center;
+    transition: 0.3s;
+}
+
+#offer-steps li .icon {
+    grid-area: icon;
+    width: 6rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 2.5rem;
+    border: 0.4rem solid var(--light);
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.45),
+        inset 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.45);
+    transition: 0.3s;
+}
+
+#offer-steps li:hover .icon {
+    font-size: 3rem;
+}
+
+#offer-steps li:hover {
+    color: var(--feature);
+}
+
+
+#offer-steps li::before {
+    content: "";
+    grid-area: line;
+    height: 2rem;
+    border-right: 2px dotted currentColor;
+}
+
+#offer-steps li::after {
+    content: "";
+    grid-area: dot;
+    width: 1rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--accent-color);
+    justify-self: center;
+    margin-bottom: 0.5rem;
+}
+
+#offer-steps li .title {
+    grid-area: title;
+    margin-block: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/** Offer services */
+
+#offer-services {
+    width: 100%;
+    margin-inline: auto;
+    justify-content: center;
+    gap: 1rem;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#offer-services li {
+    width: 36rem;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 12px;
+    margin: 10px;
+    transition: 0.3s;
+    border-left: 4px solid rgba(255, 255, 255, 0);
+}
+
+#offer-services li .icon {
+    width: 6rem;
+    color: var(--dark);
+    font-size: 2.5rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+#offer-services li:hover .icon {
+    color: var(--feature);
+}
+
+#offer-services li:hover {
+    color: var(--feature);
+    border-left: 4px solid var(--feature);
+}
+
+#offer-services li .title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+}
+
+#offer-services li .descr {
+    margin-top: 5px;
+    text-align: justify;
 }

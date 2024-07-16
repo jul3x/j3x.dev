@@ -82,6 +82,7 @@
           left_header="Oferta"
           %}
             <div class="content page-content" id="offer-content">
+                {% include offer.html %}
             </div>
         </section>
         <section id="contact" data-type="Porozmawiajmy." class="page-section">
@@ -118,16 +119,13 @@
             document.location.hash = "#main";
         }
 
-        Array.from(document.getElementsByClassName("menu-link")).forEach((el) => {
-            el.onclick = () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            };
-        });
-
         function hashChange() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            setTimeout(() => {
             /* Change the header svg variation from triangular to rectangular */
             Array.from(document.getElementsByClassName("shape-fill")).forEach((el) => {
                 if (document.location.hash == "#main" || document.location.hash == "#contact") {
@@ -145,6 +143,13 @@
             /* Hur-dur, no user data validation, insecure, nvm. */
             let el = document.querySelector(document.location.hash + '-content');
             if (el) el.style = "height: auto";
+
+            Array.from(document.getElementsByClassName("menu-link")).forEach((el) => {
+                el.classList.remove('active');
+            });
+            let menuItem = document.querySelector(document.location.hash + '-link');
+            if (menuItem) menuItem.classList.add('active');
+            }, 500);
         }
 
         addEventListener("hashchange", (event) => {
