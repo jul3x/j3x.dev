@@ -539,6 +539,7 @@ section {
     list-style: none;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #offer-steps li {
