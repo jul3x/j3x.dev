@@ -15,11 +15,11 @@
 
 @keyframes headerPopIn {
     0% {
-        height: 100vh
+        height: 100%
     }
 
     100% {
-        height: calc(50vh + 100px);
+        height: calc(50% + 100px);
     }
 }
 
@@ -281,7 +281,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    height: calc(50vh + 100px);
+    height: 50vh;
     background-color: var(--light);
     animation: 2s bgLayoutPopIn;
     animation-fill-mode: both;
@@ -301,6 +301,7 @@
 .divider {
     position: absolute;
     left: 0;
+    top: 5px;
     width: 100%;
     height: 200px;
     z-index: 0;
@@ -312,19 +313,19 @@
 
 @keyframes dividerPopIn {
     0% {
-        bottom: -50vh;
+        top: 100vh;
         transform: translateY(-110%);
     }
 
     100% {
-        bottom: calc(50vh - 100px - 1px);
+        top: 5px;
         transform: 0;
     }
 }
 
 .rect-divider {
     width: 34vw;
-    height: 100%;
+    height: 200px;
     background: var(--light);
     margin: 0;
     padding: 0;
@@ -332,7 +333,7 @@
 
 .diagonal-divider {
     width: 66vw;
-    height: 100%;
+    height: 200px;
     overflow: hidden;
     line-height: 0;
     margin: 0;
@@ -351,6 +352,7 @@
 .shadow-divider {
     position: absolute;
     left: 0;
+    top: 0;
     width: 100%;
     height: 200px;
     z-index: -1;
@@ -362,12 +364,12 @@
 
 @keyframes shadowDividerPopIn {
     0% {
-        bottom: -50vh;
+        top: 100vh;
         transform: translateY(110%);
     }
 
     100% {
-        bottom: calc(50vh - 100px + 5px);
+        top: 0;
         transform: 0;
     }
 }
