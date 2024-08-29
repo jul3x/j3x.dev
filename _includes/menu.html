@@ -6,26 +6,72 @@
     </div>
     <div id="center-section">
         <menu>
-            <li class="menu-link" id="main-link">
+            <li class="menu-link main-link">
                 <a href="#main">Strona główna</a>
             </li>
-            <li class="menu-link" id="portfolio-link">
+            <li class="menu-link portfolio-link">
                 <a href="#portfolio">Portfolio</a>
             </li>
-            <li class="menu-link" id="offer-link">
+            <li class="menu-link offer-link">
                 <a href="#offer">Oferta</a>
             </li>
-            <li class="menu-link" id="contact-link">
+            <li class="menu-link contact-link">
                 <a href="#contact">Kontakt</a>
             </li>
         </menu>
     </div>
     <div id="right-section">
-        <a href="/">
+        <a href="https://linkedin.com/in/julian-prolejko" target="_blank">
             <img src="/assets/img/linkedin.png" title="LinkedIn" alt="LinkedIn" />
         </a>
-        <a href="/">
+        <a href="https://github.com/jul3x" target="_blank">
             <img src="/assets/img/github.png" title="GitHub" alt="GitHub" />
         </a>
     </div>
 </div>
+
+<div id="small-menu">
+    <menu>
+        <li class="menu-link" id="burger-link">
+            <a style="cursor: pointer">&#9776;</a>
+        </li>
+        <li class="menu-link main-link">
+            <a href="#main">Strona główna</a>
+        </li>
+        <li class="menu-link portfolio-link">
+            <a href="#portfolio">Portfolio</a>
+        </li>
+        <li class="menu-link offer-link">
+            <a href="#offer">Oferta</a>
+        </li>
+        <li class="menu-link contact-link">
+            <a href="#contact">Kontakt</a>
+        </li>
+    </menu>
+</div>
+
+<script>
+    const icon = document.querySelector('#burger-link');
+    const navbarLinks = document.querySelectorAll('#small-menu li:not(#burger-link)');
+
+    let isMenuOpen = false;
+
+    function openClose(isMenuOpen) {
+        if (!isMenuOpen) {
+            navbarLinks.forEach(link => link.style.opacity = '0');
+        } else {
+            navbarLinks.forEach(link => link.style.opacity = '1');
+        }
+    }
+
+    navbarLinks.forEach(
+        link => link.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            openClose(isMenuOpen);
+        })
+    );
+    icon.addEventListener('click', function() {
+        isMenuOpen = !isMenuOpen;
+        openClose(isMenuOpen);
+    });
+</script>

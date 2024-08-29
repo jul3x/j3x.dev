@@ -75,25 +75,25 @@ menu li {
 
 #top * a {
     color: var(--light);
+}
+
+menu * a {
+    color: var(--light);
     display: inline-block;
     height: 100%;
+    width: 100%;
 }
 
-
-#top * li.active a {
-    /* color: var(--feature); */
+menu li.active {
+    border-bottom: 4px var(--light) solid !important;
 }
 
-#top * li.active {
-    border-bottom: 4px var(--light) solid
+menu * a:hover {
+    color: var(--feature) !important;
 }
 
-#top * a:hover {
-    color: var(--feature);
-}
-
-#top * li:hover {
-    border-bottom: 4px var(--feature) solid
+menu li:hover {
+    border-bottom: 4px var(--feature) solid !important;
 }
 
 .photo {
@@ -409,7 +409,7 @@ section {
 .project-img {
     width: 45%;
     height: 100%;
-    background-size: auto 110%;
+    background-size: cover;
     background-repeat: no-repeat;
     box-shadow: inset rgba(0, 0, 0, 1) 0px 0px 60px -12px;
     opacity: 0.5;
@@ -498,10 +498,12 @@ section {
 .modal-content .img {
     width: 50vw;
     height: 40vh;
-    background-size: cover;
-    background-position: bottom;
     margin: 0 auto;
+}
+
+.modal-content .img img {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
 }
 
 .modal-content .img iframe {
@@ -627,7 +629,6 @@ section {
     width: 36rem;
     box-sizing: border-box;
     text-align: left;
-    padding-left: 12px;
     margin: 10px;
     transition: 0.3s;
     border-left: 4px solid rgba(255, 255, 255, 0);

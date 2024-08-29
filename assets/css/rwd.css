@@ -1,0 +1,58 @@
+/** Top bar */
+
+#small-menu {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #small-menu {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        animation: 2s fadeIn;
+        animation-delay: 6s;
+        animation-fill-mode: both;
+        animation-timing-function: ease-in-out;
+        width: 250px;
+        height: calc(60px*6)
+    }
+
+    #top {
+        display: none;
+    }
+
+    #small-menu menu {
+        display: block;
+        text-align: left;
+    }
+
+    #small-menu * li {
+        background-color: var(--black);
+        padding-left: 17px;
+        width: 200px;
+        height: 60px;
+        box-shadow: inset rgba(0, 0, 0, 0.4) 0px 0px 20px 10px;
+        transition: 0.3s;
+        opacity: 0;
+    }
+
+    #burger-link {
+        display: block !important;
+        width: 50px !important;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px 10px;
+        padding: 0 !important;
+        opacity: 1 !important;
+    }
+
+    #burger-link a {
+        font-size: 200%;
+        line-height: 1;
+        text-align: center;
+    }
+
+    menu li {
+        border-bottom: 4px #000000 solid;
+    }
+}
+
+

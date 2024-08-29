@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/assets/css/basic.css">
     <link rel="stylesheet" href="/assets/css/header.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/rwd.css">
 
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#ebeae3">
@@ -147,8 +148,8 @@
             Array.from(document.getElementsByClassName("menu-link")).forEach((el) => {
                 el.classList.remove('active');
             });
-            let menuItem = document.querySelector(document.location.hash + '-link');
-            if (menuItem) menuItem.classList.add('active');
+            let menuItem = document.querySelectorAll('.' + document.location.hash.slice(1) + '-link');
+            menuItem.forEach(item => item.classList.add('active'));
             }, 500);
         }
 
@@ -169,8 +170,10 @@
                 modalImg.innerHTML = video[0].innerHTML;
                 modalImg.style.backgroundImage = '';
             } else {
-                modalImg.innerHTML = '';
-                modalImg.style.backgroundImage = project.getElementsByClassName('project-img')[0].style.backgroundImage;
+                const src = project.getElementsByClassName('project-img')[0].style.backgroundImage;
+                const image = `<img src=${src.slice(4, -1)} style="height: 100%"/>`;
+                modalImg.innerHTML = image;
+                console.log(image);
             }
 
             modal.getElementsByClassName('date')[0].textContent = project.getElementsByClassName('date')[0].textContent;
