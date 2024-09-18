@@ -10,11 +10,13 @@
         position: fixed;
         z-index: 100;
         animation: 2s fadeIn;
-        animation-delay: 6s;
+        animation-delay: 3s;
         animation-fill-mode: both;
         animation-timing-function: ease-in-out;
         width: 250px;
-        height: calc(60px*6)
+        height: calc(60px*6);
+        margin-left: 10px;
+        margin-top: 10px;
     }
 
     #top {
@@ -30,6 +32,7 @@
         background-color: var(--black);
         padding-left: 17px;
         width: 200px;
+        font-size: 120%;
         height: 60px;
         box-shadow: inset rgba(0, 0, 0, 0.4) 0px 0px 20px 10px;
         transition: 0.3s;
@@ -38,20 +41,22 @@
 
     #burger-link {
         display: block !important;
-        width: 50px !important;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px 10px;
+        width: 80px !important;
+        height: 80px !important;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px 10px !important;
         padding: 0 !important;
+        line-height: 1.5;
         opacity: 1 !important;
     }
 
     #burger-link a {
-        font-size: 200%;
-        line-height: 1;
+        font-size: 300%;
         text-align: center;
     }
 
     menu li {
         border-bottom: 4px #000000 solid;
+        line-height: 3;
     }
 }
 
