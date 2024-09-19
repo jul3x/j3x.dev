@@ -160,6 +160,14 @@
     .main-position-right {
         top: calc(73% + 260px) !important;
     }
+    #contact .main-header .main-position-left {
+        top: 70% !important;
+        width: 250px !important;
+    }
+    #contact-content {
+        bottom: auto !important;
+        top: calc(50% + 360px) !important;
+    }
 }
 
 @media (max-width: 440px) {
@@ -224,6 +232,19 @@
 @media (max-height: 1000px) {
     .photo {
         height: 80%;
+    }
+}
+
+@media (min-width: 1001px) and (max-height: 1000px) {
+    #main-content, #contact-content {
+        top: calc(50% + 180px);
+        bottom: auto;
+    }
+}
+
+@media (min-width: 1001px) and (max-height: 750px) {
+    #header h2 {
+        display: none;
     }
 }
 
