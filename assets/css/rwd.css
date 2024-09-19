@@ -17,6 +17,8 @@
         height: calc(60px*6);
         transition: 0.3s;
         overflow: visible;
+        /* box-shadow: 0px 0px 10px 0 black; */
+        margin: 10px;
     }
 
     #top {
@@ -41,8 +43,9 @@
 
     #burger-link {
         display: block !important;
-        width: 60px !important;
         height: 60px !important;
+        width: 60px;
+        transition: 0.3s;
         padding: 0 !important;
         line-height: 1.6;
         opacity: 1 !important;
@@ -54,7 +57,7 @@
     }
 
     menu {
-        padding: 10px !important;
+        padding: 0 !important;
     }
 
     menu li {

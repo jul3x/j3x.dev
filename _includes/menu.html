@@ -59,8 +59,11 @@
 
     function openClose(isMenuOpen) {
         if (!isMenuOpen) {
-            menu.style.width = '70px';
-            menu.style.height = '70px';
+            setTimeout(() => {
+                menu.style.width = '60px';
+                menu.style.height = '60px';
+            }, 300);
+            icon.style.width = '60px';
             navbarLinks.forEach(link => {
                 link.style.opacity = '0';
                 link.style.pointerEvents = 'none';
@@ -68,6 +71,7 @@
         } else {
             menu.style.width = 'auto';
             menu.style.height = 'auto';
+            icon.style.width = '200px';
             navbarLinks.forEach(link => {
                 link.style.opacity = '1';
                 link.style.pointerEvents = 'auto';
