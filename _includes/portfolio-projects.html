@@ -9,12 +9,16 @@
                     "></div>
         {% if project.video %}
         <div class="project-video" style="display: none">
-            <iframe src="{{ project.video }}" title="{{ project.name }} - {{ project.short }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {{ project.video }}
         </div>
         {% endif %}
         <div class="project-short">
+            {% assign name_length = project.name | size %}
+            {% assign name_length = 10 %}
             <span class="date italic">{{ project.date | date: "%Y-%m-%d" }}</span>
-            <h4 class="name">{{ project.name }}</h4>
+            <h4 class="name" {% if name_length > 14 %}style="font-size: 0.75em;"{% endif %}>
+                {{ project.name }}
+            </h4>
             <p>{{ project.short }}</p>
 
             <div style="display: none" class="url"><a href="{{ project.project_url }}" target="_blank">{{ project.project_url }}</a></div>

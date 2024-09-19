@@ -166,18 +166,19 @@
         function openModal(ident, index) {
             const project = document.getElementById('project-' + ident + '-' + index);
             const video = project.getElementsByClassName('project-video');
+            const projectName = project.getElementsByClassName('name')[0].textContent;
             if (video.length > 0) {
-                modalImg.innerHTML = video[0].innerHTML;
+                const videoStr = `<iframe src="${video[0].innerHTML}" title="${projectName}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                modalImg.innerHTML = videoStr;
                 modalImg.style.backgroundImage = '';
             } else {
                 const src = project.getElementsByClassName('project-img')[0].style.backgroundImage;
                 const image = `<img src=${src.slice(4, -1)} style="height: 100%"/>`;
                 modalImg.innerHTML = image;
-                console.log(image);
             }
 
             modal.getElementsByClassName('date')[0].textContent = project.getElementsByClassName('date')[0].textContent;
-            modal.getElementsByClassName('name')[0].textContent = project.getElementsByClassName('name')[0].textContent;
+            modal.getElementsByClassName('name')[0].textContent = projectName;
             modal.getElementsByClassName('description')[0].innerHTML = project.getElementsByClassName('description')[0].innerHTML;
             modal.getElementsByClassName('url')[0].innerHTML = project.getElementsByClassName('url')[0].innerHTML;
             modal.style.display = 'block';

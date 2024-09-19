@@ -51,6 +51,7 @@
 </div>
 
 <script>
+    const menu = document.querySelector('#small-menu');
     const icon = document.querySelector('#burger-link');
     const navbarLinks = document.querySelectorAll('#small-menu li:not(#burger-link)');
 
@@ -58,15 +59,25 @@
 
     function openClose(isMenuOpen) {
         if (!isMenuOpen) {
-            navbarLinks.forEach(link => link.style.opacity = '0');
+            menu.style.width = '70px';
+            menu.style.height = '70px';
+            navbarLinks.forEach(link => {
+                link.style.opacity = '0';
+                link.style.pointerEvents = 'none';
+            });
         } else {
-            navbarLinks.forEach(link => link.style.opacity = '1');
+            menu.style.width = 'auto';
+            menu.style.height = 'auto';
+            navbarLinks.forEach(link => {
+                link.style.opacity = '1';
+                link.style.pointerEvents = 'auto';
+            });
         }
     }
-
+    openClose(isMenuOpen);
     navbarLinks.forEach(
         link => link.addEventListener('click', function() {
-            isMenuOpen = !isMenuOpen;
+            isMenuOpen = false;
             openClose(isMenuOpen);
         })
     );

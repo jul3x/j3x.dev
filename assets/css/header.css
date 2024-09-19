@@ -26,7 +26,7 @@
 #header h2 {
     position: absolute;
     left: 50%;
-    width: 100%;
+    width: 96%;
     transform: translateX(-50%) translateY(-100%);
     animation: 2s headerH2PopIn;
     animation-fill-mode: both;
