@@ -113,7 +113,9 @@
     document.querySelectorAll('.lang-link').forEach(element => element.onclick = function(event) {
         event.preventDefault();
         const currentHash = window.location.hash;
-        const newUrl = element.href + currentHash;
+        const url = new URL(window.location.href);
+        const currentParams = new URLSearchParams(url.search);
+        const newUrl = `${element.href}?${currentParams.toString()}${currentHash}`;
         window.location.href = newUrl;
     });
 </script>

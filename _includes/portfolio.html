@@ -120,22 +120,31 @@
 
         /* Show appropriate section */
         Array.from(document.querySelectorAll('.portfolio-sections .portfolio-section')).forEach((el) => {
-            if (el.id == section) {
-                return;
+            if (el.id === section) {
+                el.style.display = 'block';
+                el.style.opacity = 1;
+            } else {
+                el.style.opacity = 0;
+                el.style.display = 'none';
             }
-
-            el.style = 'opacity: 0; display: none';
         })
 
-        const activeSection = document.getElementById(section);
-        activeSection.style = 'display: block; opacity: 1';
         return true;
     }
 
-    const url = new URL(window.location.href);
-    const portfolioParam = url.searchParams.get('p') || 'skills';
+    function updateState() {
+        const url = new URL(window.location.href);
+        const portfolioParam = url.searchParams.get('p') || 'skills';
 
-    if (!portfolioMenu(portfolioParam, /* dont update URL */ true)) {
-        portfolioMenu('skills', true);
+        if (!portfolioMenu(portfolioParam, /* dont update URL */ true)) {
+            portfolioMenu('skills', true);
+        }
     }
+
+    updateState();
+    /** Listen for popstate events to handle back/forward navigation */
+    window.addEventListener('popstate', function() {
+        updateState();
+    });
+
 </script>
