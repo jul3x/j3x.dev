@@ -165,12 +165,12 @@
             }
 
             /** If hash has changed - we need to remove parameters */
+            const url = new URL(window.location.href);
             if (!init) {
-                const url = new URL(window.location.href);
                 const newUrl = url.origin + url.pathname + url.hash;
                 history.replaceState({}, titles[url.hash], newUrl);
-                document.title = titles[url.hash];
             }
+            document.title = titles[url.hash];
 
             Array.from(document.getElementsByClassName("menu-link")).forEach((el) => {
                 el.classList.remove('active');
