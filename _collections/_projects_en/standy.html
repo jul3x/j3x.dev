@@ -1,0 +1,29 @@
+---
+img_pos: center
+date: 2018-06-25
+name: Standy
+img: standy.jpg
+short: |
+   Mobile robot balancing on two wheels
+project_url: https://j3x.dev/files/standy.pdf
+---
+
+<p>
+In the era of ubiquitous <strong>hoverboards</strong>, a robot whose sole task is to maintain balance on a single axis of wheels might not seem impressive (actually, it was unlikely to spot any hoverboard in Poland in 2018). However, it presents a very interesting theoretical and engineering challenge that can be quite troublesome.
+</p>
+
+<p>
+Implementing such a project requires complex theoretical calculations using differential equations of motion. These equations must then be converted into state variable equations and solved using control theory for a given equilibrium point. The solution allows us to simulate the robot's behavior under various control methods.
+</p>
+
+<p>
+The simulation enables optimal selection of the relationship between the robot's tilt and the force applied by the motors. This relationship must then be implemented in the robot's controller. Selecting the appropriate electronic components is crucial: microcontroller, accelerometers, motor drivers, battery, and the motors themselves. All elements must work together and be controlled by software uploaded to the microcontroller (handling sensor readings, calculating required power, transforming values into signals for the motors).
+</p>
+
+<p>
+Since the robot is a physical entity, designing its structure and selecting the appropriate mechanical components is also necessary, followed by assembling everything into a whole. Ultimately, this often leads to the realization that the results from theoretical calculations do not align with reality (mainly due to accumulated simplification errors), necessitating experimental "tuning" of the control algorithm.
+</p>
+
+<p>
+The project was a fascinating adventure and allowed for a more practical entry into the field of robotics. I described the theoretical foundations of the project <strong><a href="https://j3x.dev/files/standy.pdf" target="_blank">here</a></strong>.
+</p>

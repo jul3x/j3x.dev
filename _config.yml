@@ -1,15 +1,39 @@
 collections_dir: _collections
 collections:
-  skills:
+  skills_en:
     output: False
     sort_by: order
-  experience:
+  experience_en:
     output: False
     sort_by: order
-  realizations:
+  realizations_en:
     output: False
     sort_by: date
-  projects:
+  projects_en:
     output: False
     sort_by: date
-exclude: ['algorithm-tmpl.odt']
+  steps_en:
+    output: False
+    sort_by: order
+  services_en:
+    output: False
+    sort_by: order
+  skills_pl:
+    output: False
+    sort_by: order
+  experience_pl:
+    output: False
+    sort_by: order
+  realizations_pl:
+    output: False
+    sort_by: date
+  projects_pl:
+    output: False
+    sort_by: date
+  steps_pl:
+    output: False
+    sort_by: order
+  services_pl:
+    output: False
+    sort_by: order
+exclude: ['algorithm-tmpl.odt', 'README.md', 'LICENSE.txt']

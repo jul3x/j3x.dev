@@ -1,0 +1,27 @@
+---
+date: 2018-07-31
+name: VBarWeb
+img: vbarweb.png
+short: |
+   Application for remote configuration of robots' electronic modules
+project_url: https://j3x.dev/assets/files/inz.pdf
+video: "https://www.youtube.com/embed/lKpSr-YxkAw?si=cRXPRxEY5RZiKlSw"
+img_pos: center
+---
+
+<p>
+    At <strong>VersaBox</strong>, one of my tasks was to create a cross-platform application for remote configuration of robot electronic modules.
+    Robots and other <strong>IoT</strong> devices often consist of complex control and measurement systems that require proper parameter settings for correct operation. Adjusting values and configuring systems is a tedious task that often requires halting the entire device and making a wired connection with a dedicated programmer.
+</p>
+
+<p>
+    To address this, I developed the <strong>VBarWeb</strong> web application. The application server, installed on an onboard computer (or any other microcomputer controlling the device), acts as an intermediary between the user and the network of connected electronic modules. The application allows not only for quick, remote viewing of real-time sensor readings from the robot but also for configuring advanced equipment (e.g., changing the <strong>PID</strong> settings of motor controllers).
+</p>
+
+<p>
+    Communication with the user is conducted over <strong>WiFi</strong>. Communication between the server and electronic modules occurs via the <strong>CAN bus</strong>, using a specially designed protocol. The application enables communication with any equipment that meets the communication requirements. The structure of its readings and settings is loaded using an <strong>XML</strong> file. The application also allows for the automation of repetitive tasks, such as setting default configurations across a series of robots.
+</p>
+
+<p>
+    A full description of the project is included in my engineering thesis, which can be read <a href="/assets/files/inz.pdf" target="_blank" class="bold">here</a> (mostly in Polish).
+</p>

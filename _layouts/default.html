@@ -1,13 +1,13 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="{{ site.lang }}">
 
 <head>
     <meta charset="utf-8">
-    <title>j3x.dev - coding & stuff</title>
-    <meta name="description" content="j3x.dev - coding & stuff">
+    <title>j3x.dev - high-level designer and low-level engineer at your service</title>
+    <meta name="description" content="High-level designer and low-level engineer at your service.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:title" content="j3x.dev - coding & stuff">
+    <meta property="og:title" content="j3x.dev - high-level designer and low-level engineer at your service">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://j3x.dev">
     <meta property="og:image" content="https://j3x.dev/img/logo.png">
@@ -29,6 +29,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="/assets/js/fontawesome.js" crossorigin="anonymous"></script>
+    <link rel="alternate" hreflang="en" href="https://j3x.dev/en/" />
+    <link rel="alternate" hreflang="pl" href="https://j3x.dev/pl/" />
 </head>
 
 <body>
@@ -56,40 +58,40 @@
 
         {% include divider.html %}
 
-        <section id="main" data-type="{{ page.header }}" class="page-section">
+        <section id="main" data-type="{{ page.typers.main }}" class="page-section">
             {% include divider-content.html
-          left_header=page.left_divider_header
-          left_txt=page.left_divider_txt
-          right_header=page.right_divider_header
-          right_txt=page.right_divider_txt
+          left_header=page.texts.left_header
+          left_txt=page.texts.main_left
+          right_header=page.texts.right_header
+          right_txt=page.texts.main_right
           show_photo=1
           %}
             <div class="content" id="main-content">
                 {{ content }}
             </div>
         </section>
-        <section id="portfolio" data-type="Zbadaj moje doświadczenie." class="page-section">
+        <section id="portfolio" data-type="{{ page.typers.portfolio }}" class="page-section">
             {% include divider-content.html
-          left_header="Portfolio"
-          %}
+            left_header=page.headers.portfolio
+            %}
             <div class="content page-content" id="portfolio-content">
                 {% include portfolio.html
-                dev_stack=page.dev_stack
+                dev_stack=page.texts.dev_stack
                 %}
             </div>
         </section>
-        <section id="offer" data-type="Co mogę zaoferować?" class="page-section">
+        <section id="offer" data-type="{{ page.typers.offer }}" class="page-section">
             {% include divider-content.html
-          left_header="Oferta"
+          left_header=page.headers.offer
           %}
             <div class="content page-content" id="offer-content">
                 {% include offer.html %}
             </div>
         </section>
-        <section id="contact" data-type="Porozmawiajmy." class="page-section">
+        <section id="contact" data-type="{{ page.typers.contact }}" class="page-section">
             {% include divider-content.html
-          left_header="Kontakt"
-          left_txt=page.left_contact_txt
+          left_header=page.headers.contact
+          left_txt=page.texts.contact
           show_photo=1
           %}
             <div class="content" id="contact-content">
@@ -100,6 +102,8 @@
 
     <div id="modal">
         <div class="modal-content">
+            <span class="index" style="display: none"></span>
+            <span class="type" style="display: none"></span>
             <span class="close" id="modal-close">&times;</span>
             <span class="date">
             </span>
@@ -161,11 +165,19 @@
         const modal = document.getElementById('modal');
         const close = document.getElementById('modal-close');
         const modalImg = modal.getElementsByClassName('img')[0];
+        const modalIndex = modal.getElementsByClassName('index')[0];
+        const modalType = modal.getElementsByClassName('type')[0];
 
         function openModal(ident, index) {
             const project = document.getElementById('project-' + ident + '-' + index);
+            if (!project) {
+                return;
+            }
             const video = project.getElementsByClassName('project-video');
             const projectName = project.getElementsByClassName('name')[0].textContent;
+
+            modalType.innerHTML = ident;
+            modalIndex.innerHTML = index;
             if (video.length > 0) {
                 const videoStr = `<iframe src="${video[0].innerHTML}" title="${projectName}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 modalImg.innerHTML = videoStr;
@@ -188,6 +200,7 @@
             }, 10);
         }
 
+        /** Control modal */
         function closeModal() {
             modalImg.innerHTML = '';
             modal.style.opacity = 0;
@@ -203,10 +216,19 @@
             }
         });
 
-
         document.body.addEventListener('keydown', function(e) {
+            const idx = Number(modalIndex.innerHTML);
             if (e.key == "Escape") {
                 closeModal();
+            }
+
+            /* If modal is opened */
+            if (modal.style.display === "block") {
+                if (e.key == "ArrowLeft") {
+                    openModal(modalType.innerHTML, idx - 1);
+                } else if (e.key == "ArrowRight") {
+                    openModal(modalType.innerHTML, idx + 1);
+                }
             }
         });
 

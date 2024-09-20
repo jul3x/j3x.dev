@@ -1,0 +1,25 @@
+---
+img_pos: center
+date: 2019-09-19
+name: Gravity
+img: gravity.png
+short: |
+   Interactive simulator of interplanetary gravitational forces
+project_url: https://github.com/jul3x/Gravity
+---
+
+<p>
+<strong>Gravity</strong> is an interactive simulator of interplanetary gravitational forces. It allows for the simple creation of space motion scenarios, the active addition of new objects, and saving examples for later. It consists of a simple graphical interface and mouse + keyboard controls. A configuration file is also available to the user, allowing changes to the appearance and basic physical constants considered in the calculations.
+</p>
+
+<p>
+The operation is based on solving systems of motion equations (differential equations) in real-time using the <strong>4th-order Runge-Kutta algorithm</strong>. Given the masses and positions of the objects relative to each other, the algorithm in the simulator can calculate, with sufficiently good approximation, the system of forces acting on each object individually. Using <strong>Newton's laws of motion</strong>, such systems can be transformed into systems of motion equations, which can then be solved numerically for given initial conditions.
+</p>
+
+<p>
+An additional feature is the handling of object collisions. <strong>Gravity</strong> handles such events using the "bigger wins" method and applies the <strong>law of conservation of momentum</strong> to calculate the further trajectory of the remaining object.
+</p>
+
+<p>
+The project was implemented in C++, SFML, and TGUI as an introduction to creating my own framework/engine for developing 2D games. I started working on the graphical and physics modules, as well as a simple configuration file handler in a custom format <strong>(*.j3x)</strong>.
+</p>

@@ -14,10 +14,8 @@
         animation-fill-mode: both;
         animation-timing-function: ease-in-out;
         width: 250px;
-        height: calc(60px*6);
         transition: 0.3s;
         overflow: visible;
-        /* box-shadow: 0px 0px 10px 0 black; */
         margin: 10px;
     }
 
@@ -436,5 +434,10 @@
     .modal-content .description {
         width: 95%;
         word-break: break-word;
+    }
+
+    .modal-column {
+        width: 100%;
+        padding: 0 !important;
     }
 }

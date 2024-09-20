@@ -1,0 +1,30 @@
+---
+img_pos: center
+date: 2019-06-09
+name: Vehicles Evolution
+img: evolution.jpeg
+short: |
+  Evolutionary algorithm with UI based on vehicles
+project_url: https://github.com/SpiritStudio/VehiclesEvolution
+---
+
+<p>
+    Many algorithms designed for problem-solving by computers draw inspiration from nature. One such group is evolutionary algorithms, which find optimal solutions through evolution and iteratively refining proposals until the one best suited to the given conditions is found. During my studies, together with <strong><a href="https://github.com/danielm1405" target="_blank">@danielm1405</a></strong>, we implemented a specific case of an evolutionary algorithm—a genetic algorithm. We demonstrated its application for... finding the optimal design of an off-road vehicle.
+</p>
+
+<p>
+    The <strong>genetic algorithm</strong> is a variation of an evolutionary algorithm that, in simplified terms, involves:
+    - Creating a population (in our case, vehicles) of random units.
+    - Evaluating which of them performed best at the task. In our case, it was to travel the greatest distance on a given 2D map composed of hills, holes, and steep inclines.
+    - Selecting a certain percentage of the winning units. We chose the top 5-10% of designs.
+    - Creating the next population based on two mechanisms—crossover and mutation. The first process involved creating a new unit based on two randomly selected "parents." The "child" had averaged (but partially biased towards one or the other parent) parameters of the parents. Mutations involved introducing completely new values (mutations) for random parameters in a small part of the new population. Both processes were equally important to find the optimal solution to the problem.
+    - Repeating the process hundreds to thousands of times until the resulting solution seemed optimal.
+</p>
+
+<p>
+    Due to the random nature of evolutionary algorithms, the solutions proposed can often be surprising. Different runs of the program can yield completely different results. However, at some point in each run, after several hundred generations (iterations of the population), a stabilization trend becomes noticeable. The process of reaching the final solution is also quite fascinating.
+</p>
+
+<p>
+    Our implementation allows users to create their own maps and control the parameters of the genetic algorithm. A visualization of the progress of each population and how each unit individually performs the task is also displayed.
+</p>

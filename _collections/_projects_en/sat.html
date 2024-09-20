@@ -1,0 +1,25 @@
+---
+img_pos: center
+date: 2020-06-01
+name: SAT Solver
+img: sat.png
+short: |
+   Optimal solution to the satisfiability problem written in Haskell
+project_url: https://github.com/jul3x/SATSolver
+---
+
+<p>
+The satisfiability problem (<strong>SAT</strong>) is one of the most important problems in mathematical logic. It involves determining whether there exists any assignment of truth values (either "true" or "false") to a given logical formula (a representation of logical variables and operations among them) such that the formula evaluates to true.
+</p>
+
+<p>
+    While the formulation of this problem may sound entirely theoretical and abstract, it carries a number of more tangible consequences. This problem belongs to the class of NP problems, meaning (in a simplified sense) that finding a solution for a given logical formula is computationally intensive, whereas verifying whether a solution is correct can be done in a shorter (polynomial) time. Problems in this class are often characterized by a <strong>brute-force</strong> approach, which entails exploring the entire space of possible solutions and checking which one is correct.
+</p>
+
+<p>
+    The <strong>SAT</strong> problem is also NP-hard (being in the NP class makes it NP-complete). This means that all problems that belong to the NP class can be transformed (in polynomial time) into the SAT problem. This makes it a completely universal problem, as finding an optimal solution for SAT implies finding optimal solutions for every problem in the NP class. This issue is one of the current Millennium Prize Problems (more <strong><a href="https://en.wikipedia.org/wiki/NP_(complexity)" target="_blank">here</a></strong>).
+</p>
+
+<p>
+    The computational complexity of the SAT problem greatly limits the ability to optimally find solutions. However, there are various optimization techniques that allow for the resolution of a considerable number of logical formulas in a reasonable time. In a project completed during my master's studies, I presented a solution to the <strong>SAT</strong> problem using the <strong>DPLL</strong> algorithm, depth-first search, and the divide-and-conquer principle. The implementation was written in <strong>Haskell</strong>.
+</p>

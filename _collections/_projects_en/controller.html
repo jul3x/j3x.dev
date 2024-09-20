@@ -1,0 +1,15 @@
+---
+img_pos: center
+date: 2020-01-14
+name: SmoothCTRL
+img: controller.jpg
+short: |
+   Game controller with a gyroscope based on STM32
+project_url: https://github.com/jul3x/GameControllerSTM32
+---
+
+A PC game controller based on an STM32 microcontroller with an ARM Cortex-M core (the code was implemented on the STM32F411xE module). It uses standard buttons (shoot / jump) and an inertial measurement unit (IMU - accelerometer + gyroscope) for player control. The main feature of the controller is enabling dynamic gameplay through air movements.<br/><br/>
+
+The device communicates with the computer via USART USB, transmitting real-time sensor readings connected to the microcontroller. The microcontroller code implementation utilizes interrupt-driven operations to optimize resource use. Internal communication between the microcontroller and sensors takes place using the I2C protocol.<br/><br/>
+
+I also wrote code for a simple driver that supports the controller connected to a PC, allowing you to play the classic game Wolfenstein 3D. You can see it <strong><a href="https://github.com/jul3x/GameControllerDriver">here</a></strong>.

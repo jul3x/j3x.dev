@@ -1,0 +1,25 @@
+---
+img_pos: center
+date: 2020-10-24
+name: Turinger
+img: turinger.jpeg
+short: |
+   Interpreter for non-deterministic Turing machines
+project_url: https://github.com/jul3x/TuringMachineInterpreter
+---
+
+<p>
+The Turing machine is an abstract model capable of executing algorithms, and despite its simplicity, it can realize any program that a modern computer can run. Introduced in 1936, it has since become a crucial subject in logical theories and complexity proofs in computer science.
+</p>
+<p>
+    The structure of a standard <strong>Turing Machine</strong> consists of an infinite tape divided into cells and a head that moves along the tape. Each cell can hold a certain value from a selected set of symbols, and the head can occupy a position on a cell and be in a specific state from a chosen set of states. The execution of any algorithm on a Turing Machine involves reading the value of the cell by the head, writing a new value, changing the state from the current one to the next, and moving left/right or halting the computation. Decisions regarding new values, states, and movements are made based on the rules outlined in the algorithm.
+</p>
+
+<p>A Turing Machine where there is only one possible behavior for a given cell value and state is called deterministic. If there are multiple possibilities, such a machine is a non-deterministic Turing machine and takes on more of the character of a thought process rather than an actual machine that can be built.
+</p>
+
+<p>
+    In this project, I presented a <strong>non-deterministic Turing Machine interpreter</strong> written in Python. Specifically, my solution allows for checking whether the input machine will return a positive result for a given tape within a limited time (a restricted number of iterations). I wrote a few tests to check correctness, such as a Turing Machine that verifies if a word on the tape is a palindrome and another that checks if the first number on the tape is the square of the second. I also added a script that translates multi-tape Turing Machines into a single tape.
+</p>
+
+<p>Abstract, yet interesting.</p>

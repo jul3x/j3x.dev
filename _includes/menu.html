@@ -7,16 +7,16 @@
     <div id="center-section">
         <menu>
             <li class="menu-link main-link">
-                <a href="#main">Strona główna</a>
+                <a href="#main">{{ page.menu.main_page }}</a>
             </li>
             <li class="menu-link portfolio-link">
-                <a href="#portfolio">Portfolio</a>
+                <a href="#portfolio">{{ page.menu.portfolio }}</a>
             </li>
             <li class="menu-link offer-link">
-                <a href="#offer">Oferta</a>
+                <a href="#offer">{{ page.menu.offer }}</a>
             </li>
             <li class="menu-link contact-link">
-                <a href="#contact">Kontakt</a>
+                <a href="#contact">{{ page.menu.contact }}</a>
             </li>
         </menu>
     </div>
@@ -27,6 +27,15 @@
         <a href="https://github.com/jul3x" target="_blank">
             <img src="/assets/img/github.png" title="GitHub" alt="GitHub" />
         </a>
+        {% if page.lang == 'en' %}
+        <a href="/pl" class="lang-link">
+            <img src="/assets/img/pl.svg" title="Polska wersja" alt="Polska wersja" style="filter: none; height: 25%; padding-left: 10px" />
+        </a>
+        {% else %}
+        <a href="/en" class="lang-link">
+            <img src="/assets/img/en.svg" title="English version" alt="English version" style="filter: none; height: 25%; padding-left: 10px" />
+        </a>
+        {% endif %}
     </div>
 </div>
 
@@ -36,16 +45,27 @@
             <a style="cursor: pointer">&#9776;</a>
         </li>
         <li class="menu-link main-link">
-            <a href="#main">Strona główna</a>
+            <a href="#main">{{ page.menu.main_page }}</a>
         </li>
         <li class="menu-link portfolio-link">
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">{{ page.menu.portfolio }}</a>
         </li>
         <li class="menu-link offer-link">
-            <a href="#offer">Oferta</a>
+            <a href="#offer">{{ page.menu.offer }}</a>
         </li>
         <li class="menu-link contact-link">
-            <a href="#contact">Kontakt</a>
+            <a href="#contact">{{ page.menu.contact }}</a>
+        </li>
+        <li class="menu-link">
+        {% if page.lang == 'en' %}
+        <a href="/pl" class="lang-link">
+            <img src="/assets/img/pl.svg" title="Polska wersja" alt="Polska wersja" style="filter: none; height: 30%; margin-top: 20px" />
+        </a>
+        {% else %}
+        <a href="/en" class="lang-link">
+            <img src="/assets/img/en.svg" title="English version" alt="English version" style="filter: none; height: 30%; margin-top: 20px" />
+        </a>
+        {% endif %}
         </li>
     </menu>
 </div>
@@ -88,5 +108,12 @@
     icon.addEventListener('click', function() {
         isMenuOpen = !isMenuOpen;
         openClose(isMenuOpen);
+    });
+
+    document.querySelectorAll('.lang-link').forEach(element => element.onclick = function(event) {
+        event.preventDefault();
+        const currentHash = window.location.hash;
+        const newUrl = element.href + currentHash;
+        window.location.href = newUrl;
     });
 </script>

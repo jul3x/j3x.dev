@@ -1,0 +1,32 @@
+---
+date: 2023-05-16
+name: SmallTalks
+img: smalltalks.jpeg
+short: Prototype of an intelligent conversational toy
+
+img_pos: center;
+video: "https://www.youtube.com/embed/Q8EayWG7v_8"
+project_url: "https://www.youtube.com/shorts/Q8EayWG7v_8"
+---
+
+<p>
+In early 2023, together with <a href="https://github.com/MichalBortkiewicz" target="_blank" class="bold">@michalbortkiewicz</a>, we decided to delve deeper into the increasingly popular topic of large language models and their practical applications.
+</p>
+
+<p>
+We created a prototype of an intelligent conversational toy that met the requirements of an artificial assistant. The toy could recognize speech, infer, formulate responses to questions, and produce speech. In various settings, it could also tell stories and even solve problems.
+The prototype was based on a <strong>Raspberry Pi 4</strong> powered by a battery and connected to the internet. The software managing the conversation was written in <strong>Python</strong>. We performed text transcription (<strong>Speech-To-Text</strong>) and speech synthesis (<strong>Text-To-Speech</strong>) on the device using local open-source models (<strong>Faster Whisper</strong> and <strong>Tacotron 2</strong>). Inference and response generation were handled by external models (<strong>OpenAI GPT-3.5</strong>) with dedicated <strong>prompt engineering</strong>. The entire setup was embedded inside a plush teddy bear.
+</p>
+
+<p>
+    The biggest challenge was dealing with delays. Each AI model introduced additional latency, ranging from several hundred milliseconds to a few seconds. To maintain smooth conversation flow in the early stages of prototype development, we used scripted filler phrases. Multithreading allowed us to bridge the gaps between user input and toy responses.
+    </p>
+
+<p>
+    The main goal was to create a generic solution that could facilitate the development of entire series of interactive toys. We experimented with educational toys which teach languages (like the one shown in the attached video) or colors and also with toys with purely entertaining aspects. One such example was the interactive <strong>Yoda Master</strong>, which presented a unique challenge due to its distinct voice and grammar. We managed to train a <strong>Text-To-Speech</strong> model and craft appropriate input data for a large language model. This resulted in a prototype toy for <strong>Star Wars</strong> fans, which narrated the universe in the voice and style of the <strong>Master</strong>.
+    </p>
+
+<p>
+    The project then transitioned from the prototype phase to the <strong>MVP</strong> phase, where we aimed to create a more practical solution — incorporating most computations in the cloud and a horizontally scalable architecture.
+    However, the work was halted due to the market's insufficient maturity for the idea we presented.
+    </p>

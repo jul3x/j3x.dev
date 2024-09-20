@@ -1,117 +1,48 @@
+{% if page.lang == "en" %}
+{% assign steps = site.steps_en %}
+{% assign services = site.services_en %}
+{% else %}
+{% assign steps = site.steps_pl %}
+{% assign services = site.services_pl %}
+{% endif %}
 <div class="section line-up delayed-7">
-    <h4>Prowadzenie projektów informatycznych przez wszystkie etapy rozwoju:</h4>
+    <h4>{{ page.texts.offer_steps }}</h4>
 
     <ul id="offer-steps">
-   <li style="--accent-color: var(--feature)">
-        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-        <div class="title">Idea</div>
-        <div class="descr">Wspólne wypracowanie lub konfrontacja pomysłu.</div>
-    </li>
-    <li style="--accent-color: var(--black)">
-        <div class="icon"><i class="fa-solid fa-book"></i></div>
-        <div class="title">Research</div>
-        <div class="descr">Analiza rynku, konkurencji i technologii.</div>
-    </li>
-    <li style="--accent-color: var(--feature)">
-        <div class="icon"><i class="fa-solid fa-handshake"></i></div>
-        <div class="title">Wymagania</div>
-        <div class="descr">Zebranie i dokumentacja oczekiwań użytkowników oraz wymagań projektowych.</div>
-    </li>
-    <li style="--accent-color: var(--dark)">
-        <div class="icon"><i class="fa-solid fa-hammer"></i></div>
-        <div class="title">Prototyp</div>
-        <div class="descr">Stworzenie wstępnej wersji produktu do testów i oceny funkcji.</div>
-    </li>
-    <li style="--accent-color: var(--feature)">
-        <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
-        <div class="title">Architektura</div>
-        <div class="descr">Opracowanie struktury systemu i wybór technologii.</div>
-    </li>
-    <li style="--accent-color: var(--black)">
-        <div class="icon"><i class="fa-solid fa-code"></i></div>
-        <div class="title">Implementacja</div>
-        <div class="descr">Kodowanie i realizacja zaprojektowanego rozwiązania zgodnie z przyjętymi standardami.</div>
-    </li>
-    <li style="--accent-color: var(--feature)">
-        <div class="icon"><i class="fa-solid fa-vial-circle-check"></i></div>
-        <div class="title">Testy</div>
-        <div class="descr">Kontrola jakości oprogramowania pod kątem funkcjonalnym, wydajnościowym oraz bezpieczeństwa.</div>
-    </li>
-    <li style="--accent-color: var(--dark)">
-        <div class="icon"><i class="fa-solid fa-paper-plane"></i></div>
-        <div class="title">Wdrożenie</div>
-        <div class="descr">Publikacja gotowego rozwiązania w środowisku produkcyjnym, dostępnym dla użytkowników końcowych.</div>
-    </li>
-    <li style="--accent-color: var(--feature)">
-        <div class="icon"><i class="fa-solid fa-wrench"></i></div>
-        <div class="title">Utrzymanie</div>
-        <div class="descr">Monitorowanie, naprawa błędów oraz aktualizacje systemu, aby zapewnić jego nieprzerwaną i efektywną pracę.</div>
-    </li>
-</ul>
-
+        {% for step in steps %}
+        {% assign modulo2 = forloop.index0 | modulo: 2 %}
+        {% assign modulo4 = forloop.index0 | modulo: 4 %}
+        {% if modulo2 == 0 %}
+        {% assign color = "--feature" %}
+        {% elsif modulo4 == 1 %}
+        {% assign color = "--black" %}
+        {% else %}
+        {% assign color = "--dark" %}
+        {% endif %}
+        <li style="--accent-color: var({{ color }})">
+            <div class="icon"><i class="fa-solid fa-{{ step.icon }}"></i></div>
+            <div class="title">{{ step.title }}</div>
+            <div class="descr">{{ step.descr }}</div>
+        </li>
+        {% endfor %}
     </ul>
 </div>
 <div class="section line-up delayed-8">
-    <h4>Usługi:</h4>
+    <h4>{{ page.texts.services }}</h4>
 
     <ul id="offer-services">
-   <li>
-        <div class="icon"><i class="fa-solid fa-cogs"></i></div>
-        <div class="title">Systemy dedykowane</div>
-        <div class="descr">
-            Tworzę unikalne rozwiązania dostosowane do specyficznych potrzeb Twojej firmy.
-            Każdy system projektuję z myślą o maksymalnej efektywności i wydajności. aby w pełni wspierać procesy biznesowe.
-        </div>
-    </li>
+    {% for service in services %}
     <li>
-        <div class="icon"><i class="fa-solid fa-globe"></i></div>
-        <div class="title">Aplikacje webowe</div>
+        <div class="icon"><i class="fa-solid fa-{{ service.icon }}"></i></div>
+        <div class="title">{{ service.title }}</div>
         <div class="descr">
-            Specjalizuję się w tworzeniu nowoczesnych aplikacji webowych. Szczególną uwagę poświęcam intuicji rozwiązania oraz bezpieczeństwu.
-            Aplikacje internetowe mojego autorstwa mogą wspomóc automatyzację procesów, poprawę komunikacji z klientami oraz zwiększenie produktywności.
+            {{ service.descr }}
         </div>
     </li>
-    <li>
-        <div class="icon"><i class="fa-solid fa-desktop"></i></div>
-        <div class="title">Strony internetowe</div>
-        <div class="descr">
-            Projektuję i wdrażam profesjonalne strony internetowe, które wyróżniają się atrakcyjnym designem i funkcjonalnością.
-            Każda strona jest optymalizowana pod kątem SEO, aby przyciągać ruch i skutecznie prezentować Twoją ofertę w sieci.
-        </div>
-    </li>
-    <li>
-        <div class="icon"><i class="fa-solid fa-mobile-alt"></i></div>
-        <div class="title">Aplikacje mobilne</div>
-        <div class="descr">
-            Tworzę aplikacje mobilne na platformy Android oraz iOS. Moje aplikacje cechują się intuicyjnym interfejsem, wysoką wydajnością i bezpieczeństwem, dzięki czemu idealnie wspierają rozwój Twojego biznesu w świecie mobilnym.
-        </div>
-    </li>
-    <li>
-        <div class="icon"><i class="fa-solid fa-code"></i></div>
-        <div class="title">Skrypty i narzędzia</div>
-        <div class="descr">
-            Oferuję tworzenie skryptów i narzędzi automatyzujących codzienne zadania. Czerpiąc z doświadczenia w optymalizowaniu własnej pracy pomogę Ci usprawnić działanie Twojej firmy. Dzięki moim rozwiązaniom oszczędzisz czas i zredukujesz ryzyko błędów, aby skupić się na kluczowych aspektach biznesu.
-        </div>
-    </li>
-    <li>
-        <div class="icon"><i class="fa-solid fa-comments"></i></div>
-        <div class="title">Konsultacje IT</div>
-        <div class="descr">
-            Świadczę profesjonalne usługi konsultingowe w zakresie IT, pomagając w wyborze i implementacji najlepszych rozwiązań technologicznych oraz architektury.
-            Moje doświadczenie pozwali na efektywne rozwiązanie problemów oraz optymalizację procesów IT w Twojej firmie.
-        </div>
-    </li>
-    <li>
-        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-        <div class="title">Nietypowe rozwiązania</div>
-        <div class="descr">
-            Podejmuję się realizacji nietypowych projektów, które wymagają innowacyjnego podejścia i kreatywności.
-            Niezależnie od tego, jak złożone lub unikalne są Twoje wymagania, znajdę rozwiązanie, które spełni Twoje oczekiwania.
-        </div>
-    </li>
+    {% endfor %}
 </ul>
 
 </div>
 <div class="section line-up delayed-9" style="display: none /* for now */">
-    <h5>Zaufali mi:</div>
+    <h5>{{ site.texts.trust }}:</div>
 </div>
