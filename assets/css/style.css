@@ -261,7 +261,7 @@ section {
 
 .portfolio-sections .portfolio-section {
     display: none;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     width: 75%;
     margin: 0 auto;
 }

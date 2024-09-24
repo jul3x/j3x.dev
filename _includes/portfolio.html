@@ -128,11 +128,18 @@
         /* Show appropriate section */
         Array.from(document.querySelectorAll('.portfolio-sections .portfolio-section')).forEach((el) => {
             if (el.id === section) {
-                el.style.display = 'block';
-                el.style.opacity = 1;
+                setTimeout(() => {
+                    el.style.display = 'block';
+                    el.style.opacity = 0;
+                }, 300);
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                }, 310);
             } else {
+                setTimeout(() => {
+                    el.style.display = 'none';
+                }, 300);
                 el.style.opacity = 0;
-                el.style.display = 'none';
             }
         })
 
