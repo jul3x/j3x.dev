@@ -272,8 +272,8 @@
 #bg-layout {
     position: absolute;
     width: 100%;
-    top: calc(50vh + 100px - 205px);
-    height: calc(50vh - 100px + 205px);
+    top: calc(50% + 100px - 205px);
+    height: calc(50% - 100px + 205px);
     overflow: hidden;
     z-index: -2;
 }
@@ -282,7 +282,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    height: 50vh;
+    height: 50%;
     background-color: var(--light);
     animation: 2s bgLayoutPopIn;
     animation-fill-mode: both;
@@ -291,7 +291,7 @@
 
 @keyframes bgLayoutPopIn {
     0% {
-        top: 100vh;
+        top: 100%;
     }
 
     100% {
@@ -314,8 +314,7 @@
 
 @keyframes dividerPopIn {
     0% {
-        top: 100vh;
-        transform: translateY(-110%);
+        top: 100%;
     }
 
     100% {
@@ -365,8 +364,7 @@
 
 @keyframes shadowDividerPopIn {
     0% {
-        top: 100vh;
-        transform: translateY(110%);
+        top: 100%;
     }
 
     100% {

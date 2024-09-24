@@ -173,7 +173,9 @@
         }
     }
 
-    updateState(true);
+    window.addEventListener('DOMContentLoaded', () => {
+        updateState(true);
+    });
     /** Listen for popstate events to handle back/forward navigation */
     window.addEventListener('popstate', function() {
         updateState();

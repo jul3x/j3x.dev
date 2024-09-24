@@ -1259,9 +1259,14 @@ FileETag None
 #     RewriteRule ^(.+)\.(\w+)\.(avifs?|bmp|css|cur|gif|ico|jpe?g|jxl|m?js|a?png|svgz?|webp|webmanifest)$ $1.$3 [L]
 # </IfModule>
 
-# Redirect to preferred lang
+# Redirect to preferred lang and https
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Force HTTPS on all requests
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     SetEnvIf Request_URI ^/$            toplevel
     SetEnvIf Accept-Language 'pl'       lang_pl
     SetEnvIf Accept-Language 'en'       lang_en
