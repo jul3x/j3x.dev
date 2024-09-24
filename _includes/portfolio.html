@@ -131,10 +131,10 @@
                 setTimeout(() => {
                     el.style.display = 'block';
                     el.style.opacity = 0;
+                    setTimeout(() => {
+                        el.style.opacity = 1;
+                    }, 100);
                 }, 300);
-                setTimeout(() => {
-                    el.style.opacity = 1;
-                }, 310);
             } else {
                 setTimeout(() => {
                     el.style.display = 'none';

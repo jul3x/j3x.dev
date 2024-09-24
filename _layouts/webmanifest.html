@@ -1,0 +1,27 @@
+{
+  "name": "{{ page.title }}",
+  "short_name": "j3x.dev",
+  "description": "{{ page.description }}",
+  "start_url": "/{{ page.lang }}/index.html",
+  "display": "standalone",
+  "background_color": "#ebeae3",
+  "theme_color": "#fa2742",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  {% if page.lang == 'en' %}
+  "lang": "en-GB"
+  {% else %}
+  "lang": "pl-PL"
+  {% endif %}
+}

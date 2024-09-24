@@ -1,3 +1,9 @@
+assets:
+  enabled: true
+production:
+  minify_css: true
+  minify_js: true
+
 collections_dir: _collections
 collections:
   skills_en:
