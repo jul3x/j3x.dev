@@ -246,6 +246,54 @@
     }
 }
 
+/* Text header */
+@media (min-width: 500px) and (max-height: 750px) {
+    #header h2 {
+        animation: 2s headerH2PopInMobile2;
+        animation-delay: 4.5s;
+        animation-fill-mode: both;
+        font-size: 30px;
+    }
+
+    @keyframes headerH2PopInMobile2 {
+        0% {
+            top: 50%;
+        }
+
+        100% {
+            top: 25%;
+        }
+    }
+
+    .photo {
+        height: 60% !important;
+    }
+
+    @media (max-width: 1000px) {
+        .main-position-left {
+            transform: translateY(-100px);
+        }
+        .main-position-right {
+            transform: translateY(-100px);
+        }
+
+        #main-content, #contact-content {
+            transform: translateY(-100px);
+        }
+
+        #contact .main-header .main-position-left {
+            transform: translateX(-50%) translateY(-100px);
+        }
+    }
+}
+
+/* Text header */
+@media (min-width: 500px) and (max-height: 500px) {
+    #header h2 {
+        display: none;
+    }
+}
+
 @media (max-width: 1000px) {
     #offer .main-header,
     #portfolio .main-header {

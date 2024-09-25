@@ -143,7 +143,7 @@ menu li:hover {
 /** Content */
 
 .page-content {
-    top: calc(50vh + 100px - 205px) !important;
+    top: calc(50% + 100px - 205px) !important;
     bottom: auto !important;
     left: 5% !important;
     width: 90% !important;
@@ -684,4 +684,8 @@ section {
 #offer-services li .descr {
     margin-top: 5px;
     text-align: justify;
+}
+
+.crypted-mail:after {
+    content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
 }

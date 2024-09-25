@@ -1,0 +1,14 @@
+https://j3x.dev/en/#main
+https://j3x.dev/en/?p=skills#portfolio
+https://j3x.dev/en/?p=experience#portfolio
+https://j3x.dev/en/?p=realizations#portfolio
+https://j3x.dev/en/?p=projects#portfolio
+https://j3x.dev/en/#contact
+https://j3x.dev/en/#offer
+https://j3x.dev/pl/#main
+https://j3x.dev/pl/?p=skills#portfolio
+https://j3x.dev/pl/?p=experience#portfolio
+https://j3x.dev/pl/?p=realizations#portfolio
+https://j3x.dev/pl/?p=projects#portfolio
+https://j3x.dev/pl/#contact
+https://j3x.dev/pl/#offer

@@ -1272,8 +1272,8 @@ FileETag None
     SetEnvIf Accept-Language 'en'       lang_en
     RewriteCond %{ENV:toplevel}         1
     RewriteCond %{ENV:lang_pl}      1
-    RewriteRule ^   /pl [R=302,L]
+    RewriteRule ^   /pl/ [R=302,L]
 
     RewriteCond %{ENV:toplevel}         1
-    RewriteRule ^   /en [R=302,L]
+    RewriteRule ^   /en/ [R=302,L]
 </IfModule>
