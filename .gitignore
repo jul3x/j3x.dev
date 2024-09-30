@@ -5,6 +5,11 @@ node_modules
 dist
 .cache
 
+# Secure
+.env
+
+# Generated
 _site/*
+
 # Emacs files
 .#*

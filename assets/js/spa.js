@@ -184,3 +184,82 @@ document.body.style.overflowY = "hidden";
 setTimeout(() => {
   document.body.style.overflowY = "initial";
 }, 7000);
+
+function portfolioMenu(section, dontUpdateURL) {
+  if (!dontUpdateURL) {
+    const currentTitle = titles["#" + section];
+    const currentState = history.state;
+    history.pushState(currentState, currentTitle, `?p=${section}#portfolio`);
+    document.title = currentTitle;
+  }
+
+  /* Change style of link */
+  Array.from(
+    document.querySelectorAll(".portfolio-menu .portfolio-menu-item"),
+  ).forEach((el) => {
+    el.classList.remove("active");
+  });
+
+  const sectionDOM = document.getElementById("portfolio-menu-" + section);
+  if (!sectionDOM) {
+    return false;
+  }
+  sectionDOM.classList.add("active");
+
+  /* Show appropriate section */
+  Array.from(
+    document.querySelectorAll(".portfolio-sections .portfolio-section"),
+  ).forEach((el) => {
+    if (el.id === section) {
+      setTimeout(() => {
+        el.style.display = "block";
+        el.style.opacity = 0;
+        setTimeout(() => {
+          el.style.opacity = 1;
+        }, 100);
+      }, 300);
+    } else {
+      setTimeout(() => {
+        el.style.display = "none";
+      }, 300);
+      el.style.opacity = 0;
+    }
+  });
+
+  return true;
+}
+
+function updateState(init) {
+  const url = new URL(window.location.href);
+  const portfolioParam = url.searchParams.get("p") || "skills";
+  const modalParam = url.searchParams.get("id");
+
+  if (!portfolioMenu(portfolioParam, /* dont update URL */ true)) {
+    portfolioMenu("skills", true);
+  }
+
+  if (init) {
+    /* Because it needs to be defined, secondly because it should not appear instantly */
+    setTimeout(() => {
+      if (modalParam) {
+        openModal(portfolioParam, modalParam);
+      } else {
+        closeModal();
+      }
+    }, 5000);
+  } else {
+    if (modalParam) {
+      openModal(portfolioParam, modalParam);
+    } else {
+      closeModal();
+    }
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateState(true);
+});
+/** Listen for popstate events to handle back/forward navigation */
+window.addEventListener("popstate", function () {
+  updateState();
+});

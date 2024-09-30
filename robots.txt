@@ -2,5 +2,6 @@
 
 # Allow crawling of all content
 User-agent: *
+Disallow: /mail.php
 Allow: /
 Sitemap: https://j3x.dev/sitemap.txt

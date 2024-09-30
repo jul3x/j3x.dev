@@ -1,6 +1,106 @@
 <div class="section line-up delayed-8">
     <h4>Julian Prolejko - Software Engineer</h4>
 </div>
-<div class="section line-up delayed-9">
-    {{ page.texts.contact_bottom }}
+
+<div class="section line-up delayed-9" id="contact-text">
+    <div id="contact-form-wrapper">
+        <form id="contact-form">
+            <div id="contact-id">
+                <div id="contact-id-flex">
+                <div id="contact-email-wrapper">
+                    <label for="email">{{ page.form.email }}:</label><br>
+                    <input type="email" id="email" name="email" required autocomplete="email"><br/>
+                </div>
+
+                <div id="contact-name-wrapper">
+                    <label for="name">{{ page.form.name }}:</label><br>
+                    <input type="text" id="name" name="name" required autocomplete="name"><br/>
+                </div>
+                </div>
+            </div>
+            <br/>
+            <div id="contact-rest">
+            <label for="message">{{ page.form.message }}:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br>
+
+            <button
+                class="g-recaptcha"
+                data-sitekey="6LcBrE8qAAAAAL5xD2EYaK9YTFTqxDh3CeJHUI9b"
+                data-callback="sendForm"
+                data-action="submit"
+                id="contact-button"
+                type="submit">
+                <span class="button-text">{{ page.form.submit }}</span>
+                <div class="spinner"></div>
+            </button>
+            </div>
+        </form>
+
+    </div>
+    <div id="contact-info">
+        {{ page.texts.contact_bottom }}
+    </div>
 </div>
+
+<script>
+ let timeoutA, timeoutB, timeoutC;
+
+ function inform(txt, alertType) {
+     let alert = document.getElementById('contact-form-response');
+     alert.style.display = 'block';
+     alert.className = alertType;
+     alert.innerHTML = txt;
+
+     clearTimeout(timeoutC);
+     clearTimeout(timeoutB);
+     clearTimeout(timeoutA);
+
+     timeoutA = setTimeout(function() {
+         alert.style.opacity = 0.9;
+     }, 100);
+     timeoutB = setTimeout(function() {
+         alert.style.opacity = 0;
+         timeoutC = setTimeout(function() {
+             alert.style.display = 'none';
+         }, 500);
+     }, 5000);
+ }
+
+ /* Captcha token */
+ function sendForm(token) {
+     const button = document.getElementById('contact-button');
+     /** Timeouts because of crazy google logic */
+     setTimeout(function () {
+         button.disabled = true;
+     }, 0);
+
+     const form = document.getElementById('contact-form');
+     if (!form.reportValidity()) {
+         setTimeout(function () {
+             button.disabled = false;
+         }, 10);
+         return;
+     }
+
+     const formData = new FormData(form);
+
+     const xhr = new XMLHttpRequest();
+     xhr.open('POST', 'https://j3x.dev/mail.php', true);
+
+     xhr.onload = function () {
+         if (xhr.status === 200) {
+             inform('{{ page.form.success }}', 'green');
+         } else {
+             inform('{{ page.form.error }}', 'red');
+         }
+     };
+     xhr.onerror = function() {
+         inform('{{ page.form.error }}', 'red');
+     };
+     xhr.send(formData);
+     /** Timeout for 5s */
+     setTimeout(function () {
+         button.disabled = false;
+     }, 5000);
+ }
+</script>
