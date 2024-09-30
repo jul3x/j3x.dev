@@ -3,22 +3,22 @@ img_pos: center
 date: 2020-05-29
 name: CountReduce
 img: bigdata.png
-short: Implementacja problemu zliczalności za pomocą minimalnego MapReduce
+short: Implementacja problemu zliczalności za&nbsp;pomocą minimalnego MapReduce
 project_url: https://github.com/jul3x/BigDataMinimalAlgorithm
 ---
 
 <p>
-Policzenie ile jest w danym zbiorze punktów (2D lub 3D), których wszystkie współrzędne są większe od podanych jest bardzo prostym problemem. Wyzwanie rozpoczyna się w momencie, gdy punktów jest tak dużo, że cały zbiór nie mieści się w pamięci RAM jednego komputera. Wyzwanie jest jeszcze większe, gdy zbiór nie mieści się na dyskach jednego komputera. Kolejnym utrudnieniem jest liczba współrzędnych-pytań (punktów, które są brane jako kryterium porównawcze), która jest porównywalna z liczbą wszystkich punktów w zbiorze.
+Policzenie ile jest w&nbsp;danym zbiorze punktów (2D lub 3D), których wszystkie współrzędne są większe od&nbsp;podanych jest bardzo prostym problemem. Wyzwanie rozpoczyna się w&nbsp;momencie, gdy punktów jest tak dużo, że cały zbiór nie mieści się w&nbsp;pamięci RAM jednego komputera. Wyzwanie jest jeszcze większe, gdy zbiór nie mieści się na&nbsp;dyskach jednego komputera. Kolejnym utrudnieniem jest liczba współrzędnych-pytań (punktów, które są brane jako kryterium porównawcze), która jest porównywalna z&nbsp;liczbą wszystkich punktów w&nbsp;zbiorze.
 </p>
 
 <p>
-Do rozwiązywania tego typu problemów konieczne są algorytmy równoległe, pozwalające na wykonywanie obliczeń równocześnie na wielu maszynach. Wyzwaniem przy projektowaniu takich algorytmów jest zapewnienie odpowiedniego dostępu do pamięci, czyli podzbiorów danych. Najbardziej optymalne algorytmy powinny przesyłać pomiędzy jednostkami obliczeniowymi jak najmniejsze ilości danych, tak aby ograniczyć straty szybkości spowodowane opóźnieniami w komunikacji. Algorytmy równoległe, których dostęp do danych jest najbardziej optymalny pod względem teoretycznym nazywane są <strong>minimalnymi</strong>.
+Do rozwiązywania tego typu problemów konieczne są algorytmy równoległe, pozwalające na&nbsp;wykonywanie obliczeń równocześnie na&nbsp;wielu maszynach. Wyzwaniem przy projektowaniu takich algorytmów jest zapewnienie odpowiedniego dostępu do&nbsp;pamięci, czyli podzbiorów danych. Najbardziej optymalne algorytmy powinny przesyłać pomiędzy jednostkami obliczeniowymi jak najmniejsze ilości danych, tak aby ograniczyć straty szybkości spowodowane opóźnieniami w&nbsp;komunikacji. Algorytmy równoległe, których dostęp do&nbsp;danych jest najbardziej optymalny pod&nbsp;względem teoretycznym nazywane są <strong>minimalnymi</strong>.
 </p>
 
 <p>
-    W podlinkowanym repozytorium zaprezentowałem rozwiązanie problemu z pierwszego paragrafu dla dwóch przypadków (2D oraz 3D) za pomocą algorytmu minimalnego opisanego w publikacji: <strong><a href="https://dl.acm.org/doi/pdf/10.1145/3070607.3075961" rel="noreferrer" target="_blank">https://dl.acm.org/doi/pdf/10.1145/3070607.3075961</a></strong>. Problem został rozwiązany w <strong>Scali</strong> przy użyciu <strong>Apache Sparka</strong> jako frameworka do <strong>MapReduce</strong> oraz <strong>YARN i HDFS</strong> jako rozproszonego systemu plików do przechowywania danych.
+    W podlinkowanym repozytorium zaprezentowałem rozwiązanie problemu z&nbsp;pierwszego paragrafu dla dwóch przypadków (2D oraz 3D) za&nbsp;pomocą algorytmu minimalnego opisanego w&nbsp;publikacji: <strong><a href="https://dl.acm.org/doi/pdf/10.1145/3070607.3075961" rel="noreferrer" target="_blank">https://dl.acm.org/doi/pdf/10.1145/3070607.3075961</a></strong>. Problem został rozwiązany w&nbsp;<strong>Scali</strong> przy użyciu <strong>Apache Sparka</strong> jako frameworka do&nbsp;<strong>MapReduce</strong> oraz <strong>YARN i&nbsp;HDFS</strong> jako rozproszonego systemu plików do&nbsp;przechowywania danych.
 </p>
 
 <p>
-    W projekcie zamieściłem również skrypty do stawiania klastra obliczeniowego, generatory danych i sekwencyjne sprawdzarki do testu działania rozproszonego algorytmu na małych zbiorach danych. Projekt powstał podczas kursu z przetwarzania dużych danych na MIMUW.
+    W projekcie zamieściłem również skrypty do&nbsp;stawiania klastra obliczeniowego, generatory danych i&nbsp;sekwencyjne sprawdzarki do&nbsp;testu działania rozproszonego algorytmu na&nbsp;małych zbiorach danych. Projekt powstał podczas kursu z&nbsp;przetwarzania dużych danych na&nbsp;MIMUW.
 </p>

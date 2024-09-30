@@ -164,6 +164,7 @@ menu li:hover {
 
 .content p {
     text-align: center;
+    hyphens: auto;
 }
 
 .content .section {

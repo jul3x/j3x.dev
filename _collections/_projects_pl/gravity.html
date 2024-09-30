@@ -10,19 +10,19 @@ project_url: https://github.com/jul3x/Gravity
 
 <p>
 <strong>Gravity</strong> to interaktywny symulator międzyplanetarnych sił grawitacji.
-Pozwala na proste tworzenie scenariuszy kosmicznego ruchu, aktywne dodawanie nowych obiektów i zapisywanie przykładów na później.
-Składa się z bardzo prostego interfejsu graficznego i sterowania myszka + klawiatura.
-Wystawiony dla użytkownika jest również plik konfiguracyjny pozwalający zmieniać wygląd oraz podstawowe stałe fizyczne uwzględniane w obliczeniach.
+Pozwala na&nbsp;proste tworzenie scenariuszy kosmicznego ruchu, aktywne dodawanie nowych obiektów i&nbsp;zapisywanie przykładów na&nbsp;później.
+Składa się z&nbsp;bardzo prostego interfejsu graficznego i&nbsp;sterowania myszka + klawiatura.
+Wystawiony dla użytkownika jest również plik konfiguracyjny pozwalający zmieniać wygląd oraz podstawowe stałe fizyczne uwzględniane w&nbsp;obliczeniach.
 </p>
 
 <p>
-Zasada działania opiera się na rozwiązywaniu układów równań ruchu (różniczkowych) w czasie rzeczywistym za pomocą <strong>algorytmu Rungego-Kutty 4-rzędu</strong>. Mając zadane masy oraz położenia obiektów względem siebie, algorytm w symulatorze jest w stanie wyliczyć z wystarczająco dobrym przybliżeniem układ sił działąjący na każdy z obiektów z osobna. Z pomocą <strong>zasad dynamiki Newtona</strong>, tak skonstruowane układy można przekształcić w układy równań ruchu, które następnie mogą zostać rozwiązane numerycznie dla zadanych warunków początkowych.
+Zasada działania opiera się na&nbsp;rozwiązywaniu układów równań ruchu (różniczkowych) w&nbsp;czasie rzeczywistym za&nbsp;pomocą <strong>algorytmu Rungego-Kutty 4-rzędu</strong>. Mając zadane masy oraz położenia obiektów względem siebie, algorytm w&nbsp;symulatorze jest w&nbsp;stanie wyliczyć z&nbsp;wystarczająco dobrym przybliżeniem układ sił działąjący na&nbsp;każdy z&nbsp;obiektów z&nbsp;osobna. Z pomocą <strong>zasad dynamiki Newtona</strong>, tak skonstruowane układy można przekształcić w&nbsp;układy równań ruchu, które następnie mogą zostać rozwiązane numerycznie dla zadanych warunków początkowych.
 </p>
 
 <p>
-Dodatkową funkcjonalnością jest obsługa zderzeń obiektów. <strong>Gravity</strong> obsługuje takie zdarzenia metodą "większy zwycięża" i wykorzystuje <strong>zasadę zachowania pędu</strong> w celu wyliczenia dalszej trajektorii lotu pozostałego obiektu.
+Dodatkową funkcjonalnością jest obsługa zderzeń obiektów. <strong>Gravity</strong> obsługuje takie zdarzenia metodą "większy zwycięża" i&nbsp;wykorzystuje <strong>zasadę zachowania pędu</strong> w&nbsp;celu wyliczenia dalszej trajektorii lotu pozostałego obiektu.
 </p>
 
 <p>
-Projekt zaimplementowany w C++, SFML i TGUI jako wstęp do stworzenia własnego frameworka/silnika do tworzenia gier 2D. Rozpocząłem w nim pracę nad modułem graficznym, fizycznym oraz prostą obsługą plików konfiguracyjnych o własnym formacie <strong>(*.j3x)</strong>.
+Projekt zaimplementowany w&nbsp;C++, SFML i&nbsp;TGUI jako wstęp do&nbsp;stworzenia własnego frameworka/silnika do&nbsp;tworzenia gier 2D. Rozpocząłem w&nbsp;nim pracę nad&nbsp;modułem graficznym, fizycznym oraz prostą obsługą plików konfiguracyjnych o&nbsp;własnym formacie <strong>(*.j3x)</strong>.
 </p>

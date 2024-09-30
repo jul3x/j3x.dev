@@ -3,22 +3,22 @@ img_pos: center
 date: 2020-05-29
 name: CountReduce
 img: bigdata.png
-short: Implementation of a counting problem using minimal MapReduce
+short: Implementation of&nbsp;a counting problem using minimal MapReduce
 project_url: https://github.com/jul3x/BigDataMinimalAlgorithm
 ---
 
 <p>
-Counting how many points in a given set (2D or 3D) have all coordinates greater than the given ones is a very simple problem. The challenge begins when there are so many points that the entire set cannot fit into the RAM of a single computer. The challenge becomes even greater when the set cannot fit onto the disks of a single computer. Another complication is the number of query points (points that are used as comparison criteria), which can be comparable to the number of all points in the set.
+Counting how many points in&nbsp;a given set (2D or&nbsp;3D) have all coordinates greater than the&nbsp;given ones is a&nbsp;very simple problem. The challenge begins when there are so many points that the&nbsp;entire set cannot fit into the&nbsp;RAM of&nbsp;a single computer. The challenge becomes even greater when the&nbsp;set cannot fit onto the&nbsp;disks of&nbsp;a single computer. Another complication is the&nbsp;number of&nbsp;query points (points that are used as&nbsp;comparison criteria), which can be comparable to&nbsp;the number of&nbsp;all points in&nbsp;the set.
 </p>
 
 <p>
-To solve such problems, parallel algorithms are necessary, allowing computations to be performed simultaneously on many machines. The challenge in designing such algorithms is ensuring proper access to memory, i.e., subsets of data. The most optimal algorithms should transfer the smallest possible amount of data between computing units to minimize the speed losses caused by communication delays. Parallel algorithms whose access to data is theoretically the most optimal are called <strong>minimal</strong>.
+To solve such problems, parallel algorithms are necessary, allowing computations to&nbsp;be performed simultaneously on&nbsp;many machines. The challenge in&nbsp;designing such algorithms is ensuring proper access to&nbsp;memory, i.e., subsets of&nbsp;data. The most optimal algorithms should transfer the&nbsp;smallest possible amount of&nbsp;data between computing units to&nbsp;minimize the&nbsp;speed losses caused by&nbsp;communication delays. Parallel algorithms whose access to&nbsp;data is theoretically the&nbsp;most optimal are called <strong>minimal</strong>.
 </p>
 
 <p>
-    In the linked repository, I have presented a solution to the problem from the first paragraph for two cases (2D and 3D) using a minimal algorithm described in the publication: <strong><a href="https://dl.acm.org/doi/pdf/10.1145/3070607.3075961" rel="noreferrer" target="_blank">https://dl.acm.org/doi/pdf/10.1145/3070607.3075961</a></strong>. The problem was solved in <strong>Scala</strong> using <strong>Apache Spark</strong> as a framework for <strong>MapReduce</strong> and <strong>YARN and HDFS</strong> as the distributed file system for data storage.
+    In the&nbsp;linked repository, I have presented a&nbsp;solution to&nbsp;the problem from the&nbsp;first paragraph for&nbsp;two cases (2D and&nbsp;3D) using a&nbsp;minimal algorithm described in&nbsp;the publication: <strong><a href="https://dl.acm.org/doi/pdf/10.1145/3070607.3075961" rel="noreferrer" target="_blank">https://dl.acm.org/doi/pdf/10.1145/3070607.3075961</a></strong>. The problem was solved in&nbsp;<strong>Scala</strong> using <strong>Apache Spark</strong> as&nbsp;a framework for&nbsp;<strong>MapReduce</strong> and&nbsp;<strong>YARN and&nbsp;HDFS</strong> as&nbsp;the distributed file system for&nbsp;data storage.
 </p>
 
 <p>
-The project also includes scripts for setting up a computing cluster, data generators, and sequential checkers to test the performance of the distributed algorithm on small datasets. The project was created during a Big Data Processing course at MIMUW.
+The project also includes scripts for&nbsp;setting up a&nbsp;computing cluster, data generators, and&nbsp;sequential checkers to&nbsp;test the&nbsp;performance of&nbsp;the distributed algorithm on&nbsp;small datasets. The project was created during a&nbsp;Big Data Processing course at&nbsp;MIMUW.
 </p>

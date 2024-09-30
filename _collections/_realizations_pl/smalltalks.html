@@ -10,23 +10,23 @@ project_url: "https://www.youtube.com/shorts/Q8EayWG7v_8"
 ---
 
 <p>
-Na początku 2023 r. razem z <a href="https://github.com/MichalBortkiewicz" rel="noreferrer" target="_blank" class="bold">@michalbortkiewicz</a> postanowiliśmy dogłębniej zapoznać się z coraz bardziej popularnym tematem dużych modeli językowych i ich rzeczywistych możliwości zastosowania.
+Na początku 2023 r. razem z&nbsp;<a href="https://github.com/MichalBortkiewicz" rel="noreferrer" target="_blank" class="bold">@michalbortkiewicz</a> postanowiliśmy dogłębniej zapoznać się z&nbsp;coraz bardziej popularnym tematem dużych modeli językowych i&nbsp;ich rzeczywistych możliwości zastosowania.
 </p>
 
 <p>
-Stworzyliśmy wspólnie prototyp inteligentnej zabawki konwersacyjnej spełniającej pełne wymagania sztucznego asystenta. Zabawka potrafiła rozpoznawać mowę, wnioskować, formułować odpowiedzi na pytania i produkować mowę. W różnych ustawieniach potrafiła również opowiadać bajki, a nawet rozwiązywać problemy.
-Prototyp opierał się na <strong>Raspberry PI 4</strong> zasilanym z akumulatora i podłączonym do internetu. Software, który obsługiwał rozmowę napisaliśmy w <strong>Pythonie</strong>. Przeprowadzaliśmy transkrypcję tekstu (<strong>Speech-To-Text</strong>) i syntezę mowy (<strong>Text-To-Speech</strong>) na urządzeniu za pomocą lokalnych modeli open-sourceowych (<strong>Faster Whisper</strong> i <strong<>Tacotron 2</strong>). Wnioskowanie i produkcja odpowiedzi była natomiast zlecana modelom zewnętrzym (<strong>OpenAI GPT-3.5</strong>) - z wykorzystaniem dedykowanego <strong>prompt engineeringu</strong>. Całość osadziliśmy wewnątrz misia pluszowego.
+Stworzyliśmy wspólnie prototyp inteligentnej zabawki konwersacyjnej spełniającej pełne wymagania sztucznego asystenta. Zabawka potrafiła rozpoznawać mowę, wnioskować, formułować odpowiedzi na&nbsp;pytania i&nbsp;produkować mowę. W różnych ustawieniach potrafiła również opowiadać bajki, a&nbsp;nawet rozwiązywać problemy.
+Prototyp opierał się na&nbsp;<strong>Raspberry PI 4</strong> zasilanym z&nbsp;akumulatora i&nbsp;podłączonym do&nbsp;internetu. Software, który obsługiwał rozmowę napisaliśmy w&nbsp;<strong>Pythonie</strong>. Przeprowadzaliśmy transkrypcję tekstu (<strong>Speech-To-Text</strong>) i&nbsp;syntezę mowy (<strong>Text-To-Speech</strong>) na&nbsp;urządzeniu za&nbsp;pomocą lokalnych modeli open-sourceowych (<strong>Faster Whisper</strong> i&nbsp;<strong<>Tacotron 2</strong>). Wnioskowanie i&nbsp;produkcja odpowiedzi była natomiast zlecana modelom zewnętrzym (<strong>OpenAI GPT-3.5</strong>) - z&nbsp;wykorzystaniem dedykowanego <strong>prompt engineeringu</strong>. Całość osadziliśmy wewnątrz misia pluszowego.
 </p>
 
 <p>
-    Największym wyzwaniem były opóźnienia. Każdy z modeli AI wprowadzał dodatkowe kilkaset milisekund (czasami kilka sekund). Aby utrzymać płynność rozmowy we wczesnych etapach rozwoju prototypu, wykorzystaliśmy dodatkowe oskryptowane frazy wypełniające. Przy użyciu wielowątkowości mogliśmy zapełniać luki pomiędzy wypowiedziami użytkownika, a odpowiedziami zwrotnymi zabawki.
+    Największym wyzwaniem były opóźnienia. Każdy z&nbsp;modeli AI wprowadzał dodatkowe kilkaset milisekund (czasami kilka sekund). Aby utrzymać płynność rozmowy we wczesnych etapach rozwoju prototypu, wykorzystaliśmy dodatkowe oskryptowane frazy wypełniające. Przy użyciu wielowątkowości mogliśmy zapełniać luki pomiędzy wypowiedziami użytkownika, a&nbsp;odpowiedziami zwrotnymi zabawki.
     </p>
 
 <p>
-    Głównym celem było stworzenie generycznego rozwiązania, pozwalającego na tworzenie całych serii zabawek interaktywnych. Eksperymentowaliśmy z zabawkami edukacyjnymi - uczącymi języków (tak jak ta przedstawiona na załączonym filmie) lub kolorów, ale również z zabawkami o aspektach całkowicie rozrywkowych. Przykładem takiej zabawki był interaktywny <strong>Mistrz Yoda</strong>, który ze względu na bardzo unikatowy głos i gramatykę stanowił bardzo ciekawe wyzwanie. Udało nam się wytrenować model <strong>Text-To-Speech</strong> oraz spreparować odpowiednie dane wejściowe dla dużego modelu językowego. Powstał w ten sposób prototyp zabawki dla fanów <strong>Gwiezdnych Wojen</strong>, który głosem i w stylu <strong>Mistrza</strong> opowiadał o całym uniwersum.
+    Głównym celem było stworzenie generycznego rozwiązania, pozwalającego na&nbsp;tworzenie całych serii zabawek interaktywnych. Eksperymentowaliśmy z&nbsp;zabawkami edukacyjnymi - uczącymi języków (tak jak ta przedstawiona na&nbsp;załączonym filmie) lub kolorów, ale również z&nbsp;zabawkami o&nbsp;aspektach całkowicie rozrywkowych. Przykładem takiej zabawki był interaktywny <strong>Mistrz Yoda</strong>, który ze względu na&nbsp;bardzo unikatowy głos i&nbsp;gramatykę stanowił bardzo ciekawe wyzwanie. Udało nam się wytrenować model <strong>Text-To-Speech</strong> oraz spreparować odpowiednie dane wejściowe dla dużego modelu językowego. Powstał w&nbsp;ten sposób prototyp zabawki dla fanów <strong>Gwiezdnych Wojen</strong>, który głosem i&nbsp;w stylu <strong>Mistrza</strong> opowiadał o&nbsp;całym uniwersum.
     </p>
 
 <p>
-    Projekt następnie z fazy prototypu przeszedł do fazy <strong>MVP</strong>, w której postanowiliśmy stworzyć rozwiązanie bardziej użytkowe - z większością obliczeń chmurowych i horyzontalnie skalowalną architekturą.
-    Prace zostały jednak wstrzymane, ze względu na niedostateczną dojrzałość rynku na przedstawiony przez nas pomysł.
+    Projekt następnie z&nbsp;fazy prototypu przeszedł do&nbsp;fazy <strong>MVP</strong>, w&nbsp;której postanowiliśmy stworzyć rozwiązanie bardziej użytkowe - z&nbsp;większością obliczeń chmurowych i&nbsp;horyzontalnie skalowalną architekturą.
+    Prace zostały jednak wstrzymane, ze względu na&nbsp;niedostateczną dojrzałość rynku na&nbsp;przedstawiony przez nas pomysł.
     </p>
