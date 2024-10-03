@@ -36,11 +36,11 @@
     <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/basic.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/header.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/rwd.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}?v=3">
+    <link rel="stylesheet" href="{{ '/assets/css/basic.css' | relative_url }}?v=3">
+    <link rel="stylesheet" href="{{ '/assets/css/header.css' | relative_url }}?v=3">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=3">
+    <link rel="stylesheet" href="{{ '/assets/css/rwd.css' | relative_url }}?v=3">
 
     <link rel="manifest" href="/{{ page.lang }}/site.webmanifest">
     <meta name="robots" content="index, follow">
@@ -183,6 +183,11 @@
             '#{{ title[0] }}': "{{ title[1] }}",
             {% endfor %}
         };
+
+        /** Browser-specific styles */
+        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+          document.documentElement.classList.add('safari');
+        }
     </script>
     <script src="/assets/js/spa.js"></script>
     <script src="/assets/js/modernizr-3.11.8.min.js"></script>

@@ -89,13 +89,13 @@
 
      xhr.onload = function () {
          if (xhr.status === 200) {
-             inform('{{ page.form.success }}', 'green');
+             inform("{{ page.form.success }}", 'green');
          } else {
-             inform('{{ page.form.error }}', 'red');
+             inform("{{ page.form.error }}", 'red');
          }
      };
      xhr.onerror = function() {
-         inform('{{ page.form.error }}', 'red');
+         inform("{{ page.form.error }}", 'red');
      };
      xhr.send(formData);
      /** Timeout for 5s */
