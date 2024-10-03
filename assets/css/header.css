@@ -2,7 +2,7 @@
 
 #header {
     width: 100%;
-    background: url('../img/bg.jpg');
+    background: url('../img/bg.webp');
     background-color: var(--dark);
     position: absolute;
     top: 0;

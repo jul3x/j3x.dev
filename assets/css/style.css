@@ -134,7 +134,7 @@ menu li:hover {
             transform: translateX(-50%) translateY(-50%);
     width: 40%;
     height: 100%;
-    background: url('../img/photo_3.png');
+    background: url('../img/photo_3.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -506,7 +506,7 @@ section {
 
 .project {
     background-color: var(--light);
-    background: url('/assets/img/bg.jpg');
+    background: url('/assets/img/bg.webp');
     /* border-top: 4px solid var(--dark); */
     /* border-bottom: 4px solid var(--dark); */
     padding: 0;
