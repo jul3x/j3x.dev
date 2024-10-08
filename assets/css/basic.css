@@ -90,38 +90,38 @@
 }
 
 .safari .line-up {
-    -webkit-animation: 2s lineUpSafari ease-out !important;
-            animation: 2s lineUpSafari ease-out !important;
-    -webkit-animation-fill-mode: both !important;
-            animation-fill-mode: both !important;
+    -webkit-animation: 2s lineUpSafari ease-out;
+            animation: 2s lineUpSafari ease-out;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
 }
 
-.delayed-5 {
+.delayed-5, .safari .delayed-5 {
     -webkit-animation-delay: 5s;
             animation-delay: 5s;
 }
 
-.delayed-6 {
+.delayed-6, .safari .delayed-6 {
     -webkit-animation-delay: 6s;
             animation-delay: 6s;
 }
 
-.delayed-7 {
+.delayed-7, .safari .delayed-7 {
     -webkit-animation-delay: 7s;
             animation-delay: 7s;
 }
 
-.delayed-8 {
+.delayed-8, .safari .delayed-8 {
     -webkit-animation-delay: 8s;
             animation-delay: 8s;
 }
 
-.delayed-9 {
+.delayed-9, .safari .delayed-9 {
     -webkit-animation-delay: 9s;
             animation-delay: 9s;
 }
 
-.delayed-10 {
+.delayed-10, .safari .delayed-10 {
     -webkit-animation-delay: 10s;
             animation-delay: 10s;
 }

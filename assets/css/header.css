@@ -308,7 +308,7 @@
 }
 
 .rect-divider {
-    width: 34vw;
+    width: calc(34vw + 1px);
     height: 200px;
     background: var(--light);
     margin: 0;
