@@ -1,0 +1,225 @@
+---
+layout: post
+date: 2024-10-09
+title: "Hijacking GPS: The modern threat of GPS spoofing"
+img: /assets/img/blog/gps.gif
+img_color: white
+short: Stealthy manipulation of navigation systems
+excerpt_separator: <!-- excerpt-end -->
+---
+
+
+<h4>Introduction</h4>
+
+<!-- excerpt-start -->
+<p>Global Positioning System (GPS) has become an integral part of our daily lives, guiding everything from smartphones to critical infrastructure systems like aviation, military operations, and global shipping. It's one of those invisible technologies that we take for granted—until it goes wrong. However, as the use of GPS continues to expand, so do the potential threats. One particularly insidious threat is <strong>GPS spoofing</strong>, a technique that allows an attacker to manipulate or falsify GPS signals. With the ongoing geopolitical tension, notably the Russia-Ukraine conflict, GPS spoofing has become a tool in modern warfare, enabling adversaries to disrupt, deceive, or mislead the positioning systems of their opponents.</p>
+
+
+<p>This blog post explores the vulnerabilities of GPS technology and dives deeply into the concept of GPS spoofing. Drawing from the <strong>"All Your GPS Are Belong To Us: Towards Stealthy Manipulation of Road Navigation Systems"</strong> whitepaper (27th Usenix Security 2019), we’ll discuss how spoofing attacks are executed, their potential consequences, and why this issue remains relevant in today’s world of heightened global conflicts.</p>
+
+<!-- excerpt-end -->
+
+<h4>How does GPS work?</h4>
+<p>GPS is a satellite-based navigation system that enables devices to determine their <strong>location</strong>, <strong>velocity</strong>, and <strong>time synchronization</strong> anywhere on Earth. It operates through a constellation of at least 31 satellites orbiting about 20,000 kilometers above Earth. While the basic idea of GPS is straightforward, the system's precision relies on some complex science, including corrections for time dilation from <strong>Einstein's general relativity</strong> and constant monitoring of Earth’s movements.</p>
+
+<p><strong>Here’s how it works:</strong></p>
+
+<a title="El pak at English Wikipedia, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:ConstellationGPS.gif"><img alt="Global Positioning System(GPS)" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/ConstellationGPS.gif?20080306155641"></a>
+<ul>
+  <li><strong>Satellite transmission</strong>: Each GPS satellite transmits a signal that includes its position and the exact time the signal was sent. This signal travels at the speed of light and reaches GPS receivers on the ground, which use it to calculate the time delay.</li>
+
+  <li><strong>Triangulation</strong>: For a GPS receiver to determine its location, it needs signals from at least four satellites. Using the time delay between when the signal was sent and when it was received, the receiver calculates its distance from each satellite. With at least four distance measurements, it can "triangulate" its exact location.
+Each GPS satellite transmits signals on the same frequencies, but these signals are modulated using different codes, allowing identification through <strong>Code Division Multiple Access (CDMA)</strong>. For each visible satellite, the receiver calculates the <strong>time difference</strong> between the moment a signal is received and when it was transmitted. Along with the transmission time, satellites also broadcast important data such as the <strong>almanac</strong> and <strong>ephemeris</strong>, which describe satellite orbits. To determine the receiver's position, we must solve four unknowns: <em>x</em>, <em>y</em>, <em>z</em> (the coordinates in space) and <em>t</em> (the timing error). This requires a minimum of four equations, one from each satellite. In basic, simplified words.
+  </li>
+
+  <li><strong>Positioning calculation</strong>: Once the GPS receiver knows its distance from several satellites, it draws imaginary spheres around each one based on the distance calculated from the signal. The intersection of these spheres pinpoints the receiver's position.</li>
+
+  <li><strong>Time and synchronization</strong>: Precise timekeeping is critical to GPS accuracy. Each satellite is equipped with atomic clocks, which are incredibly precise. However, because GPS satellites orbit high above Earth and move quickly, time passes differently for them compared to Earth-bound observers. This is where <strong>Einstein’s general relativity</strong> comes into play.</li>
+</ul>
+
+<p><strong>Relativistic corrections</strong>: According to general relativity, time passes more slowly the closer you are to a massive object, like Earth. The satellites are farther from Earth’s gravitational field and experience time slightly faster than we do on the surface. In contrast, the satellites also move quickly in orbit, which causes a small slowing of time according to <strong>special relativity</strong>. These two effects combine to cause a time discrepancy of about <strong>38 microseconds per day</strong>. Without correcting for this difference, GPS positions would drift by as much as 10 kilometers daily! The GPS system includes built-in corrections for these relativistic effects, ensuring the accuracy of the positioning data.</p>
+
+<p><strong>Corrections for earth’s movements</strong>: The Earth itself isn’t a static reference point; it’s constantly in motion. This includes the rotation of the Earth, slight wobbles, tectonic shifts, and even movements caused by the Moon’s gravitational pull. Another important factor is the movement of <strong>fixed stars</strong> that help astronomers track Earth’s motion, which also feeds into GPS correction systems.
+
+Large-scale geological events like earthquakes can shift entire regions by several meters in an instant. GPS systems incorporate real-time geophysical data, including information from <strong>Very-long-baseline interferometry (VLBI)</strong>, which uses distant stars to monitor how Earth's position changes in space. By tracking the positions of specific stars over time, scientists can detect minute shifts in Earth's rotation and orientation, known as <strong>polar motion</strong>.
+
+    The GPS system must also correct for the slowing down of signals as they pass through Earth’s atmosphere. The ionosphere (the outermost layer of Earth’s atmosphere) can slow or bend the signal, especially during solar storms, which can throw off calculations. Correction models, constantly updated by ground-based monitoring stations, help GPS compensate for these variations.
+
+<p>Incorporating these complexities—relativistic time dilation, geophysical corrections, and even atmospheric interference—ensures that GPS maintains its remarkable precision. With the right adjustments, the system is accurate to within a few meters, and in some specialized cases, even down to a few centimeters (military segment). These incredible technologies highlight just how sophisticated GPS is, far beyond the simple idea of "satellites telling us where we are."</p>
+
+
+<h4>Vulnerabilities</h4>
+<p>Despite its widespread use and reliability, the GPS system is not immune to vulnerabilities.
+    One of the main weaknesses arises from the fact that GPS signals are transmitted from satellites at very low power—around 20 watts. By the time these signals reach Earth, they are so weak that they can easily be overwhelmed by stronger signals. This makes GPS susceptible to <strong>jamming</strong>, where an attacker floods the area with noise to prevent GPS receivers from locking onto satellite signals. Another significant threat is <strong>GPS spoofing</strong>, where false signals are broadcast to deceive receivers into believing they are in a different location.</p>
+
+<p><strong>GPS jamming</strong> has become a special tool for military operations and its significancy emerged in todays world. Current situation of GPS interference can be checked eg. here: <a href="https://gpsjam.org/" target="_blank", rel="noreferrer"><strong>https://gpsjam.org</strong></a>
+
+<p>Additionally, GPS relies on accurate timing, and <strong>timing spoofing</strong> can disrupt synchronization in critical infrastructure systems like power grids and financial markets. The fact that GPS satellites have predictable orbits also makes them vulnerable to <strong>orbit prediction attacks</strong>, where attackers exploit their known trajectories. Finally, while encryption helps secure military GPS systems, <strong>civilian GPS signals</strong> are often <strong>unencrypted</strong>, leaving them more exposed to interference or manipulation. These vulnerabilities highlight the need for robust countermeasures, particularly in sensitive areas like national defense, aviation, and maritime operations.</p>
+
+<p>One may think that GPS spoofing is only available for big players. <strong>Well...</strong></p>
+
+<h4>GPS spoofing method for dummies</h4>
+
+<p>Because of a lack of encryption and well-known signal format there is a possibility of broadcasting a <strong>false GPS signal</strong>—either a modified one or a real signal with a delay. A spoofed signal causes the attacked receiver to calculate an incorrect location. GPS spoofing typically follows two phases: the <strong>takeover</strong> phase and the actual manipulation phase. During the takeover, the attacker gains control of the receiver (mainly because of stronger signal than the real one), and in the manipulation phase, they alter the receiver's perception of its location.</p>
+
+<h5>Two basic methods for the "takeover" phase</h5>
+
+<ul>
+  <li><strong>Brute-forced takeover</strong><br/>
+      + Easy to execute<br/>
+      - Noticeable
+  </li>
+  <li><strong>Smooth takeover</strong></br/>
+      + Quiet (stealthy)<br/>
+      - Requires specialized equipment
+  </li>
+</ul>
+
+<h5>What can be done?</h5>
+
+<p>An advanced form of GPS spoofing can be <strong>intelligent GPS spoofing</strong>, where the false location matches the physical limitations of the road. The typical victim might be a driver using a navigation app or an autonomous vehicle. The goal of the attack is to conduct a "silent" takeover, manipulating the target using only a falsified GPS signal.</p>
+
+<ul>
+  <li><strong>Assumption 1</strong>: The attacker knows the victim's approximate destination or parts of their actual route.</li>
+  <li><strong>Assumption 2</strong>: The victim is in an unfamiliar environment and relies heavily on the GPS system.</li>
+</ul>
+
+<p>Possible objectives for the attacker:</p>
+
+<ol>
+  <li><strong>Change of route</strong>: The attacker seeks to confuse the victim without a specific endpoint in mind.</li>
+  <li><strong>Change of destination</strong>: The attacker wants to lead the victim to a predetermined location.</li>
+  <li><strong>Create a dangerous situation</strong>: The attacker intends to lead the victim into a hazardous situation.</li>
+</ol>
+
+<h5>Device setup</h5>
+
+<p>The spoofing device should be as <strong>inexpensive</strong> as possible. It should have the ability to connect via SSH and send a false GPS signal (with a specific fake location) in real-time. It has been observed that two types of attacks are possible: one where the spoofer is inside the victim's car, and one where the spoofer is in the attacker's vehicle, close to the victim. The device is just Raspberry Pi with mobile charger and connected plug-in HackRF One SDR module with additional long distance antenna. The cost of a portable spoofer is approximately <strong>$223</strong>, and it is capable of overcoming the car's bodywork even at a distance of 40-50 meters without losing signal connection.</p>
+
+<h5>Example of an attack</h5>
+
+<p>One possible attack method involves causing a "jump" in the victim's location to a nearby point from which a <strong>false path</strong> to their destination can be created on a real road. The victim usually views the map from a first-person perspective in navigation systems, so the attack might not raise suspicion. After switching to a false location, the attacker can either maintain the fake position based on observations of the victim's true movements or iteratively falsify the location to match real-world dynamics.</p>
+
+<img src="/assets/img/blog/gps.webp" title="GPS spoofing path jump" class="full"/>
+<div class="img-description">
+  <strong>P - D</strong>: Victims path calculated by navigation system<br/>
+  <strong>A - B</strong>: GPS spoofed and calculated location jump<br/>
+  <strong>B - D</strong>: Recalculated (not real) path to the victims destination<br/>
+  <strong>A - C</strong>: Actual path triggered by attacker<br/ >
+</div>
+
+<h4>Algorithm</h4>
+
+<h5>Input data:</h5>
+<ul>
+  <li><strong>Environment description:</strong> - graph describing road network</li>
+  <li><strong>Victim's current location:</strong> - GPS coordinates</li>
+  <li><strong>Victim's desired location:</strong> - GPS coordinates</li>
+  <li><strong>Target destination:</strong> - The attacker's desired endpoint for the victim</li>
+</ul>
+
+<h5>Output data:</h5>
+<ul>
+  <li><strong>Phantom routes:</strong> Routes that appear plausible to the victim but ultimately lead to the attacker’s target destination.</li>
+</ul>
+
+<h5>Two phases of operation:</h5>
+<ol>
+  <li><strong>Initial construction of road network:</strong> The road network of the attack area is built once based on publicly available data (e.g., from OpenStreetMap) to create a graph.</li>
+  <li><strong>Real-time attack phase:</strong> Searching for possible attack opportunities:
+    <ul>
+      <li>Using Google Maps API to determine the true route of the victim.</li>
+      <li>Finding all possible false locations within a short distance from the victim's current location (matching the attack assumptions).</li>
+      <li>Calculating, for each false location, a potential false route to the victim's target destination.</li>
+      <li>Verifying if the false routes overlap with the actual road model and meet the attack criteria.</li>
+      <li>Returning the result of the possible false location and route.</li>
+      <li>Iterating the process as the victim’s location updates in real-time.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>Attack testing phases</h4>
+
+<h5>Simulation tests</h5>
+<p>The simulation tests utilized maps of Manhattan and Boston, showcasing two distinct types of road networks. The dataset consisted of 600 real taxi routes (300 from each city). For every route, all possible false locations and phantom routes were determined.</p>
+
+<p>Calculations were performed on a machine with 192 GB of RAM and 24 cores.</p>
+
+<p>Results:</p>
+<ul>
+  <li>On average, each route allowed for 335 different attacks.</li>
+  <li>The iterative algorithm (with two iterations) identified significantly more, averaging 3,507 attacks per route.</li>
+  <li>Approximately 92% of routes enabled the victim to drive in circles.</li>
+  <li>Only one route lacked the potential to put the victim in a dangerous situation.</li>
+  <li>Searching for a single candidate for a false location took an average of 0.2 ms for Manhattan and 0.3 ms for Boston.</li>
+  <li>The iterative attack took longer on average: 0.13 seconds for Manhattan and 0.32 seconds for Boston.</li>
+  <li>Overall, searching through one route took about one minute.</li>
+  <li>An attacker familiar with the victim's true route could search for a false location even before the victim reached the attack site.</li>
+</ul>
+
+<h5>Real-world environment tests</h5>
+<p>In the real-world tests, an attack type known as <strong>same-car</strong> was performed, with the spoofer located in the victim's car. One of the authors acted as the driver using Google Maps, while another operated the spoofer from the back seat using a laptop. Two different routes were tested: <strong>on-route attack</strong> and <strong>off-route attack</strong>.</p>
+
+<img src="/assets/img/blog/gps-routes.webp" title="On-route and off-route attack" class="full" style="max-width: 600px"/>
+
+<h5>Tests with unaware "volunteers"</h5>
+<p>This phase focused on understanding how users interact with GPS navigation systems, determining the conditions under which GPS spoofing attacks are most likely to succeed, and gathering user opinions on GPS spoofing. Participation in the study was divided into three parts:</p>
+<ul>
+  <li><strong>Survey section</strong></li>
+  <li><strong>Driving tests</strong></li>
+  <li><strong>Final interviews</strong></li>
+</ul>
+<p>Throughout the study, participants were not made aware of the potential GPS spoofing attacks.</p>
+
+<p>User navigation and driving habits:</p>
+<ul>
+  <li>Users were more likely to rely on GPS systems in unfamiliar environments.</li>
+  <li>They tended to trust verbal and visual instructions more than textual ones.</li>
+</ul>
+
+<p>Reaction to GPS spoofing attacks:</p>
+<ul>
+  <li>Only 2 out of 40 participants detected at least one attack during the four routes.</li>
+  <li>All participants noticed a loss of GPS signal during the takeover phase, but none considered this as harmful.</li>
+</ul>
+
+<p>Opinions:</p>
+<ul>
+  <li>The majority of participants admitted to experiencing faulty performance of navigation systems.</li>
+  <li>Only 8 participants could explain the functioning of GPS spoofing.</li>
+</ul>
+
+<h4>Solutions?</h2>
+
+<p>As GPS spoofing attacks pose significant risks to navigation systems, implementing effective countermeasures is crucial. What can be done?</p>
+
+<ul>
+  <li><strong>Encryption of civilian signals:</strong> Enhancing the security of GPS signals through encryption or signal authentication can make spoofing more challenging. Very unlikely.</li>
+  <li><strong>Modification of receivers:</strong> Upgrading receivers to estimate the location of the transmitter based on the angle of signal arrival can improve accuracy and resistance to spoofing.</li>
+  <li><strong>Sensor fusion:</strong> Integrating data from other navigation systems such as Galileo and GLONASS, along with inertial measurement units (IMUs), can provide a more reliable position fix and reduce reliance on GPS alone.</li>
+  <li><strong>Vision-based localization:</strong> Utilizing computer vision systems to corroborate GPS data can enhance location accuracy, especially in urban environments where GPS signals may be compromised.</li>
+  <li><strong>Implementation of anti-spoofing algorithms:</strong> Developing sophisticated algorithms that can detect anomalies in GPS signal patterns can alert users to potential spoofing attempts.</li>
+  <li><strong>Awareness and training:</strong> Educating users about the risks of GPS spoofing and training them to recognize signs of tampering can help mitigate the impact of such attacks.</li>
+  <li><strong>Multi-frequency signals:</strong> Using multi-frequency signals can provide more robust data, as attackers may find it more challenging to spoof signals across multiple frequencies. Still - this is not a final and robust solution but only some additional difficulty for attackers.</li>
+</ul>
+
+<p>Jokingly, according to the presented algorithm - prevention can be done also by not dense enough road networks. In Poland, roads often do not have any particular deterministic pattern. Because of that the algorithm can have some hard time finding relevant ghost locations ;)</p>
+
+<p>As for now (<em>09.10.2024</em>), there are some complex solutions for the pointed problem. Eg. <a href="https://zephr.xyz" rel="noreferrer" target="_blank">Zephr Technology</a> approaches GPS spoofing with distributed computation and collective knowledge. Because, it is more difficult to spoof multiple devices at once - we can call it high availability system.
+
+<h4>Conclusion</h4>
+
+<p>GPS spoofing remains a critical threat to navigation systems, particularly as reliance on these technologies increases in various sectors, from autonomous vehicles to smartphone applications. The experiments conducted highlight the potential vulnerabilities within GPS infrastructure and underscore the necessity for robust countermeasures. By implementing a combination of encryption, sensor fusion, and user education, we can significantly mitigate the risks posed by GPS spoofing. As we continue to advance in navigation technology, prioritizing security will be essential to ensure safety and reliability in an increasingly connected world.</p>
+
+<em>
+  <span>References:</span>
+<ul>
+  <li><a href="https://www.usenix.org/conference/usenixsecurity18/presentation/zeng" target="_blank" rel="noreferrer">All Your GPS Are Belong To Us: Towards Stealthy
+    Manipulation of Road Navigation Systems -
+    Kexiong Zeng, Shinan Liu, Yuanchao Shu,
+    Dong Wang, Haoyu Li, Yanzhi Dou, Gang Wang, and Yaling Yang</a></li>
+  <li><a href="https://www.nist.gov/how-do-you-measure-it/how-do-you-measure-your-location-using-gps" target="_blank" rel="noreferrer">NIST: How do you measure your location using GPS</a></li>
+  <li><a href="https://gpsjam.org" target="_blank" rel="noreferrer">GPSJam.org</a></li>
+  <li><a href="https://zephr.xyz" target="_blank" rel="noreferrer">Zephr Technologies</a></li>
+</ul>
+</em>

@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+<title>{{ include.title }}</title>
+
+<meta name="description" content="{{ include.description }}">
+<link rel="canonical" href="https://j3x.dev{{ include.url }}">
+<meta http-equiv="Content-Language" content="{{ include.lang }}">
+<meta name="author" content="Julian 'jul3x' Prolejko">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta property="og:title" content="{{ include.title }}">
+<meta property="og:description" content="{{ include.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://j3x.dev{{ include.url }}">
+<meta property="og:image" content="https://j3x.dev{{ include.img }}">
+
+<meta name="twitter:title" content="{{ include.title }}">
+<meta name="twitter:description" content="{{ include.description }}">
+<meta name="twitter:image" content="https://j3x.dev{{ include.img }}">
+
+<link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}?v=6">
+<link rel="stylesheet" href="{{ '/assets/css/header.css' | relative_url }}?v=6">
+<link rel="stylesheet" href="{{ '/assets/css/basic.css' | relative_url }}?v=6">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=6">
+<link rel="stylesheet" href="{{ '/assets/css/rwd.css' | relative_url }}?v=6">
+
+<link rel="manifest" href="/{{ include.lang }}/site.webmanifest">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ebeae3">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<script src="/assets/js/fontawesome.js" crossorigin="anonymous"></script>
+<link rel="alternate" hreflang="en" href="https://j3x.dev{{ include.url }}" />
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ page.title }}",
+        "url": "https://j3x.dev{{ include.url }}",
+        "image": "https://j3x.dev{{ include.img }}",
+        "jobTitle": "Software Engineer",
+        "sameAs": [
+            "https://linkedin.com/in/julian-prolejko",
+            "https://github.com/jul3x",
+            "https://jul3x.itch.io"
+        ],
+        "description": "{{ include.description }}",
+        "knowsAbout": [
+            "Software Development",
+            "Full-Stack Development",
+            "DevOps",
+            "Low-level Programming"
+        ],
+        {% if include.lang == "en" %}
+        {% assign skills = site.skills_en %}
+        {% else %}
+        {% assign skills = site.skills_pl %}
+        {% endif %}
+        "knowsLanguage": [{% for skill in skills %}
+            {
+                "@type": "Language",
+                "name": "{{ skill.header }}"
+            }{% unless forloop.last %}, {% endunless %} {% endfor %}
+        ],
+        "operatingSystem": "All",
+        "browserRequirements": "requires JavaScript"
+    }
+</script>

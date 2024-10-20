@@ -1,22 +1,42 @@
+{% if page.lang != 'en' and page.lang != 'pl' %}
+{% assign lang = 'en' %}
+{% else %}
+{% assign lang = page.lang %}
+{% endif %}
+{% if page.layout == "blog" or page.layout == "post" %}
+{% assign link_prefix = "/" | append: lang | append: "/" %}
+{% else %}
+{% assign link_prefix = "" %}
+{% endif %}
+
+{% if page.menu %}
+{% assign menu_labels = page.menu %}
+{% else %}
+{% assign menu_labels = site.data.menu %}
+{% endif %}
+
 <div id="top" class="bb fl">
     <div id="left-section">
-        <a href="#main" class="bold">
+        <a href="{{ link_prefix }}#main" class="bold">
             <h1>j3x.dev</h1>
         </a>
     </div>
     <div id="center-section">
         <menu>
             <li class="menu-link main-link">
-                <a href="#main">{{ page.menu.main_page }}</a>
+                <a href="{{ link_prefix }}#main">{{ menu_labels.main_page }}</a>
             </li>
             <li class="menu-link portfolio-link">
-                <a href="#portfolio">{{ page.menu.portfolio }}</a>
+                <a href="{{ link_prefix }}#portfolio">{{ menu_labels.portfolio }}</a>
             </li>
             <li class="menu-link offer-link">
-                <a href="#offer">{{ page.menu.offer }}</a>
+                <a href="{{ link_prefix }}#offer">{{ menu_labels.offer }}</a>
             </li>
             <li class="menu-link contact-link">
-                <a href="#contact">{{ page.menu.contact }}</a>
+                <a href="{{ link_prefix }}#contact">{{ menu_labels.contact }}</a>
+            </li>
+            <li class="menu-link blog-link">
+                <a href="/en/blog">{{ menu_labels.blog }}</a>
             </li>
         </menu>
     </div>
@@ -27,7 +47,7 @@
         <a href="https://github.com/jul3x" rel="noreferrer" target="_blank">
             <img src="/assets/img/github.webp" title="GitHub" alt="GitHub" />
         </a>
-        {% if page.lang == 'en' %}
+        {% if lang == 'en' %}
         <a href="/pl" class="lang-link">
             <img src="/assets/img/pl.svg" title="Polska wersja" alt="Polska wersja" style="filter: none; height: 25%; padding-left: 10px" />
         </a>
@@ -45,19 +65,22 @@
             <a style="cursor: pointer">&#9776;</a>
         </li>
         <li class="menu-link main-link">
-            <a href="#main">{{ page.menu.main_page }}</a>
+            <a href="{{ link_prefix }}#main">{{ menu_labels.main_page }}</a>
         </li>
         <li class="menu-link portfolio-link">
-            <a href="#portfolio">{{ page.menu.portfolio }}</a>
+            <a href="{{ link_prefix }}#portfolio">{{ menu_labels.portfolio }}</a>
         </li>
         <li class="menu-link offer-link">
-            <a href="#offer">{{ page.menu.offer }}</a>
+            <a href="{{ link_prefix }}#offer">{{ menu_labels.offer }}</a>
         </li>
         <li class="menu-link contact-link">
-            <a href="#contact">{{ page.menu.contact }}</a>
+            <a href="{{ link_prefix }}#contact">{{ menu_labels.contact }}</a>
+        </li>
+        <li class="menu-link blog-link">
+            <a href="/en/blog/">{{ menu_labels.blog }}</a>
         </li>
         <li class="menu-link">
-        {% if page.lang == 'en' %}
+        {% if lang == 'en' %}
         <a href="/pl" class="lang-link">
             <img src="/assets/img/pl.svg" title="Polska wersja" alt="Polska wersja" style="filter: none; height: 30%; margin-top: 20px" />
         </a>

@@ -13,6 +13,8 @@
     #small-menu {
         display: block;
         position: fixed;
+        top: 5px;
+        left: 5px;
         z-index: 100;
         -webkit-animation: 2s fadeIn;
                 animation: 2s fadeIn;
@@ -28,6 +30,11 @@
         transition: 0.3s;
         overflow: visible;
         margin: 10px;
+    }
+
+    .blog #small-menu {
+        -webkit-animation: none !important;
+        animation: none !important;
     }
 
     #top {
@@ -613,5 +620,55 @@
     .modal-column {
         width: 100%;
         padding: 0 !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .blog .posts-wrapper {
+        width: 100%;
+    }
+    .blog-post {
+        padding: 0px;
+    }
+    .blog-post .body-post .post-img {
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .blog .content {
+        padding: 20px;
+    }
+
+    .blog-post-page img {
+        margin: 20px auto;
+        float: none;
+    }
+}
+
+@media (max-width: 800px) {
+    #whoami {
+        padding: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #whoami {
+        padding: 0;
+    }
+    #whoami .description {
+        flex-direction: column-reverse;
+    }
+
+    #whoami .photo {
+        margin: 20px auto;
+        transform: none;
+    }
+
+    #whoami h4, #whoami h5 {
+        text-align: center;
+    }
+
+    #whoami p {
+        text-align: left;
     }
 }

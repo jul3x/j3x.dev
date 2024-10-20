@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSMYDW2DC3"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-FSMYDW2DC3');
+    </script>
+
+    {% assign excerpt_parts = page.excerpt | split: "<!-- excerpt-start -->" %}
+    {% assign description = excerpt_parts[1] | strip_newlines | strip_html %}
+    {% include head.html
+       lang='en'
+       url=page.url
+       title=page.title
+       description=description
+       img=page.img
+    %}
+</head>
+
+<body class="blog">
+    {% include menu.html %}
+    <div id="wrapper">
+        <h2 class="fw tshadow">{{ page.title }}</h2>
+         <div class="content blog-post-content">
+             <article>
+             <div class="blog-post-page">
+                 <div class="back-to-posts">
+                 <a href="/en/blog/" class="text-right"><em>&lt; back to posts</em></a>
+                 </div>
+                 <div class="top-post">
+                     <h3>{{ page.short }}</h3>
+                     <div class="date">{{ page.date | date: "%Y-%m-%d" }}</div>
+                 </div>
+                 {{ page.content }}
+             </div>
+             </article>
+             {% include footer.html %}
+         </div>
+    </div>
+
+    <script type="text/javascript">
+     /** Browser-specific styles */
+     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+          document.documentElement.classList.add('safari');
+      }
+
+      let menuItem = document.querySelectorAll('.blog-link');
+      menuItem.forEach((item) => item.classList.add('active'));
+    </script>
+    <script src="/assets/js/no-widows.js"></script>
+    <script src="/assets/js/modernizr-3.11.8.min.js"></script>
+
+</body>
+
+</html>

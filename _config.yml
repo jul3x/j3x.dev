@@ -42,4 +42,8 @@ collections:
   services_pl:
     output: False
     sort_by: order
+  blog_posts:
+    permalink: /en/blog/:year/:month/:day/:title/
+    output: True
+    sort_by: date
 exclude: ['algorithm-tmpl.odt', 'README.md', 'LICENSE.txt']
