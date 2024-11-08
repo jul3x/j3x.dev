@@ -1082,6 +1082,14 @@ body.blog {
     margin-top: 20px;
 }
 
+.blog-post h3 a {
+    color: var(--dark);
+}
+
+.blog-post h3 a:hover {
+    color: var(--feature);
+}
+
 .body-post a {
     color: var(--dark);
 }
