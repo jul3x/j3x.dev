@@ -1,0 +1,213 @@
+---
+layout: post
+date: 2024-11-08
+title: "Hacking simple toy into frequency-aware animatronic Bluetooth speaker"
+img: /assets/img/blog/bass_full.webp
+img_color: "#1e1f19"
+short: Improved Billy Bass DIY kit
+excerpt_separator: <!-- excerpt-end -->
+---
+
+
+<h4>Introduction</h4>
+
+<!-- excerpt-start -->
+
+<p>
+Hacking a Big Mouth Billy Bass — a nostalgic toy that some of us could get as a gift from uncle from US - into an advanced, frequency-aware animatronic device was both a technical challenge and a delight. In this project, I transformed this singing fish into an interactive Bluetooth speaker that analyzes audio input and moves its head, tail, and mouth according to specific frequency bands. The result? A speaker that doesn't just play audio but reacts to it with precision, offering synchronized movements that make it seem alive.
+</p>
+
+<p>
+But why? The inspiration for this project came from my nephew, who was fascinated by fishes and asked me if we could make a toy come to life in a more dynamic way. While there are numerous DIY projects that repurpose Big Mouth Billy Bass, many miss the desired result of toy feeling the rhytm. Most existing examples either offer basic mouth movement or simple audio playback without nuanced synchronization - only depending on current audio volume. Unfortunately, this is not the case for creating anything resembling dancing and singing. That is why I created this project from scratch and used audio spectrum analysis to achieve better results.
+</p>
+
+<!-- excerpt-end -->
+
+<h4>Research</h4>
+
+    <ul>
+        <li>
+            <strong> <a href="https://www.instructables.com/Animate-a-Billy-Bass-Mouth-With-Any-Audio-Source/" target="_blank" rel="noreferrer">Animate a Billy Bass with any audio source</a></strong>: Base project that shows how to create Billy Bass that reacts to sound from any audio source.
+        </li>
+        <li>
+            <strong><a href="https://github.com/MrShoopa/Billy-Bass-Arduino-d/" target="_blank" rel="noreferrer">MrShoopa's Billy Bass Arduino code</a></strong>: Example code for Arduino that controls Billy Bass motors.
+        </li>
+        <li>
+            <strong><a href="https://github.com/TensorFlux/BTBillyBass">TensorFlux's BTBillyBass</a></strong>: While this project integrates Bluetooth, it doesn't delve into sound spectrum analysis, limiting its movement range to basic on/off responses.
+        </li>
+    </ul>
+
+    <p>
+        What sets my project apart is the use of Fast Fourier Transform (FFT) to analyze the audio's frequency spectrum in real-time. By breaking down the input into frequency bands, I achieved a more intelligent system. <strong>Head and tail movement</strong> is calculated basing on lower frequencies, creating rhythmic body movement that aligns with the bass / beat. <strong>Mouth movement</strong> is controlled by mid-range frequencies, primarily the vocal region (but also other instruments), giving the illusion that the fish is singing or speaking.
+    </ul>
+
+    <p>
+        This nuanced approach brings a lifelike quality to the toy, transforming it from a simple audio player to a fully synchronized animatronic performer. And also, I refreshed one of my old projects: <a href="https://j3x.dev/en/?p=projects&id=3#portfolio" target="_blank" rel="noreferrer"><strong>Beatsy&nbsp;-&nbsp;a&nbsp;configurable 3D music visualizer</strong></a>
+    </p>
+
+<h4>Mathematical background</h4>
+
+<p>
+ A quick portion of theory... To bring an animatronic toy like Big Mouth Billy Bass to life with realistic movement, it’s essential to analyze audio signals effectively. I wanted to use only a small microcontroller (<strong>Arduino</strong>) which is capable of doing complex computations, but there are some limitations. This is where Fast Fourier Transform (<strong>FFT</strong>) comes into play. FFT is an efficient algorithm for computing the <strong>Discrete Fourier Transform (DFT)</strong>, which decomposes a signal into its constituent frequencies. By using FFT, we can identify specific frequency ranges in real-time and map them to control movements.
+    </p>
+
+    <p>
+        FFT converts a time-domain signal (the analog audio input) into its frequency-domain representation. In simpler terms, it takes an audio signal, breaks it down into individual frequency components, and outputs their magnitudes. This allows us to detect which parts of the signal correspond to low (bass) or mid/high (vocals) frequencies.
+    </p>
+
+    <p>
+        To achieve synchronized movements for the animatronic, it’s crucial to define which frequency ranges correspond to specific actions:
+    </p>
+    <ul>
+        <li><strong>Bass frequencies</strong>: Typically range from <strong>20 Hz to 250 Hz</strong>. These low frequencies are associated with drum beats, bass guitar, and general rhythm, making them ideal for controlling head and tail movements for a rhythmic effect.</li>
+        <li><strong>Vocal frequencies</strong>: Fall in the range of approximately <strong>300 Hz to 3,000 Hz</strong>. This range encompasses most of the human voice and speech components, making it suitable for controlling the mouth to simulate speaking or singing. It overlaps with other instruments, though.</li>
+    </ul>
+
+    <p>
+        This is a theory, which was very useful for this project. When it comes to the practical experiments - frequency ranges needed to be adjusted manually resulting in the best visual effects for most of the songs.
+    </p>
+
+<h4>Components</h4>
+
+<p>Hardware project requires hardware components:</p>
+<ul>
+    <li><strong>Arduino Uno Rev 3</strong></li>
+    <li><strong>Arduino Motor Shield Rev 3</strong></li>
+    <li><strong>Audio stereo amplifier PAM8403</strong></li>
+    <li><strong>Bluetooth audio stereo module A2DP VHM-314</strong></li>
+    <li><strong>2W/8Ohm speaker</strong></li>
+    <li><strong>Big Mouth Billy Bass</strong>, obviously</li>
+</ul>
+
+<h4>Assembly process</h4>
+
+<p>Firstly, I needed to remove every unnecessary elements from Billy Bass interiors. I removed the main board, all buttons and switches, really low-quality speaker and cut off the wires from servo/motors. The last ones will be connected to the motor driver.</p>
+
+<img src="/assets/img/blog/bass_guts.webp" class="center" title="Empty bass with left connectors"/>
+<div class="img-description">Gutted Billy Bass...</div>
+<p>Later I soldered Bluetooth audio-stereo module with amplifier and speaker. This was the first time I used this kind of setup, so the first thing I did was testing the audio. I used the power source from the Arduino board <strong>Vout</strong> pins. Because the Arduino board needed the audio signal I also connected one of the audio channels from Bluetooth board to the analog input pin (A3).</p>
+
+<img src="/assets/img/blog/bass_audio.webp" class="center" title="Audio setup wired together"/>
+<div class="img-description">Bluetooth audio setup wired together.</div>
+<p>After audio part verification I soldered the rest of the device - motor wires from Billy Bass to the Arduino Motor Shield output pins. All of that were powered using 9V DC supply.</p>
+
+<p>I glued the speaker back to the Billy Bass interiors but the rest of the equipment was too big to be placed inside. So I used small black box to keep everything together and wired it to the toy instead.</p>
+
+<img src="/assets/img/blog/bass_full.webp" class="center" title="Fully assembled toy"/>
+<div class="img-description">Fully assembled toy.</div>
+
+<h4>Time for some coding!</h4>
+<p>
+Arduino coding - long time, no see! Last time I used this microcontroller in the <a href="https://j3x.dev/en/?p=projects&id=11#portfolio" target="_blank" rel="noreferrer"><strong>Standy - self-balancing robot</strong></a> project. Let's start with basic audio signal measurement.
+</p>
+<pre>
+const int SOUND_PIN = A3;
+void setup() {
+  pinMode(SOUND_PIN, INPUT);
+}
+...
+// Sampled value will be in range of 0 to 512.
+int value = analogRead(SOUND_PIN);
+</pre>
+
+<p>
+    This value needs to be sampled in regular period and then we can perform FFT algorithm to calculate frequency spectrum for each audio window. According to the Nyquist-Shannon theorem - sampling frequency needs to be at least twice as big as the largest signal frequency. Standard audio signal may consist of frequencies up to 24kHz which means that sampling frequency needs to be set at least to 48kHz to achieve quality signal processing. Unfortunately this is impossible using Arduino UNO since its ADC converter operates with 10kHz ticks. Let's not give up though - the main frequencies that are the most interesting ones for this purpose are below 1kHz. I set the sampling frequency to 9kHz and used <a href="https://github.com/kosme/arduinoFFT/" rel="noreferrer" target="_blank"><strong>arduinoFFT</strong></a> library to perform the operations. This is not correct according to the theory but will provide some good results anyways.
+</p>
+<pre>
+void sampleMusic() {
+  // Perform FFT and calculate bass / vocal values
+  microseconds = micros();
+  for (int i = 0; i < audio_samples; i++) {
+    v_real[i] = analogRead(SOUND_PIN);
+    v_imag[i] = 0;
+    while (micros() - microseconds < sampling_period_us) {}
+    microseconds += sampling_period_us;
+  }
+
+  FFT.windowing(FFTWindow::Hamming, FFTDirection::Forward);
+  FFT.compute(FFTDirection::Forward);
+  FFT.complexToMagnitude();
+
+  // Calculate bass
+  bass = v_real[1];  // approx 148Hz
+
+  // Calculate mid
+  mid = 0;
+  for (int i = 2; i < 10; i++) {
+    mid += v_real[i];  // approx 240Hz - 800 Hz
+  }
+}
+</pre>
+<p>
+    Arduino Motor Shield is pretty easy to use. Simply use <strong>PWM</strong> signal to control motor speed and one digital PIN to control its direction. There is also <strong>Brake</strong> signal functionality but it was not essential for this case. My version of Billy Bass consists of two motors - one for the body movement and the other one for mouth movement. The former controls both tail and head of the toy (forward movement controls head and backward movement controls tail). After quick "reverse engineering" the movement part of the code wrote itself.
+    </p>
+
+<pre>
+void openMouth() {
+  digitalWrite(DIRECTION_PIN_MOUTH, HIGH);
+  analogWrite(PWM_PIN_MOUTH, 255);
+}
+
+void closeMouth() {
+  digitalWrite(DIRECTION_PIN_MOUTH, HIGH);
+  analogWrite(PWM_PIN_MOUTH, 0);
+}
+</pre>
+
+<div class="img-description">Simple helper functions for movement.</div>
+
+<p>Those helper functions needed state machine to be invoked in the correct order. Full code is a little bit bigger and can be found here: <a href="https://github.com/jul3x/BetterBillyBass" rel="noreferrer" target="_blank"><strong>https://github.com/jul3x/BetterBillyBass</strong></a>.</p>
+
+<p>The main experimental part was to adjust every volume and frequency threshold to achieve the best performance for most of the songs. I created a code that allows easy reconfiguration. Movement logic can be described as follows (<strong>talkLoop</strong> and <strong>moveLoop</strong> are the state machines handlers):</p>
+<pre>
+void BillyBass() {
+  // BillyBass movement logic
+
+  // Head movement
+  talkLoop(OPEN_MOUTH_TIME, CLOSE_MOUTH_TIME);
+  if (mid >= MID_FREQ_THRESHOLD && talking_phase == 0) {
+    // If not talking and mid frequency is above threshold,
+    // start talking and trigger state machine.
+    talking_phase = 1;
+    talking_phase_switch_ts = current_time;
+    max_time_mouth_ts = current_time + MAX_MOUTH_TIME;
+  } else if (vocal >= MID_FREQ_MAX_THRESHOLD && current_time <= max_time_mouth_ts) {
+    // If Billy is currently talking but vocal frequencies are very loud (above second threshold),
+    // Prolongate talking.
+    talking_phase_switch_ts = current_time + OPEN_MOUTH_TIME - 10;
+  }
+
+  // Body movement
+  moveLoop(FORWARD_BODY_TIME, BACKWARD_BODY_TIME, FORWARD_BODY_TIME, BACKWARD_BODY_TIME);
+  if (bass >= BASS_FREQ_THRESHOLD && body_phase == 0) {
+    // If Billy is in standby but bass frequencies are above threshold,
+    // Start moving and trigger state machine.
+
+    // Sometimes tail movement, sometimes head
+    bool tail = random(1, 10) > 6;
+    body_phase = tail ? 3 : 1;
+
+    body_phase_switch_ts = current_time;
+    max_time_body_ts = current_time + MAX_BODY_TIME;
+  } else if (bass >= BASS_FREQ_MAX_THRESHOLD && current_time <= max_time_body_ts) {
+    // If Billy is currently moving but bass frequencies are very loud (above second threshold),
+    // Prolongate movement.
+    body_phase_switch_ts = current_time + FORWARD_BODY_TIME - 10;
+  }
+}
+</pre>
+
+<h4>Results</h4>
+
+<p>The effect is pretty decent. The toy reacts to the rhytm and vocal frequencies. Because of the frequencies overlap between some instruments and speech it also reacts to some other sounds. One may improve the code using speech recognition tools and speech animatronics AI models but in the end - it works just fine as is. You can see the results in the attached video.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/alQjzy3bQl0?si=vnCwb4Y5k3XP2TOP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<em>
+  <span>References:</span>
+<ul>
+  <li><a href="https://github.com/jul3x/BetterBillyBass" target="_blank" rel="noreferrer">BetterBillyBass code</a></li>
+  <li><a href="https://www.instructables.com/Animate-a-Billy-Bass-Mouth-With-Any-Audio-Source/" target="_blank" rel="noreferrer">Billy Bass with any audio source</a></li>
+  <li><a href="https://github.com/MrShoopa/Billy-Bass-Arduino-d/" target="_blank" rel="noreferrer">Billy Bass Arduino</a></li>
+  <li><a href="https://github.com/TensorFlux/BTBillyBass" target="_blank" rel="noreferrer">BTBillyBass</a></li>
+  <li><a href="https://github.com/kosme/arduinoFFT" target="_blank" rel="noreferrer">arduinoFFT</a></li>
+</ul>
+</em>

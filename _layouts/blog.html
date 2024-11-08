@@ -28,7 +28,7 @@
          <div class="content">
              <p>{{ page.main_header }}</p>
              <div class="posts-wrapper">
-                 {% for post in site.blog_posts %}
+                 {% for post in site.blog_posts reversed %}
                  <div class="blog-post">
                      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
                      <div class="top-post">

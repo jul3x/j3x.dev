@@ -1177,6 +1177,13 @@ body.blog {
     max-width: 1600px;
 }
 
+.blog-post-page img.center {
+    margin: 20px auto;
+    float: none;
+    width: 500px;
+    max-width: 95%;
+}
+
 .blog-post-page .img-description {
     font-style: italic;
     text-align: center;
@@ -1261,4 +1268,24 @@ body.blog {
 .back-to-posts {
     width: 100%;
     text-align: right;
+}
+
+.blog-post-content iframe {
+    margin: 20px auto;
+    display: block;
+    max-width: 95% !important;
+}
+
+.blog-post-content pre {
+    font-family: monospace;
+    background-color: var(--dark);
+    display: block;
+    padding: 15px;
+    margin: 5px auto;
+    color: var(--white);
+    border-color: 1px solid var(--white);
+    max-width: 95%;
+    width: 800px;
+
+    overflow-x: auto;
 }
