@@ -4,4 +4,6 @@ Source code of my portfolio. Created using plain HTML/CSS/JS and Jekyll as Stati
 
 # Generate files
 
-Type `jekyll build` to create fresh `_site` directory with ready-to-go site.
+* `gem install jekyll bundler`
+* `bundle install`
+* Type `bundle exec jekyll build` to create fresh `_site` directory with ready-to-go site.
